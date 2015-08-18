@@ -32,11 +32,11 @@ alias .....="cd ../../../.."
 alias about="archey -c"
 
 alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias alpha="sh ~/DropboxScripts/alpha"
-alias blocks="sh ~/DropboxScripts/blocks"
-alias pipes="sh ~/DropboxScripts/pipes"
-alias invaders="sh ~/DropboxScripts/invaders"
-alias hidden="sh ~/DropboxScripts/togglehidden"
+alias alpha="sh ~/Dropbox/Scripts/alpha"
+alias blocks="sh ~/Dropbox/Scripts/blocks"
+alias pipes="sh ~/Dropbox/Scripts/pipes"
+alias invaders="sh ~/Dropbox/Scripts/invaders"
+alias hidden="sh ~/Dropbox/Scripts/togglehidden"
 alias restart="sudo shutdown -r now"
 
 export EDITOR=/usr/bin/nvim
