@@ -1,2 +1,18 @@
 
 muttrc
+
+vim/plugged/auto-pairs/
+
+vim/plugged/ctrlp.vim/
+
+vim/plugged/flatlandia/
+
+vim/plugged/goyo.vim/
+
+vim/plugged/seoul256.vim/
+
+vim/plugged/vim-better-whitespace/
+
+vim/plugged/vim-multiple-cursors/
+
+*.vim
