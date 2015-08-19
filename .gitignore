@@ -50,3 +50,15 @@ weechat/sec.conf
 weechat/script.conf
 
 weechat/relay.conf
+
+config/cmus/cache
+
+config/cmus/autosave
+
+config/cmus/command-history
+
+*.pl
+
+config/cmus/search-history
+
+config/config/git/ignore
