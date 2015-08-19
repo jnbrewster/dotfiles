@@ -6,7 +6,7 @@
 
 dir=~/Dropbox/dotfiles                    # dotfiles directory
 olddir=~/Dropbox/dotfiles_old             # old dotfiles backup directory
-files=" angband amethyst bashrc config hushlogin muttrc nvim nvimrc tmux.conf vim vimrc weechat . "    # list of files/folders to symlink in homedir
+files=" angband amethyst bashrc config hushlogin muttrc nvim nvimrc profile tmux.conf vim vimrc weechat . "    # list of files/folders to symlink in homedir
 
 # change to the dotfiles directory
 echo -n "Changing to the $dir directory ..."
