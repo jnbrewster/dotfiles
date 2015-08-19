@@ -32,17 +32,18 @@ alias .....="cd ../../../.."
 alias about="archey -c"
 
 alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias alpha="sh ~/Dropbox/Scripts/alpha"
-alias blocks="sh ~/Dropbox/Scripts/blocks"
-alias pipes="sh ~/Dropbox/Scripts/pipes"
-alias invaders="sh ~/Dropbox/Scripts/invaders"
-alias hidden="sh ~/Dropbox/Scripts/togglehidden"
+alias alpha="sh ~/Dropbox/dotfiles/Scripts/alpha"
+alias blocks="sh ~/Dropbox/dotfiles/Scripts/blocks"
+alias pipes="sh ~/Dropbox/dotfiles/Scripts/pipes"
+alias invaders="sh ~/Dropbox/dotfiles/Scripts/invaders"
+alias hidden="sh ~/Dropbox/dotfiles/Scripts/togglehidden"
 alias restart="sudo shutdown -r now"
 
-export EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/vim
 export CLICOLOR= LSCOLORS=dxfxcxdxbxegedabagacad
 export LC_ALL=en_US.UTF-8 export LANG=en_US.UTF-8
 
+
 export PATH=/usr/local/opt/ruby/bin:$PATH
 
-export PS1="\h \\$\[$(tput sgr0)\]"
+
