@@ -34,12 +34,12 @@ let base16colorspace=256
 let g:seoul256_background = 235
 let g:seoul256_light_background = 255
 colorscheme seoul256
-" let hour = strftime("%H")
-" if 6 <= hour && hour < 18
-" 	colorscheme seoul256-light
-" else
-" 	colorscheme seoul256
-" endif
+let hour = strftime("%H")
+if 6 <= hour && hour < 18
+	colorscheme seoul256-light
+else
+	colorscheme seoul256
+endif
 if has("gui_running")
 	colorscheme flatlandia
 end
