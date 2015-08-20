@@ -38,6 +38,7 @@ alias pipes="sh ~/Dropbox/dotfiles/Scripts/pipes"
 alias invaders="sh ~/Dropbox/dotfiles/Scripts/invaders"
 alias hidden="sh ~/Dropbox/dotfiles/Scripts/togglehidden"
 alias restart="sudo shutdown -r now"
+alias mc="sh ~/Dropbox/dotfiles/Scripts/mc.sh"
 
 export EDITOR=/usr/bin/vim
 export CLICOLOR= LSCOLORS=dxfxcxdxbxegedabagacad
