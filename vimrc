@@ -1,4 +1,4 @@
-"vimrc
+"#vimrc
 call plug#begin('~/.vim/plugged')
 
 Plug 'gmarik/Vundle.vim'
@@ -8,7 +8,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'jordwalke/flatlandia'
 
 call plug#end()
 
@@ -30,19 +29,16 @@ set guioptions-=T
 set go-=L
 set t_Co=256
 set guifont=Source\ Code\ Pro:h13
-let base16colorspace=256
-let g:seoul256_background = 235
-let g:seoul256_light_background = 255
-colorscheme seoul256
-let hour = strftime("%H")
-if 6 <= hour && hour < 18
-	colorscheme seoul256-light
-else
-	colorscheme seoul256
-endif
-if has("gui_running")
-	colorscheme flatlandia
-end
+" let base16colorspace=256
+" let g:seoul256_background = 237
+" let g:seoul256_light_background = 253
+let g:netrw_silent = 1
+set shortmess+=O
+execute "set background=".$BACKGROUND
+execute "colorscheme ".$THEME
+
+
+"colorscheme seoul256
 set statusline+=%1*
 set statusline+=
 set laststatus=2
@@ -54,6 +50,30 @@ set statusline+=%=
 " set statusline+=%y
 " row numbers and column
 set statusline+=[%l:%L:%c]
+
+"#-------------------------------------------------------------------------
+"# conditionals
+"#-------------------------------------------------------------------------
+" let hour = strftime("%H")
+" if 6 <= hour && hour < 19
+" 	colorscheme seoul256-light
+" else
+" 	colorscheme seoul256
+" endif
+"
+if has("gui_running")
+	colorscheme seoul256-light
+end
+
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+nmap <leader>, :so $MYVIMRC<CR>
+
+let mapleader = " "
+nmap <leader>t :tabe<CR>
 
 
 "#------------------------------------------------------------------------
@@ -168,8 +188,6 @@ function! ToggleVExplorer()
 endfunction
 map <silent> <C-E> :call ToggleVExplorer()<CR>
 
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 

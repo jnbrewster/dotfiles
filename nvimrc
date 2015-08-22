@@ -1,14 +1,13 @@
 "vimrc
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'gmarik/Vundle.vim'
-Plug 'kien/ctrlp.vim''
+Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'jordwalke/flatlandia'
 
 call plug#end()
 
@@ -30,19 +29,16 @@ set guioptions-=T
 set go-=L
 set t_Co=256
 set guifont=Source\ Code\ Pro:h13
-let base16colorspace=256
-let g:seoul256_background = 235
-let g:seoul256_light_background = 255
-colorscheme seoul256
-" let hour = strftime("%H")
-" if 6 <= hour && hour < 18
-" 	colorscheme seoul256-light
-" else
-" 	colorscheme seoul256
-" endif
-if has("gui_running")
-	colorscheme flatlandia
-end
+" let base16colorspace=256
+" let g:seoul256_background = 237
+" let g:seoul256_light_background = 253
+let g:netrw_silent = 1
+set shortmess+=O
+execute "set background=".$BACKGROUND
+execute "colorscheme ".$THEME
+
+
+"colorscheme seoul256
 set statusline+=%1*
 set statusline+=
 set laststatus=2
@@ -55,15 +51,39 @@ set statusline+=%=
 " row numbers and column
 set statusline+=[%l:%L:%c]
 
+"#-------------------------------------------------------------------------
+"# conditionals
+"#-------------------------------------------------------------------------
+" let hour = strftime("%H")
+" if 6 <= hour && hour < 19
+" 	colorscheme seoul256-light
+" else
+" 	colorscheme seoul256
+" endif
+"
+if has("gui_running")
+	colorscheme seoul256-light
+end
+
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+nmap <leader>, :so $MYVIMRC<CR>
+
+let mapleader = " "
+nmap <leader>t :tabe<CR>
+
 
 "#------------------------------------------------------------------------
 "# moving around, searching and patterns
 "#------------------------------------------------------------------------
-:noh
 set mouse=a
 set incsearch
 set ignorecase
 set smartcase
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js,smarty/**,vendor/**,node_libraries/**,.git,.local,.hg,.svn,.sass-cache,log,tmp,build,**/ckeditor/**
 
 
 "#------------------------------------------------------------------------
@@ -78,8 +98,8 @@ filetype plugin on
 "#------------------------------------------------------------------------
 "# editing text
 "#------------------------------------------------------------------------
-" autocmd InsertEnter * :set number
-" autocmd InsertLeave * :set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 set clipboard=unnamed
 set noswapfile
 set scrolloff=3
@@ -122,7 +142,7 @@ set foldmethod=manual
 "# mapping
 "#------------------------------------------------------------------------
 " pinky love"
-nnoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
 " bind leader to space
 nnoremap <space> <Nop>
 let mapleader=" "
@@ -137,9 +157,9 @@ nnoremap <leader>l <C-w>l
 "# Plugins
 "#------------------------------------------------------------------------
 " Ctrlp
- nnoremap <c-\> :CtrlP<CR>
- let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
+nnoremap <c-\> :CtrlP<CR>
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_working_path_mode = 'rw'
 
 " Multi cursor keyboard shortcuts
 let g:multi_cursor_next_key='<C-n>'
@@ -168,8 +188,6 @@ function! ToggleVExplorer()
 endfunction
 map <silent> <C-E> :call ToggleVExplorer()<CR>
 
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 
@@ -178,4 +196,5 @@ let g:netrw_liststyle=3
 
 " block cursor on visual mode
 set gcr=n-v-c:block-Cursor
+
 
