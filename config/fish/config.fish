@@ -1,18 +1,23 @@
 #echo /usr/local/bin/fish >>/etc/shells
 #chsh -s /usr/local/bin/fish
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+eval "$(rbenv init -)"
+alias b='bundle exec'
 
 set fish_greeting ""
 
 alias bu="rsync -rtv ~/Dropbox/dotfiles ~/"
 alias eh="open vnc://192.168.0.12"
+alias vb="ssh joel@192.168.56.102"
 alias ip="curl icanhazip.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 alias mute="osascript -e 'set volume output muted true'"
-alias vim="nvim"
 
-alias t="tmux"
+alias v="nvim"
+alias vi="nvim"
+alias tm="tmux"
 alias ta="tmux attach"
 
 alias @h="ls -c ~/Dropbox | grep @home"
@@ -40,6 +45,20 @@ alias .....="cd ../../../.."
 alias about="archey -c"
 
 alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias d="open -a Dictionary"
+alias p="open -a Preview"
+alias s="open -a Safari"
+alias f="open -a Finder"
+alias gc="open -a Google\ Chrome"
+
+alias g="open -a Github\ Desktop"
+alias m="open -a Messages"
+alias n="open -a nvALT"
+alias p="open -a Quicktime\ Player"
+alias k="open -a KakaoTalk"
+alias v="open -a VLC"
+
+
 alias alpha="sh ~/Dropbox/dotfiles/Scripts/alpha"
 alias blocks="sh ~/Dropbox/dotfiles/Scripts/blocks"
 alias pipes="sh ~/Dropbox/dotfiles/Scripts/pipes"
