@@ -1,8 +1,12 @@
 #echo /usr/local/bin/fish >>/etc/shells
 #chsh -s /usr/local/bin/fish
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-eval "$(rbenv init -)"
-alias b='bundle exec'
+
+#set -gx RBENV_ROOT /usr/local/var/rbenv
+#. (rbenv init -|psub)
+
+set PATH $HOME/.rbenv/bin $PATH
+set PATH $HOME/.rbenv/shims $PATH
+rbenv rehash >/dev/null ^&1
 
 set fish_greeting ""
 
@@ -14,9 +18,12 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 alias mute="osascript -e 'set volume output muted true'"
+alias update="sudo softwareupdate -i -a"
+alias reload="exec $SHELL -l"
 
 alias v="nvim"
 alias vi="nvim"
+alias t="tmux"
 alias tm="tmux"
 alias ta="tmux attach"
 
@@ -44,7 +51,7 @@ alias .....="cd ../../../.."
 
 alias about="archey -c"
 
-alias mvim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias m="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias d="open -a Dictionary"
 alias p="open -a Preview"
 alias s="open -a Safari"
@@ -56,8 +63,6 @@ alias m="open -a Messages"
 alias n="open -a nvALT"
 alias p="open -a Quicktime\ Player"
 alias k="open -a KakaoTalk"
-alias v="open -a VLC"
-
 
 alias alpha="sh ~/Dropbox/dotfiles/Scripts/alpha"
 alias blocks="sh ~/Dropbox/dotfiles/Scripts/blocks"
