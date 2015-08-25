@@ -8,6 +8,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
@@ -158,35 +159,9 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Toggle Vexplore with Ctrl-E
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR>
-
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-
-" Default to tree mode
-let g:netrw_liststyle=3
-
 " block cursor on visual mode
 set gcr=n-v-c:block-Cursor
 
-
+" Nerdtree mapping
+map <C-e> :NERDTreeToggle<CR>
 
