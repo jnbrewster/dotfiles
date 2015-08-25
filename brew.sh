@@ -13,11 +13,14 @@ brew install wget --with-iri
 brew install weechat
 brew install profanity
 brew install cmus
+brew install mpd
+brew install ncmpcpp
 brew install mutt
 brew install ranger
 brew install python
 brew install rbenv
 brew install ruby-build
+brew cask install qlmarkdown
 
 brew cleanup
 
