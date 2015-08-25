@@ -62,3 +62,5 @@ config/cmus/command-history
 config/cmus/search-history
 
 config/config/git/ignore
+
+Launchbar/launchbarcode
