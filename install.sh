@@ -14,9 +14,14 @@ brew install profanity
 brew install cmus
 brew install mutt
 brew install ranger
+brew cask install qlmarkdown
+
+
+#Install rails stuff
 brew install rbenv
 brew install ruby-build
-brew cask install qlmarkdown
+rbenv install 2.2.2
+rbenv global 2.2.2
 
 brew cleanup
 
@@ -42,6 +47,7 @@ apps=(
 	sitesucker
   transmission
 	vimr
+	macvim
 )
 
 # Install apps to /Applications
@@ -60,6 +66,6 @@ brew cask install ${fonts[@]}
 
 brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
 
-echo "Don't forget to log into dropbox and run 'mackup restore!'"
 cd ~
+echo "Finished!"
 
