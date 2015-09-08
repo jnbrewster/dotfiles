@@ -1,9 +1,9 @@
 #echo /usr/local/bin/fish >>/etc/shells
 #chsh -s /usr/local/bin/fish
-
 #set -gx RBENV_ROOT /usr/local/var/rbenv
 #. (rbenv init -|psub)
 
+#Set path for ruby on rails with rbenv
 set PATH $HOME/.rbenv/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
 rbenv rehash >/dev/null ^&1
@@ -21,11 +21,15 @@ alias mute="osascript -e 'set volume output muted true'"
 alias update="sudo softwareupdate -i -a"
 alias reload="exec $SHELL -l"
 
-alias v="nvim"
-alias vi="nvim"
+alias v="vim"
+alias vi="vim"
 alias t="tmux"
 alias tm="tmux"
 alias ta="tmux attach"
+alias q="qutebrowser & exit"
+alias vlc="/Applications/VLC.app/Contents/MacOS/VLC -I rc"
+alias yt="youtube-dl"
+alias mp3='youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k'
 
 alias @h="ls -c ~/Dropbox | grep @home"
 alias @m="ls -c ~/Dropbox | grep @mac"
@@ -71,5 +75,8 @@ alias invaders="sh ~/Dropbox/dotfiles/Scripts/invaders"
 alias hidden="sh ~/Dropbox/dotfiles/Scripts/togglehidden"
 alias restart="sudo shutdown -r now"
 alias mc="sh ~/Dropbox/dotfiles/Scripts/mc.sh"
+alias jeju="sh ~/Dropbox/dotfiles/Scripts/weather.sh "jeju""
+alias kingscliff="sh ~/Dropbox/dotfiles/Scripts/weather.sh "kingscliff""
+alias melbourne="sh ~/Dropbox/dotfiles/Scripts/weather.sh "melbourne""
 
-export EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/vim
