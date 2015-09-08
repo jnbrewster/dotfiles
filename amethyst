@@ -210,12 +210,13 @@
     "floating": [
     "com.apple.systempreferences",
 		"com.apple.QuickTimePlayerX",
-    "com.twitter.twitter-mac"
+    "com.twitter.twitter-mac",
+		"org.videolan.vlc"
     ],
     "ignore-menu-bars": true,
     "float-small-windows": true,
     "mouse-follows-focus": false,
     "focus-follows-mouse": false,
-    "enables-layout-hud": false,
-    "enables-layout-hud-on-space-change": false
+    "enables-layout-hud": true,
+    "enables-layout-hud-on-space-change": true
 }
