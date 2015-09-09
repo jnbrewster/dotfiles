@@ -1,3 +1,5 @@
+set shell=/bin/sh
+
 "#vimrc
 call plug#begin('~/.vim/plugged')
 
@@ -27,17 +29,7 @@ set visualbell
 set guioptions-=r
 set guioptions-=T
 set go-=L
-" font and theme(from profile)
-set t_Co=256
-set guifont=Source\ Code\ Pro:h13
-execute "set background=".$BACKGROUND
-execute "colorscheme ".$THEME
-hi cursorLine cterm=NONE
-
 " statusline
-set statusline+=%1*
-set statusline+=
-set laststatus=2
 " file name
 set statusline+=%F
 " extend space to the right
@@ -49,16 +41,58 @@ set statusline+=[%l:%L:%c]
 
 
 "#---------------------------------------
-"# conditionals
+"# colors and theme
 "#---------------------------------------
+set t_Co=256
+let base16colorspace=256
+set guifont=Source\ Code\ Pro:h13
+
 if has("gui_running")
 	colorscheme seoul256
-end
+endif
 
+"let g:seoul256_background = 238
+" set vim to use term colors
+execute "set background=".$BACKGROUND
+execute "colorscheme ".$THEME
+hi cursorLine cterm=NONE
+hi TabLineFill term=bold cterm=bold ctermbg=black
+highlight clear SignColumn
+
+highlight TablineSel		ctermfg=yellow
+highlight IncSearch    	ctermbg=white		ctermfg=yellow
+highlight Search       	ctermbg=white		ctermfg=red
+highlight Visual       	ctermbg=yellow	ctermfg=black
+highlight Pmenu				 	ctermbg=yellow	ctermfg=black
+highlight VertSplit			ctermbg=black		ctermfg=black
+highlight StatusLineNC	ctermbg=white		ctermfg=black
+highlight StatusLine		ctermbg=yellow	ctermfg=black
+
+"Conflicting with theme changer script - fix later
+"highlight CursorLineNr	ctermbg=black ctermfg=yellow
+"highlight LineNr      ctermfg=green
+"highlight TabLine			 ctermbg=0 ctermfg=white
+"highlight TabLineFill	 ctermbg=0 ctermfg=white
+"highlight TablineSel	 ctermbg=0 ctermfg=yellow
+"highlight VertSplit    ctermbg=black
+"highlight ColorColumn  ctermbg=black
+"highlight LineNr       ctermbg=black ctermfg=yellow
+"highlight CursorLine   ctermbg=black
+"highlight Visual       ctermbg=white ctermfg=red
+
+" highlight the status bar when in insert mode
+" if version >= 700
+" 	au InsertEnter * hi StatusLine ctermbg=3 ctermfg=black
+"   au InsertLeave * hi StatusLine ctermbg=white ctermfg=black
+" endif
+
+"#---------------------------------------
+"# conditionals
+"#---------------------------------------
 " autoreload vimrc after :w
-augroup myvimrc
-		au!
-		au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC| if has('gui_running') | so $MYGVIMRC | endif
+augroup reload_vimrc
+autocmd!
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
 " source vimrc
@@ -96,8 +130,12 @@ set sidescrolloff=5
 set sidescroll=1
 set cursorline
 set wrap
+set wrapmargin=8
 set linebreak
 set nolist
+" make insert mode change and drawing faster
+set ttimeoutlen=100
+set ttyfast
 " get vim to read markdown files properly
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " auto comments are stupid
@@ -114,7 +152,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set copyindent
 " can backspace through anything in insert mode
 set backspace=indent,eol,start
 set noai nocin nosi inde=
@@ -159,9 +196,7 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" block cursor on visual mode
-set gcr=n-v-c:block-Cursor
-
 " Nerdtree mapping
 map <C-e> :NERDTreeToggle<CR>
+
 
