@@ -1,21 +1,7 @@
 
 muttrc
 
-vim/plugged/auto-pairs/
-
-vim/plugged/ctrlp.vim/
-
-vim/plugged/flatlandia/
-
-vim/plugged/goyo.vim/
-
-vim/plugged/seoul256.vim/
-
-vim/plugged/vim-better-whitespace/
-
-vim/plugged/vim-multiple-cursors/
-
-*.vim
+vim/plugged/
 
 vim/.netrwhist
 
@@ -29,13 +15,7 @@ weechat/irc.conf
 
 weechat/logger.conf
 
-weechat/logs/core.weechat.weechatlog
-
-weechat/logs/irc.freenode.#ruby.weechatlog
-
-weechat/logs/irc.freenode.#rubyonrails.weechatlog
-
-weechat/logs/irc.server.freenode.weechatlog
+weechat/logs/
 
 weechat/plugins.conf
 
@@ -57,10 +37,38 @@ config/cmus/autosave
 
 config/cmus/command-history
 
-*.pl
-
 config/cmus/search-history
 
 config/config/git/ignore
 
 Launchbar/launchbarcode
+
+Launchbar/Snippets/
+
+Library/
+
+Launchbar/
+
+vim/plugged/nerdtree/
+
+nvim/nvim
+
+config/cmus/playlist.pl
+
+config/cmus/lib.pl
+
+vim/vim/autoload/
+
+bash_profile
+
+config/fish/fish_history
+
+config/ranger/bookmarks
+
+config/ranger/history
+
+config/ranger/tagged
+
+Launchbar/Configuration.plist
+
+*.plist
