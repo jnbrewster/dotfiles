@@ -12,7 +12,6 @@ brew install cmus
 brew install fish
 brew install mutt
 brew install ranger
-brew cask install qlmarkdown
 brew install archey
 brew install homebrew/games/angband
 brew install mplayer
@@ -20,12 +19,12 @@ brew install youtube-dl
 
 pip install glances
 
-#Install rails stuff
-brew install rbenv
-brew install ruby-build
-rbenv install 2.2.2
-rbenv global 2.2.2
-brew install heroku
+##Install rails stuff
+#brew install rbenv
+#brew install ruby-build
+#rbenv install 2.2.2
+#rbenv global 2.2.2
+#brew install heroku
 
 brew cleanup
 
@@ -38,19 +37,20 @@ brew install caskroom/cask/brew-cask
 # Apps
 apps=(
 	amethyst
+	spectacle
   dropbox
 	firefox
   google-chrome
 	github-desktop
 	karabiner
 	launchbar
-	steam
   vlc
   nvalt
 	r-name
 	sitesucker
   transmission
 	vimr
+	qlmarkdown
 )
 
 # Install apps to /Applications
