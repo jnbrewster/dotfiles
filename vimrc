@@ -30,6 +30,7 @@ set guioptions-=r
 set guioptions-=T
 set go-=L
 " statusline
+set laststatus=2
 " file name
 set statusline+=%F
 " extend space to the right
@@ -106,7 +107,6 @@ set mouse=a
 set incsearch
 set ignorecase
 set smartcase
-set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js,smarty/**,vendor/**,node_libraries/**,.git,.local,.hg,.svn,.sass-cache,log,tmp,build,**/ckeditor/**
 
 
 "#--------------------------------------
