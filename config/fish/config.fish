@@ -55,6 +55,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias about="archey -c"
+alias info="sh ~/Dropbox/dotfiles/Scripts/info.sh"
 
 alias m="/Applications/MacVim.app/Contents/MacOS/Vim"
 alias dc="open -a Dictionary"
