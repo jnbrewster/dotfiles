@@ -11,6 +11,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'ap/vim-css-color'
 
 call plug#end()
 
@@ -29,14 +30,8 @@ set visualbell
 set guioptions-=r
 set guioptions-=T
 set go-=L
-" " hint to keep lines short
-" if exists('+colorcolumn')
-"   set colorcolumn=80
-" endif
-
 " statusline
-"set statusline+=
-"set laststatus=2
+set laststatus=2
 " file name
 set statusline+=%F
 " extend space to the right
@@ -51,9 +46,31 @@ set statusline+=[%l:%L:%c]
 "# colors and theme
 "#---------------------------------------
 set t_Co=256
-set guifont=Source\ Code\ Pro:h13
-colorscheme seoul256
-let g:seoul256_background = 238
+let base16colorspace=256
+set guifont=Consolas:h12
+if has("gui_running")
+	colorscheme seoul256
+endif
+
+" set vim to use term colors
+execute "set background=".$BACKGROUND
+execute "colorscheme ".$THEME
+
+highlight clear SignColumn
+hi cursorLine		cterm=NONE
+hi TabLineFill	term=NONE		cterm=NONE	ctermbg=0
+hi TablineSel		ctermfg=yellow
+hi TabLine			ctermfg=green		ctermbg=0
+hi IncSearch   	ctermbg=white		ctermfg=yellow
+hi Search      	ctermbg=white		ctermfg=red
+hi Visual      	ctermbg=yellow	ctermfg=black
+hi Pmenu			 	ctermbg=yellow	ctermfg=black
+hi VertSplit		ctermbg=black		ctermfg=black
+hi StatusLineNC	ctermbg=white		ctermfg=black
+hi StatusLine		ctermbg=yellow	ctermfg=0
+hi CursorLine   ctermbg=237
+hi LineNr				ctermbg=237
+
 
 "#---------------------------------------
 "# conditionals
@@ -81,7 +98,6 @@ set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js,smarty/*
 "#--------------------------------------
 "# syntax, highlighting and spelling
 "#--------------------------------------
-set encoding=utf-8
 syntax on
 filetype on
 filetype plugin on
@@ -152,6 +168,8 @@ nnoremap <leader>l <C-w>l
 
 " remap silly <C-\><C-n> bunding to exit :term in neovim to esc, esc
 tnoremap <esc><esc> <C-\><C-n>
+" go straight to insert mode if switching to a terminal window
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 
 "#--------------------------------------
@@ -170,4 +188,6 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " Nerdtree mapping
 map <C-e> :NERDTreeToggle<CR>
+
+nmap <leader><enter> :!thyme -d<cr>
 
