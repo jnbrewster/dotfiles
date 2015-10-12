@@ -12,6 +12,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ap/vim-css-color'
+Plug 'tpope/vim-vinegar'
+Plug 'chriskempson/vim-tomorrow-theme'
 
 call plug#end()
 
@@ -30,29 +32,17 @@ set visualbell
 set guioptions-=r
 set guioptions-=T
 set go-=L
-" statusline
-set laststatus=2
-" file name
-set statusline+=%F
-" extend space to the right
-set statusline+=%=
-" file type
-" set statusline+=%y
-" row numbers and column
-set statusline+=[%l:%L:%c]
 
 
 "#---------------------------------------
 "# colors and theme
 "#---------------------------------------
-"set t_Co=256
-"let base16colorspace=256
-let &titleold;=getcwd()
-set guifont=Consolas:h13
-if has("gui_running")
-	colorscheme Seoul256
+set t_Co=256
+set guifont=Inconsolata:h14
+if has('gui_running')
+	colorscheme seoul256
+	set t_Co=8 t_md=
 endif
-"set noantialias
 
 " set vim to use term colors
 execute "set background=".$BACKGROUND
@@ -70,21 +60,7 @@ hi Pmenu			 	ctermbg=yellow	ctermfg=black
 hi VertSplit		ctermbg=black		ctermfg=black
 hi StatusLineNC	ctermbg=white		ctermfg=black
 hi StatusLine		ctermbg=yellow	ctermfg=0
-hi CursorLine   ctermbg=237
-hi LineNr       ctermbg=237
-
-
-"#---------------------------------------
-"# conditionals
-"#---------------------------------------
-" autoreload vimrc after :w
-" augroup reload_vimrc
-" autocmd!
-" autocmd BufWritePost $MYVIMRC source $MYVIMRC
-" augroup END
-"
-" " source vimrc
-" nmap <leader>, :so $MYVIMRC<CR>
+hi LineNr       ctermfg=green
 
 
 "#--------------------------------------
@@ -167,7 +143,7 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
-
+let g:netrw_liststyle=3
 
 "#--------------------------------------
 "# Plugins
@@ -183,7 +159,10 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Nerdtree mapping
-map <C-e> :NERDTreeToggle<CR>
+" Nerdtree style mapping for exmode
+let mapleader=" "
+map <leader>k :E<cr>
 
 nmap <leader><enter> :!thyme -d<cr>
+
+
