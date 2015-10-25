@@ -38,7 +38,8 @@ set go-=L
 "# colors and theme
 "#---------------------------------------
 set t_Co=256
-set guifont=Inconsolata:h14
+" set vim to use term colors
+set guifont=Monaco:h12
 if has('gui_running')
 	colorscheme seoul256
 	set t_Co=8 t_md=
@@ -62,12 +63,12 @@ hi StatusLineNC	ctermbg=white		ctermfg=black
 hi StatusLine		ctermbg=yellow	ctermfg=0
 hi LineNr       ctermfg=green
 
-
 "#--------------------------------------
 "# moving around, searching and patterns
 "#--------------------------------------
 set mouse=a
 set incsearch
+set hlsearch
 set ignorecase
 set smartcase
 
