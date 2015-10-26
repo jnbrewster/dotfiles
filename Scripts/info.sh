@@ -28,21 +28,21 @@ USER="Joel"
 HOST="BirthdayBook-Pro"
 DISTRO="OS X 10.10.5"
 KERNEL="Darwin"
-WM="Amethyst"
+KERNEL="Darwin"
 SHELL="fish"
 TERMINAL="screen-256color"
 CPU="Intel Core i5-4278U CPU @ 2.60GHz"
-FONT="Source Code Pro 13"
+MEMORY="8 GB"
 
 cat << EOF
 
 ${c00}██${c08}██ ${c07}User	: ${USER}
 ${c01}██${c09}██ ${c07}Hostname 	: ${HOST}
 ${c02}██${c10}██ ${c07}Distro   	: ${DISTRO}
-${c03}██${c11}██ ${c07}WM    	: ${WM}
+${c03}██${c11}██ ${c07}Kernal    	: ${KERNEL}
 ${c04}██${c12}██ ${c07}Terminal 	: ${TERMINAL}
 ${c05}██${c13}██ ${c07}CPU	: ${CPU}
 ${c06}██${c14}██ ${c07}Shell    	: ${SHELL}
-${c07}██${c15}██ ${c07}Font     	: ${FONT}
+${c07}██${c15}██ ${c07}Memory     : ${MEMORY}
 
 EOF

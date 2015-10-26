@@ -13,7 +13,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-vinegar'
-Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -39,10 +39,11 @@ set go-=L
 "#---------------------------------------
 set t_Co=256
 " set vim to use term colors
-set guifont=Monaco:h12
+set guifont=Monaco:h13
+set t_Co=8 t_md=
+
 if has('gui_running')
 	colorscheme seoul256
-	set t_Co=8 t_md=
 endif
 
 " set vim to use term colors
@@ -50,7 +51,6 @@ execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
 
 highlight clear SignColumn
-hi cursorLine		cterm=NONE
 hi TabLineFill	term=NONE		cterm=NONE	ctermbg=0
 hi TablineSel		ctermfg=yellow
 hi TabLine			ctermfg=green		ctermbg=0
@@ -62,6 +62,9 @@ hi VertSplit		ctermbg=black		ctermfg=black
 hi StatusLineNC	ctermbg=white		ctermfg=black
 hi StatusLine		ctermbg=yellow	ctermfg=0
 hi LineNr       ctermfg=green
+hi cursorLine		cterm=NONE
+hi TablineSel		ctermfg=yellow
+
 
 "#--------------------------------------
 "# moving around, searching and patterns

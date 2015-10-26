@@ -1,10 +1,8 @@
 set showtabline=never
-colorscheme vimium
 set hintkeys='sadfjklewcmpgh'
 set hlfind
 set incfind
 set findcase=smart
-" yank
 js editor.defaultRegister="+"
 nmap j 5<Down>
 nmap k 5<Up>

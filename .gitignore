@@ -5,32 +5,6 @@ vim/plugged/
 
 vim/.netrwhist
 
-weechat/alias.conf
-
-weechat/charset.conf
-
-weechat/exec.conf
-
-weechat/irc.conf
-
-weechat/logger.conf
-
-weechat/logs/
-
-weechat/plugins.conf
-
-weechat/xfer.conf
-
-weechat/weechat.log
-
-weechat/trigger.conf
-
-weechat/sec.conf
-
-weechat/script.conf
-
-weechat/relay.conf
-
 config/cmus/cache
 
 config/cmus/autosave
@@ -51,17 +25,11 @@ Launchbar/
 
 vim/plugged/nerdtree/
 
-nvim/nvim
-
 config/cmus/playlist.pl
 
 config/cmus/lib.pl
 
-vim/vim/autoload/
-
 bash_profile
-
-config/fish/fish_history
 
 config/ranger/bookmarks
 
@@ -72,3 +40,5 @@ config/ranger/tagged
 Launchbar/Configuration.plist
 
 *.plist
+
+*.DS_Store

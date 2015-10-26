@@ -209,14 +209,13 @@
     "MISC": "----------------------",
     "floating": [
     "com.apple.systempreferences",
-		"com.apple.QuickTimePlayerX",
-    "com.twitter.twitter-mac",
-		"org.videolan.vlc"
+		"com.valvesoftware.steam"
     ],
     "ignore-menu-bars": true,
     "float-small-windows": true,
     "mouse-follows-focus": false,
-    "focus-follows-mouse": false,
+    "focus-follows-mouse": true,
     "enables-layout-hud": true,
     "enables-layout-hud-on-space-change": true
 }
+

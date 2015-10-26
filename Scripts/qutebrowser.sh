@@ -1,2 +1,3 @@
 #!/bin/sh
-qutebrowser
+cd ~
+qutebrowser && exit
