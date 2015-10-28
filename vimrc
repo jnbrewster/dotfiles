@@ -7,13 +7,9 @@ Plug 'gmarik/Vundle.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'ap/vim-css-color'
-Plug 'tpope/vim-vinegar'
-Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -39,7 +35,7 @@ set go-=L
 "#---------------------------------------
 set t_Co=256
 " set vim to use term colors
-set guifont=Monaco:h13
+set guifont=Monaco:h12
 set t_Co=8 t_md=
 
 if has('gui_running')
@@ -56,14 +52,14 @@ hi TablineSel		ctermfg=yellow
 hi TabLine			ctermfg=green		ctermbg=0
 hi IncSearch   	ctermbg=white		ctermfg=yellow
 hi Search      	ctermbg=white		ctermfg=red
-hi Visual      	ctermbg=yellow	ctermfg=black
+hi Visual      	ctermbg=blue		ctermfg=black
 hi Pmenu			 	ctermbg=yellow	ctermfg=black
 hi VertSplit		ctermbg=black		ctermfg=black
 hi StatusLineNC	ctermbg=white		ctermfg=black
-hi StatusLine		ctermbg=yellow	ctermfg=0
+hi StatusLine		ctermbg=blue	ctermfg=0
 hi LineNr       ctermfg=green
 hi cursorLine		cterm=NONE
-hi TablineSel		ctermfg=yellow
+hi TablineSel		ctermfg=blue
 
 
 "#--------------------------------------
@@ -157,16 +153,4 @@ nnoremap <c-\> :CtrlP<CR>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_working_path_mode = 'rw'
 
-" Multi cursor keyboard shortcuts
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
-" Nerdtree style mapping for exmode
-let mapleader=" "
-map <leader>k :E<cr>
-
-nmap <leader><enter> :!thyme -d<cr>
-
-
+let g:pad#dir = "~/Documents/"

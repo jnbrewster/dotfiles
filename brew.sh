@@ -34,11 +34,10 @@ brew install caskroom/cask/brew-cask
 apps=(
 	appcleaner
 	amethyst
-	awareness
 	bittorent-sync
-  dropbox
 	firefox
   google-chrome
+	honer
 	karabiner
 	launchbar
 	minecraft

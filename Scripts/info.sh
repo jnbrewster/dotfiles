@@ -25,11 +25,10 @@ f1=$'\e[1;37m'
 # INFO
 
 USER="Joel"
-HOST="BirthdayBook-Pro"
+HOST="Sarang"
 DISTRO="OS X 10.10.5"
 KERNEL="Darwin"
-KERNEL="Darwin"
-SHELL="fish"
+SHELL="bash"
 TERMINAL="screen-256color"
 CPU="Intel Core i5-4278U CPU @ 2.60GHz"
 MEMORY="8 GB"
