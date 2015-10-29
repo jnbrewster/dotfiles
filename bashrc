@@ -34,7 +34,7 @@ alias reload="exec $SHELL -l"
 alias ta1="sh ~/dotfiles/Scripts/tmux.sh"
 alias 1h="sleep 3600 ; sh ~/dotfiles/Scripts/timer &"
 alias leon="vim ~/Documents/LettersToLeon.md"
-alias todo="vim ~/Documents/todo.txt"
+alias todo="sh ~/dotfiles/Scripts/contexts.sh"
 alias agenda="gcalcli agenda"
 alias week="gcalcli calw"
 alias month="gcalcli calm"
@@ -42,7 +42,8 @@ alias r="ranger"
 alias c="cmus"
 alias v="vim"
 alias t="tmux"
-alias n="newsbeuter"
+alias nb="newsbeuter"
+alias q="qutebrowser &"
 alias q="sh ~/dotfiles/Scripts/qutebrowser.sh"
 alias ta="tmux attach"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC -I rc"
@@ -52,8 +53,7 @@ alias gif='convert -delay 35 -loop 0 source*.png animated.gif'
 alias @h="ls -c ~/Documents | grep @home"
 alias @m="ls -c ~/Documents | grep @mac"
 alias @e="ls -c ~/Documents | grep @errands"
-alias @d="ls -c ~/Documents | grep @due"
-alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands\|@due'"
+alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands'"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; killall Finder"
 alias ls="ls -G"
@@ -67,8 +67,6 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias about="archey -c"
 alias info="sh ~/dotfiles/Scripts/info.sh"
-alias q="qutebrowser &"
-alias alpha="sh ~/dotfiles/Scripts/alpha"
 alias blocks="sh ~/dotfiles/Scripts/blocks"
 alias pipes="sh ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
@@ -79,6 +77,18 @@ alias kingscliff="sh ~/dotfiles/Scripts/weather.sh "kingscliff""
 alias melbourne="sh ~/dotfiles/Scripts/weather.sh "melbourne""
 
 # helpers
+
+function n {
+  if [ -n "$1" ]; then
+    vim ~/Documents/$1.md
+  else
+    echo "Usage: n <title>"
+  fi
+}
+
+function ns {
+	ls -c ~/Documents | grep -i $1
+}
 
 function mkcd {
     # Make a directory and change to it.

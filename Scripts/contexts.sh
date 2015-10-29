@@ -5,17 +5,16 @@ RED='\033[00;31m'
 PURPLE='\033[00;35m'
 CYAN='\033[00;36m'
 BLUE='\033[00;34m'
-
-echo "${RED}"
-ls -c ~/Dropbox | grep @due
-
-echo "${BLUE}"
-ls -c ~/Dropbox | grep @home
+WHITE='\033[01;37m'
 
 echo "${YELLOW}"
-ls -c ~/Dropbox | grep @mac
+ls -c ~/Documents | grep @mac
+
+echo "${BLUE}"
+ls -c ~/Documents | grep @home
 
 echo "${GREEN}"
-ls -c ~/Dropbox | grep @errands
+ls -c ~/Documents | grep @errands
 
+echo "${WHITE}"
 
