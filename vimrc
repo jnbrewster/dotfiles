@@ -50,14 +50,14 @@ highlight clear SignColumn
 hi TabLineFill	term=NONE		cterm=NONE	ctermbg=0
 hi TablineSel		ctermfg=yellow
 hi TabLine			ctermfg=green		ctermbg=0
-hi IncSearch   	ctermbg=white		ctermfg=yellow
-hi Search      	ctermbg=white		ctermfg=red
-hi Visual      	ctermbg=blue		ctermfg=black
-hi Pmenu			 	ctermbg=yellow	ctermfg=black
+hi IncSearch		ctermbg=yellow		ctermfg=red
+hi Search				ctermbg=red		ctermfg=white
+hi Visual				ctermbg=blue		ctermfg=black
+hi Pmenu				ctermbg=yellow	ctermfg=black
 hi VertSplit		ctermbg=black		ctermfg=black
 hi StatusLineNC	ctermbg=white		ctermfg=black
 hi StatusLine		ctermbg=blue	ctermfg=0
-hi LineNr       ctermfg=green
+hi LineNr				ctermfg=green
 hi cursorLine		cterm=NONE
 hi TablineSel		ctermfg=blue
 
@@ -76,6 +76,8 @@ set smartcase
 "# syntax, highlighting and spelling
 "#--------------------------------------
 set encoding=utf-8
+set list listchars=tab:→\ ,trail:·
+set nolist
 syntax on
 filetype on
 filetype plugin on

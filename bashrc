@@ -38,6 +38,7 @@ alias todo="sh ~/dotfiles/Scripts/contexts.sh"
 alias agenda="gcalcli agenda"
 alias week="gcalcli calw"
 alias month="gcalcli calm"
+alias ~="cd ~"
 alias r="ranger"
 alias c="cmus"
 alias v="vim"
@@ -114,7 +115,7 @@ alias whatislove?="play what it love"
 
 export EDITOR=vim
 
-export PS1='\W ❯ '
+export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
 
 PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 

@@ -18,3 +18,5 @@ ls -c ~/Documents | grep @errands
 
 echo "${WHITE}"
 
+cd ~/Documents
+
