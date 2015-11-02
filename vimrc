@@ -4,6 +4,7 @@ set shell=/bin/sh
 call plug#begin('~/.vim/plugged')
 
 Plug 'gmarik/Vundle.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
@@ -37,10 +38,6 @@ set t_Co=256
 " set vim to use term colors
 set guifont=Monaco:h12
 set t_Co=8 t_md=
-
-if has('gui_running')
-	colorscheme seoul256
-endif
 
 " set vim to use term colors
 execute "set background=".$BACKGROUND
