@@ -9,6 +9,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim'
 Plug 'ap/vim-css-color'
 
@@ -26,9 +27,12 @@ set ruler
 set title
 set visualbell
 " hide the scrollbars in gui and split
+set showmatch
 set guioptions-=r
 set guioptions-=T
 set go-=L
+set fillchars=vert:│,fold:-
+highlight VertSplit cterm=none ctermbg=none ctermfg=yellow
 
 
 "#---------------------------------------
@@ -39,7 +43,7 @@ set t_Co=256
 set guifont=Monaco:h12
 set t_Co=8 t_md=
 
-colorscheme seoul256
+colorscheme gruvbox
 
 " set vim to use term colors
 execute "set background=".$BACKGROUND
