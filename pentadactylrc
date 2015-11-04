@@ -1,5 +1,6 @@
 set showtabline=never
 set hintkeys='sadfjklewcmpgh'
+hi -a Hint font-size: 10pt !important;
 set hlfind
 set incfind
 set findcase=smart

@@ -39,6 +39,8 @@ set t_Co=256
 set guifont=Monaco:h12
 set t_Co=8 t_md=
 
+colorscheme seoul256
+
 " set vim to use term colors
 execute "set background=".$BACKGROUND
 execute "colorscheme ".$THEME
