@@ -2,6 +2,7 @@
 " ~/.config/nvim/init.vim
 "
 
+
 "
 " GENERAL
 "
@@ -30,8 +31,9 @@ set history=1000
 " Ignore character case when searching.
 set ignorecase
 
-" Remap term movement to Esc
+" Remap split term movement to Esc
 tnoremap <Esc> <c-\><c-n>
+
 
 "
 " UI
@@ -61,6 +63,7 @@ set hlsearch
 " Always show status line.
 set laststatus=2
 
+
 "
 " COLOR
 "
@@ -70,6 +73,7 @@ syntax on
 set background=dark
 
 colorscheme gruvbox
+
 
 "
 " INPUT
@@ -85,6 +89,7 @@ map <leader>h :nohlsearch<CR>
 " Enable full mouse usage.
 set mouse=a
 
+
 "
 " FILE
 "
@@ -92,8 +97,28 @@ set mouse=a
 " Disable swapfiles.
 set noswapfile
 
+" Remove auto comments.
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Remove whitespaces on save.
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 "
 " PLUGIN
 "
+
+" Plugged plugin manager.
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'morhetz/gruvbox'
+Plug 'kien/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ap/vim-css-color'
+
+call plug#end()
+
+
+" Ctrlp shortcut.
+nnoremap <c-\> :CtrlP<CR>
 
