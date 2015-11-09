@@ -7,8 +7,8 @@
 " GENERAL
 "
 
-" Disable vi compatibility.
-set nocompatible
+" Set paste when pasting, set no paste when done.
+set pastetoggle=
 
 " Tab width.
 set tabstop=2
@@ -44,9 +44,6 @@ set relativenumber
 
 " Show cursor position.
 set ruler
-
-" Show colored column.
-set colorcolumn=80
 
 " Highlight current line.
 set cursorline
