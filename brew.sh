@@ -7,17 +7,12 @@ brew install tmux
 brew install wget
 brew install profanity
 brew install cmus
-brew install fish
-brew install feh
 brew install mutt
 brew install ranger
-brew install archey
 brew install mplayer
 brew install youtube-dl
 brew install git
-brew install dwm
 brew install imagemagick
-brew install mplayer
 brew install tty-clock
 
 brew tap caskroom/versions
@@ -36,11 +31,10 @@ apps=(
 	amethyst
 	bittorent-sync
 	firefox
+  dropbox
   google-chrome
 	honer
 	karabiner
-	launchbar
-	minecraft
   nvalt
 	qlmarkdown
 	r-name
@@ -48,7 +42,6 @@ apps=(
   transmission
 	vimr
   vlc
-	xquartz
 )
 
 # Install apps to /Applications

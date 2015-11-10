@@ -31,6 +31,9 @@ set history=1000
 " Ignore character case when searching.
 set ignorecase
 
+" Start searching before pressing enter.
+set incsearch
+
 " Remap split term movement to Esc
 tnoremap <Esc> <c-\><c-n>
 
@@ -112,6 +115,7 @@ Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
+
 
 call plug#end()
 

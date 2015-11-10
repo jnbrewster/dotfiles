@@ -10,28 +10,28 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
-# 
+#
 # SHELL
 #
 
 
 # Append instead of overwrite history.
-shopt -s histappend 
+shopt -s histappend
 # Properly save multi-line commands.
-shopt -s cmdhist    
+shopt -s cmdhist
 # Don't replace newlines with semicolons in history.
-shopt -s lithist    
+shopt -s lithist
 # Fix typos when changing directories.
-shopt -s cdspell    
+shopt -s cdspell
 
 #
 # HISTORY
 #
 
 # Write more history.
-export HISTFILESIZE=2000 
+export HISTFILESIZE=2000
 # Remember more history.
-export HISTSIZE=2000     
+export HISTSIZE=2000
 
 #
 # ALIASES
@@ -57,6 +57,7 @@ alias karabinerexport="$ /Applications/Karabiner.app/Contents/Library/bin/karabi
 
 alias ls="ls -G"
 alias ll="ls -otW"
+alias la="ls -a"
 alias l="clear"
 alias d="cd ~/dotfiles"
 alias ..='cd ..'
@@ -65,8 +66,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias ~="cd ~"
-alias v="vim"
 alias n="nvim"
+alias vim="nvim"
 alias t="tmux"
 alias nb="newsbeuter"
 alias ta="tmux attach"
