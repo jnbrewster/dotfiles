@@ -76,9 +76,9 @@ set laststatus=2
 
 " Enable syntax highlighting.
 syntax on
-"set background=dark
-"
-"colorscheme gruvbox
+
+" Simple font for macvim
+set guifont=Droid\ Sans\ Mono:h12
 
 
 "
