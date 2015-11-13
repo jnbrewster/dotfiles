@@ -78,16 +78,12 @@ set laststatus=2
 syntax on
 
 " Simple font for macvim
-set guifont=Droid\ Sans\ Mono:h12
+set guifont=Droid\ Sans\ Mono:h13
 
 
 "
 " INPUT
 "
-
-" Leader key.
-let mapleader=' '
-nnoremap <space> <nop>
 
 " Disable search match highlighting.
 map <leader>h :nohlsearch<CR>
@@ -95,6 +91,15 @@ map <leader>h :nohlsearch<CR>
 " Enable full mouse usage.
 set mouse=a
 
+" match closing curly bracket.
+inoremap { {<CR>}<Esc>O<TAB>
+
+
+"" Match closing bracket.
+"inoremap ( ()<Esc>i
+"
+"" Match closing square bracket.
+"inoremap [ []<Esc>i
 
 "
 " FILE
@@ -109,22 +114,4 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
-
-"
-" PLUGIN
-"
-
-" Plugged plugin manager.
-call plug#begin('~/.vim/plugged')
-
-Plug 'morhetz/gruvbox'
-Plug 'kien/ctrlp.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'ap/vim-css-color'
-
-call plug#end()
-
-
-" Ctrlp shortcut.
-nnoremap <c-\> :CtrlP<CR>
 

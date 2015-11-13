@@ -208,8 +208,6 @@
 
     "MISC": "----------------------",
     "floating": [
-    "com.apple.systempreferences",
-		"com.valvesoftware.steam"
     ],
     "ignore-menu-bars": true,
     "float-small-windows": true,

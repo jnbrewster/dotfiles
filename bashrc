@@ -67,7 +67,6 @@ alias .....="cd ../../../.."
 
 alias ~="cd ~"
 alias n="nvim"
-alias vim="nvim"
 alias t="tmux"
 alias nb="newsbeuter"
 alias ta="tmux attach"

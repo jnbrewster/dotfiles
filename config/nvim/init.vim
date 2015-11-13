@@ -1,11 +1,12 @@
 "
-" ~/.config/nvim/init.vim
+" ~/.vimrc
 "
 
 
 "
 " GENERAL
 "
+
 
 " Set paste when pasting, set no paste when done.
 set pastetoggle=
@@ -42,6 +43,14 @@ tnoremap <Esc> <c-\><c-n>
 " UI
 "
 
+"  Access colors present in 256 colorspace.
+let base16colorspace=256
+
+" Hide toolbar and scrollbars in macvim
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
 " Show line numbers.
 set relativenumber
 
@@ -70,18 +79,15 @@ set laststatus=2
 
 " Enable syntax highlighting.
 syntax on
-set background=dark
 
-colorscheme gruvbox
+" Simple font for macvim
+set guifont=Droid\ Sans\ Mono:h14
+colorscheme spacegray
 
 
 "
 " INPUT
 "
-
-" Leader key.
-let mapleader=' '
-nnoremap <space> <nop>
 
 " Disable search match highlighting.
 map <leader>h :nohlsearch<CR>
@@ -89,6 +95,15 @@ map <leader>h :nohlsearch<CR>
 " Enable full mouse usage.
 set mouse=a
 
+" match closing curly bracket.
+inoremap { {<CR>}<Esc>O<TAB>
+
+
+"" Match closing bracket.
+"inoremap ( ()<Esc>i
+"
+"" Match closing square bracket.
+"inoremap [ []<Esc>i
 
 "
 " FILE
@@ -104,22 +119,4 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufWritePre * :%s/\s\+$//e
 
 
-"
-" PLUGIN
-"
-
-" Plugged plugin manager.
-call plug#begin('~/.config/nvim/plugged')
-
-Plug 'morhetz/gruvbox'
-Plug 'kien/ctrlp.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'ap/vim-css-color'
-
-
-call plug#end()
-
-
-" Ctrlp shortcut.
-nnoremap <c-\> :CtrlP<CR>
 
