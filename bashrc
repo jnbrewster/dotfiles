@@ -75,6 +75,10 @@ alias yt="youtube-dl"
 alias mp3='youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k'
 alias gif='convert -delay 35 -loop 0 source*.png animated.gif'
 
+alias status='git status'
+alias commit='git commit -am '
+alias push='git push origin master'
+
 alias info="sh ~/dotfiles/Scripts/info.sh"
 alias blocks="sh ~/dotfiles/Scripts/blocks"
 alias pipes="sh ~/dotfiles/Scripts/pipes"
