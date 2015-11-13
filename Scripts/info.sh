@@ -25,8 +25,8 @@ f1=$'\e[1;37m'
 # INFO
 
 USER="Joel"
-HOST="Sarang"
-DISTRO="OS X 10.10.5"
+HOST="BirthdayBookPro"
+DISTRO="OS X 10.11.1"
 KERNEL="Darwin"
 SHELL="bash"
 TERMINAL="screen-256color"

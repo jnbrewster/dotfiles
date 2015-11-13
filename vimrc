@@ -91,15 +91,9 @@ map <leader>h :nohlsearch<CR>
 " Enable full mouse usage.
 set mouse=a
 
-" match closing curly bracket.
+" Match closing curly bracket.
 inoremap { {<CR>}<Esc>O<TAB>
 
-
-"" Match closing bracket.
-"inoremap ( ()<Esc>i
-"
-"" Match closing square bracket.
-"inoremap [ []<Esc>i
 
 "
 " FILE
