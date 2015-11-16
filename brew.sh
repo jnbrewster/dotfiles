@@ -3,44 +3,37 @@
 
 brew update
 
-brew install tmux
-brew install wget
-brew install profanity
 brew install cmus
-brew install mutt
-brew install ranger
-brew install mplayer
-brew install youtube-dl
 brew install git
 brew install imagemagick
+brew install mplayer
+brew install neovim/neovim/neovim
+brew install profanity
+brew install ranger
+brew install tmux
 brew install tty-clock
-
-brew tap caskroom/versions
-
-pip install gcalcli
-pip3 install hangups
-
-brew cleanup
+brew install wget
+brew install youtube-dl
 
 echo "Command line apps installed."
 
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
-	appcleaner
 	amethyst
+	appcleaner
 	bittorent-sync
 	firefox
-  dropbox
-  google-chrome
 	honer
 	karabiner
-  nvalt
 	qlmarkdown
 	r-name
 	sitesucker
-  transmission
 	vimr
+  dropbox
+  google-chrome
+  nvalt
+  transmission
   vlc
 )
 

@@ -35,9 +35,6 @@ set ignorecase
 " Start searching before pressing enter.
 set incsearch
 
-" Remap split term movement to Esc
-tnoremap <Esc> <c-\><c-n>
-
 
 "
 " UI
@@ -66,9 +63,6 @@ set showmatch
 " Highlight search matches.
 set hlsearch
 
-" Always show status line.
-set laststatus=2
-
 
 "
 " COLOR
@@ -78,15 +72,18 @@ set laststatus=2
 syntax on
 
 " Simple font for macvim
-set guifont=Droid\ Sans\ Mono:h13
+set guifont=Source\ Code\ Pro:h14
+let hour = strftime("%H")
+if 7 <= hour && hour < 19
+  colorscheme Tomorrow
+else
+  colorscheme Tomorrow-Night
+endif
 
 
 "
 " INPUT
 "
-
-" Disable search match highlighting.
-map <leader>h :nohlsearch<CR>
 
 " Enable full mouse usage.
 set mouse=a
@@ -109,3 +106,5 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufWritePre * :%s/\s\+$//e
 
 
+"set laststatus=2
+"set statusline=%F%m%r%h%w\ [%l/%L,\ %v]\ [%p%%]\ %=[TYPE=%Y]\ [FMT=%{&ff}]\ %{\"[ENC=\".(&fenc==\"\"?&enc:&fenc).\"]\"}
