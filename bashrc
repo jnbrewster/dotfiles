@@ -10,6 +10,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+
 #
 # SHELL
 #
@@ -24,6 +25,7 @@ shopt -s lithist
 # Fix typos when changing directories.
 shopt -s cdspell
 
+
 #
 # HISTORY
 #
@@ -33,16 +35,19 @@ export HISTFILESIZE=2000
 # Remember more history.
 export HISTSIZE=2000
 
+
 #
 # ALIASES
 #
 
 alias reload="exec $SHELL -l"
+alias theme="osascript ~/dotfiles/Scripts/themechanger.scpt"
 alias lock="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
-
 alias eh="open vnc://192.168.0.12"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+alias ip="curl http://ipecho.net/plain; echo"
+alias ips="ifconfig | grep inet"
+
 
 alias clean="find . -name '*.DS_Store' -type f -ls -delete"
 alias empty="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
@@ -51,7 +56,6 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; k
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; killall Finder"
 
 alias upgrade="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
-#alias backup="rsync ~/Documents/* ~/Dropbox/"
 alias karabinerexport="$ /Applications/Karabiner.app/Contents/Library/bin/karabiner export > ~/dotfiles/karabiner-import.sh"
 
 
@@ -66,6 +70,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias ~="cd ~"
+alias v="vim"
 alias n="nvim"
 alias t="tmux"
 alias nb="newsbeuter"
@@ -97,6 +102,7 @@ alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands'"
 alias a="vlc -vvv http://50.7.96.138:8115/listen/pls"
 alias k="vlc -vvv http://livesh.koffee.com.au:15004/listen.pls"
 
+
 #
 # HELPERS
 #
@@ -125,11 +131,12 @@ function play {
              --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
              --restrict-filenames \
              --format="bestaudio[ext!=webm]" \
-             --exec=vlc -vvv "$*"
+             --exec=aplay -vvv "$*"
 }
 
 # What is love?
 alias whatislove?="play what it love"
+
 
 #
 # PREFERENCES

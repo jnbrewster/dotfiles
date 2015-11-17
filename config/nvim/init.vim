@@ -1,5 +1,14 @@
+call plug#begin('~/.config/nvim/plugged')
+
+
+Plug 'junegunn/goyo.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ap/vim-css-color'
+Plug 'ctrlpvim/ctrlp.vim'
+
+ call plug#end()
 "
-" ~/.vimrc
+" ~/.config/nvim/init.vim
 "
 
 
@@ -43,9 +52,6 @@ tnoremap <Esc> <c-\><c-n>
 " UI
 "
 
-"  Access colors present in 256 colorspace.
-let base16colorspace=256
-
 " Hide toolbar and scrollbars in macvim
 set guioptions-=T
 set guioptions-=r
@@ -80,9 +86,17 @@ set laststatus=2
 " Enable syntax highlighting.
 syntax on
 
-" Simple font for macvim
+" Set font and size.
 set guifont=Droid\ Sans\ Mono:h14
-colorscheme spacegray
+
+" Set theme based on time (7am - 5pm)
+let hour = strftime("%H")
+if 7 <= hour && hour < 17
+  colorscheme seoul256-light
+else
+  colorscheme seoul256
+endif
+
 
 
 "

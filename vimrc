@@ -7,6 +7,11 @@
 " GENERAL
 "
 
+" Load bash.
+set shell=/bin/bash\ -i
+
+" Share the clipboard outside of vim
+set clipboard=unnamed
 
 " Set paste when pasting, set no paste when done.
 set pastetoggle=
@@ -63,6 +68,10 @@ set showmatch
 " Highlight search matches.
 set hlsearch
 
+" Change order of default splits.
+set splitbelow
+set splitright
+
 
 "
 " COLOR
@@ -71,13 +80,15 @@ set hlsearch
 " Enable syntax highlighting.
 syntax on
 
-" Simple font for macvim
-set guifont=Source\ Code\ Pro:h14
+" Set font and size.
+set guifont=Input:h14
+
+" Set theme based on time (7am - 5pm)
 let hour = strftime("%H")
-if 7 <= hour && hour < 19
-  colorscheme Tomorrow
+if 7 <= hour && hour < 17
+  colorscheme seoul256-light
 else
-  colorscheme Tomorrow-Night
+  colorscheme seoul256
 endif
 
 
@@ -88,8 +99,30 @@ endif
 " Enable full mouse usage.
 set mouse=a
 
-" Match closing curly bracket.
-inoremap { {<CR>}<Esc>O<TAB>
+" Automatically match brackets.
+inoremap        (  ()<Left>
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
+" Automatically match square brackets.
+inoremap        [  []<Left>
+inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+
+" Automatically match closing curly bracket.
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O<TAB>
+inoremap {{     {
+inoremap {}     {}
+
+" Automatically match single and double quotes.
+" Need to fix the single quote for when using abbreviations.
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+
+" Arrowkeys resize viewports.
+nnoremap <Left> :vertical resize -2<CR>
+nnoremap <Right> :vertical resize +2<CR>
+nnoremap <Up> :resize -2<CR>
+nnoremap <Down> :resize +2<CR>
 
 
 "
@@ -105,6 +138,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
-
-"set laststatus=2
-"set statusline=%F%m%r%h%w\ [%l/%L,\ %v]\ [%p%%]\ %=[TYPE=%Y]\ [FMT=%{&ff}]\ %{\"[ENC=\".(&fenc==\"\"?&enc:&fenc).\"]\"}
+" Enable spellchecking for Markdown files and git commit messages.
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
