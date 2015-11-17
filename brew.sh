@@ -8,7 +8,6 @@ brew install git
 brew install imagemagick
 brew install mplayer
 brew install neovim/neovim/neovim
-brew install profanity
 brew install ranger
 brew install tmux
 brew install tty-clock
@@ -20,26 +19,26 @@ echo "Command line apps installed."
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
-	amethyst
-	appcleaner
-	bittorent-sync
-	firefox
-	honer
-	karabiner
-	qlmarkdown
-	r-name
-	sitesucker
-	vimr
-  dropbox
+  amethyst
+  appcleaner
+  bittorent-sync
+  clipmenu
+  firefox
   google-chrome
+  honer
+  karabiner
   nvalt
+  qlmarkdown
+  r-name
+  sitesucker
   transmission
+  unpkg
+  vimr
   vlc
 )
 
 # Install apps to /Applications
 echo "installing apps..."
-brew cask install --appdir="/Applications" ${apps[@]}
 
 brew update
 brew upgrade

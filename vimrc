@@ -81,7 +81,7 @@ set splitright
 syntax on
 
 " Set font and size.
-set guifont=Input:h14
+set guifont=Input:h13
 
 " Set theme based on time (7am - 5pm)
 let hour = strftime("%H")

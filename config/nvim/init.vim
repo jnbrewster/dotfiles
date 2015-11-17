@@ -86,9 +86,6 @@ set laststatus=2
 " Enable syntax highlighting.
 syntax on
 
-" Set font and size.
-set guifont=Droid\ Sans\ Mono:h14
-
 " Set theme based on time (7am - 5pm)
 let hour = strftime("%H")
 if 7 <= hour && hour < 17
