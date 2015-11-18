@@ -91,6 +91,12 @@ else
   colorscheme seoul256
 endif
 
+" Set background color"
+let g:seoul256_background = 235
+let g:seoul256_light_background = 256
+
+colo seoul256
+colo seoul256-light
 
 "
 " INPUT

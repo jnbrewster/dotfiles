@@ -16,6 +16,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 " GENERAL
 "
 
+" Load bash.
+set shell=/bin/bash\ -i
+
+" Share the clipboard outside of vim
+set clipboard=unnamed
 
 " Set paste when pasting, set no paste when done.
 set pastetoggle=
@@ -52,11 +57,6 @@ tnoremap <Esc> <c-\><c-n>
 " UI
 "
 
-" Hide toolbar and scrollbars in macvim
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-
 " Show line numbers.
 set relativenumber
 
@@ -75,6 +75,10 @@ set showmatch
 " Highlight search matches.
 set hlsearch
 
+" Change order of default splits.
+set splitbelow
+set splitright
+
 " Always show status line.
 set laststatus=2
 
@@ -86,35 +90,48 @@ set laststatus=2
 " Enable syntax highlighting.
 syntax on
 
-" Set theme based on time (7am - 5pm)
-let hour = strftime("%H")
-if 7 <= hour && hour < 17
-  colorscheme seoul256-light
-else
+" Set theme.
   colorscheme seoul256
-endif
 
+" Set background colors for seoul256
+let g:seoul256_background = 235
+let g:seoul256_light_background = 256
+
+colo seoul256
+colo seoul256-light
 
 
 "
 " INPUT
 "
 
-" Disable search match highlighting.
-map <leader>h :nohlsearch<CR>
-
 " Enable full mouse usage.
 set mouse=a
 
-" match closing curly bracket.
-inoremap { {<CR>}<Esc>O<TAB>
+" Automatically match brackets.
+inoremap        (  ()<Left>
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 
+" Automatically match square brackets.
+inoremap        [  []<Left>
+inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
-"" Match closing bracket.
-"inoremap ( ()<Esc>i
-"
-"" Match closing square bracket.
-"inoremap [ []<Esc>i
+" Automatically match closing curly bracket.
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O<TAB>
+inoremap {{     {
+inoremap {}     {}
+
+" Automatically match single and double quotes.
+" Need to fix the single quote for when using abbreviations.
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+
+" Arrowkeys resize viewports.
+nnoremap <Left> :vertical resize -2<CR>
+nnoremap <Right> :vertical resize +2<CR>
+nnoremap <Up> :resize -2<CR>
+nnoremap <Down> :resize +2<CR>
 
 "
 " FILE
@@ -129,5 +146,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
-
+" Enable spellchecking for Markdown files and git commit messages.
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
 
