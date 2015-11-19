@@ -1,3 +1,12 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'ap/vim-css-color'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'kien/ctrlp.vim'
+
+call plug#end()
+
 "
 " ~/.vimrc
 "
@@ -40,6 +49,10 @@ set ignorecase
 " Start searching before pressing enter.
 set incsearch
 
+" Change order of default splits.
+set splitbelow
+set splitright
+
 
 "
 " UI
@@ -68,35 +81,36 @@ set showmatch
 " Highlight search matches.
 set hlsearch
 
-" Change order of default splits.
-set splitbelow
-set splitright
-
-
-"
-" COLOR
-"
-
 " Enable syntax highlighting.
 syntax on
 
 " Set font and size.
-set guifont=Input:h13
-
-" Set theme based on time (7am - 5pm)
-let hour = strftime("%H")
-if 7 <= hour && hour < 17
-  colorscheme seoul256-light
-else
-  colorscheme seoul256
-endif
+set guifont=Fira\ Mono\ OT:h14
 
 " Set background color"
 let g:seoul256_background = 235
 let g:seoul256_light_background = 256
 
+" Set theme
 colo seoul256
 colo seoul256-light
+
+" Set shortcuts to change theme.
+function Dark ()
+  colorscheme seoul256
+endfunction
+
+function Light ()
+  colorscheme seoul256-light
+endfunction
+
+map <silent> <leader>1  :call Dark()<CR>
+map <silent> <leader>2  :call Light()<CR>
+
+" Load Goyo for writing.
+nnoremap <Leader>G :Goyo<CR>
+
+
 
 "
 " INPUT
@@ -124,6 +138,9 @@ inoremap {}     {}
 inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
 inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
+inoremap ''     '
+inoremap ""     "
+
 " Arrowkeys resize viewports.
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
@@ -138,6 +155,9 @@ nnoremap <Down> :resize +2<CR>
 " Disable swapfiles.
 set noswapfile
 
+" Search current folder recursively for searching (via :find)
+set path+=**
+
 " Remove auto comments.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -147,3 +167,5 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Enable spellchecking for Markdown files and git commit messages.
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
+
+

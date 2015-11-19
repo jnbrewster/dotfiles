@@ -56,7 +56,7 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; k
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; killall Finder"
 
 alias upgrade="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
-alias karabinerexport="$ /Applications/Karabiner.app/Contents/Library/bin/karabiner export > ~/dotfiles/karabiner-import.sh"
+alias karabinerexport="sh ~/dotfiles/Scripts/karabinerexport.sh"
 
 
 alias ls="ls -G"
