@@ -1,15 +1,27 @@
+"
+" ~/.config/nvim/init.vim
+"
+
+"
+" Plugins
+"
+
+"auto-install vim-plug if not installed
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'kien/ctrlp.vim'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
-
-"
-" ~/.config/nvim/init.vim
-"
 
 
 "
@@ -87,8 +99,8 @@ let g:seoul256_background = 235
 let g:seoul256_light_background = 256
 
 " Set theme
-colo seoul256
 colo seoul256-light
+colo seoul256
 
 " Set shortcuts to change theme.
 function Dark ()
@@ -103,7 +115,7 @@ map <silent> <leader>1  :call Dark()<CR>
 map <silent> <leader>2  :call Light()<CR>
 
 " Load Goyo for writing.
-nnoremap <Leader>G :Goyo<CR>
+nnoremap <Leader>g :Goyo<CR>
 
 
 "

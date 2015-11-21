@@ -1,15 +1,27 @@
+"
+" ~/.vimrc
+"
+
+"
+" Plugins
+"
+
+"auto-install vim-plug if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'kien/ctrlp.vim'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
-
-"
-" ~/.vimrc
-"
 
 
 "
@@ -92,8 +104,8 @@ let g:seoul256_background = 235
 let g:seoul256_light_background = 256
 
 " Set theme
-colo seoul256
 colo seoul256-light
+colo seoul256
 
 " Set shortcuts to change theme.
 function Dark ()
@@ -106,10 +118,6 @@ endfunction
 
 map <silent> <leader>1  :call Dark()<CR>
 map <silent> <leader>2  :call Light()<CR>
-
-" Load Goyo for writing.
-nnoremap <Leader>G :Goyo<CR>
-
 
 
 "
@@ -134,18 +142,21 @@ inoremap {{     {
 inoremap {}     {}
 
 " Automatically match single and double quotes.
-" Need to fix the single quote for when using abbreviations.
-inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
-inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+inoremap <expr> '' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+inoremap <expr> "" strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
-inoremap ''     '
-inoremap ""     "
+" Insert the date and 24hr time.
+nnoremap <Leader>t :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
+
+" Load Goyo for writing.
+nnoremap <Leader>g :Goyo 50%<CR>
 
 " Arrowkeys resize viewports.
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
+
 
 
 "

@@ -69,20 +69,30 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias gdf="cd ~/dotfiles/"
+alias gdl="cd ~/Downloads/"
+alias gdt="cd ~/Desktop/"
+alias gdv="cd ~/Development/"
+alias gg="cd ~"
+alias gl="cd ~/Library/"
+alias gms="cd ~/Music/"
+alias gmv="cd ~/Movies"
+alias gp="cd ~/Pictures/"
+alias gs="cd ~/Sync/"
+
 alias ~="cd ~"
 alias v="vim"
 alias n="nvim"
 alias t="tmux"
-alias nb="newsbeuter"
 alias ta="tmux attach"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC -I rc"
 alias yt="youtube-dl"
 alias mp3='youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k'
 alias gif='convert -delay 35 -loop 0 source*.png animated.gif'
 
-alias status='git status'
 alias commit='git commit -am '
 alias push='git push origin master'
+alias status='git status'
 
 alias info="sh ~/dotfiles/Scripts/info.sh"
 alias blocks="sh ~/dotfiles/Scripts/blocks"
@@ -92,12 +102,13 @@ alias invaders="sh ~/dotfiles/Scripts/invaders"
 alias jeju="sh ~/dotfiles/Scripts/weather.sh "jeju""
 alias kingscliff="sh ~/dotfiles/Scripts/weather.sh "kingscliff""
 alias melbourne="sh ~/dotfiles/Scripts/weather.sh "melbourne""
-alias leon="vim ~/Documents/LettersToLeon.md"
-alias todo="sh ~/dotfiles/Scripts/contexts.sh"
+alias leon="vim ~/Dropbox/LettersToLeon.md"
+
+alias @e="ls -c ~/Documents | grep @errands"
 alias @h="ls -c ~/Documents | grep @home"
 alias @m="ls -c ~/Documents | grep @mac"
-alias @e="ls -c ~/Documents | grep @errands"
 alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands'"
+alias todo="sh ~/dotfiles/Scripts/contexts.sh"
 
 alias a="vlc -vvv http://50.7.96.138:8115/listen/pls"
 alias k="vlc -vvv http://livesh.koffee.com.au:15004/listen.pls"

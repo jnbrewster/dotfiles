@@ -8,6 +8,7 @@ brew install git
 brew install imagemagick
 brew install mplayer
 brew install neovim/neovim/neovim
+brew install pandoc
 brew install ranger
 brew install tmux
 brew install tty-clock
