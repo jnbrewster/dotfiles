@@ -96,16 +96,15 @@ set hlsearch
 " Enable syntax highlighting.
 syntax on
 
+" Redraw screen quicker.
+set ttyfast
+set lazyredraw
+
 " Set font and size.
 set guifont=Fira\ Mono\ OT:h14
 
-" Set background color"
-let g:seoul256_background = 235
-let g:seoul256_light_background = 256
-
-" Set theme
-colo seoul256-light
-colo seoul256
+" Set theme.
+colorscheme seoul256
 
 " Set shortcuts to change theme.
 function Dark ()

@@ -80,12 +80,11 @@ alias gmv="cd ~/Movies"
 alias gp="cd ~/Pictures/"
 alias gs="cd ~/Sync/"
 
-alias ~="cd ~"
 alias v="vim"
 alias n="nvim"
 alias t="tmux"
 alias ta="tmux attach"
-alias vlc="/Applications/VLC.app/Contents/MacOS/VLC -I rc"
+alias q="qutebrowser"
 alias yt="youtube-dl"
 alias mp3='youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k'
 alias gif='convert -delay 35 -loop 0 source*.png animated.gif'
@@ -110,8 +109,8 @@ alias @m="ls -c ~/Documents | grep @mac"
 alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands'"
 alias todo="sh ~/dotfiles/Scripts/contexts.sh"
 
-alias a="vlc -vvv http://50.7.96.138:8115/listen/pls"
-alias k="vlc -vvv http://livesh.koffee.com.au:15004/listen.pls"
+alias a="mplayer http://50.7.96.138:8115/listen/pls"
+alias k="mplayer http://livesh.koffee.com.au:15004/listen.pls"
 
 
 #
@@ -153,6 +152,6 @@ alias whatislove?="play what it love"
 # PREFERENCES
 #
 
-export EDITOR=nvim
+export EDITOR=vim
 export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
 

@@ -94,6 +94,9 @@ set hlsearch
 " Enable syntax highlighting.
 syntax on
 
+" Set font and size.
+set guifont=Fira\ Mono\ OT:h14
+
 " Set background color"
 let g:seoul256_background = 235
 let g:seoul256_light_background = 256

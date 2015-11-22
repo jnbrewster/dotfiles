@@ -49,7 +49,7 @@ if !exists('s:rgb_map')
   \ 189: '#DFDFFF', 216: '#FFBD98', 217: '#FFBFBD', 218: '#FFC0DE', 220: '#FFDD00',
   \ 222: '#FFDE99', 224: '#FFDFDF', 230: '#FFFFDF', 231: '#FFFFFF', 232: '#060606',
   \ 233: '#171717', 234: '#252525', 235: '#333233', 236: '#3F3F3F', 237: '#4B4B4B',
-  \ 238: '#565656', 239: '#616161', 240: '#6B6B6B', 241: '#757575', 249: '#BFBFBF',
+  \ 238: '#444444', 239: '#616161', 240: '#6B6B6B', 241: '#757575', 249: '#BFBFBF',
   \ 250: '#C8C8C8', 251: '#D1D0D1', 252: '#D9D9D9', 253: '#E1E1E1', 254: '#E9E9E9',
   \ 255: '#F1F1F1' }
 endif
@@ -84,7 +84,7 @@ let s:style_idx = s:style == 'light'
 
 " Background colors
 if s:style == 'dark'
-  let s:dark_bg  = get(s:, 'seoul256_background', 237)
+  let s:dark_bg  = get(s:, 'seoul256_background', 238)
   let s:light_bg = 253
 else
   let s:dark_bg  = 237
@@ -308,7 +308,7 @@ call s:hi('GitGutterChange', [68, 68], ['', ''])
 call s:hi('GitGutterDelete', [161, 161], ['', ''])
 call s:hi('GitGutterChangeDelete', [168, 168], ['', ''])
 
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " ---------------------------------------------------^^^^^
 call s:hi('ExtraWhitespace', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
