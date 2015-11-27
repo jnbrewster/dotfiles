@@ -44,6 +44,9 @@ alias reload="exec $SHELL -l"
 alias theme="osascript ~/dotfiles/Scripts/themechanger.scpt"
 alias lock="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
+alias reboot="sudo reboot"
+alias shutdown="sudo poweroff"
+
 alias eh="open vnc://192.168.0.12"
 alias ip="curl http://ipecho.net/plain; echo"
 alias ips="ifconfig | grep inet"
