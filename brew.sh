@@ -7,13 +7,13 @@ brew install cmus
 brew install git
 brew install imagemagick
 brew install mplayer
-brew install neovim/neovim/neovim
 brew install pandoc
 brew install ranger
 brew install tmux
 brew install tty-clock
 brew install wget
 brew install youtube-dl
+brew install w3m
 
 echo "Command line apps installed."
 

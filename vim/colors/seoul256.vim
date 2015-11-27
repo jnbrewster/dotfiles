@@ -28,7 +28,7 @@
 " included in all copies or substantial portions of the Software.
 "
 " THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-" EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+" EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE #fafaf
 " MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 " NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 " LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
@@ -84,11 +84,11 @@ let s:style_idx = s:style == 'light'
 
 " Background colors
 if s:style == 'dark'
-  let s:dark_bg  = get(s:, 'seoul256_background', 238)
+  let s:dark_bg  = get(s:, 'seoul256_background', 236)
   let s:light_bg = 253
 else
   let s:dark_bg  = 237
-  let s:light_bg = get(s:, 'seoul256_background', 253)
+  let s:light_bg = get(s:, 'seoul256_background', 256)
 endif
 let s:dark_bg_2 = s:dark_bg > 233 ? s:dark_bg - 2 : 16
 let s:light_bg_1 = min([s:light_bg + 1, 256])

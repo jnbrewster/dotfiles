@@ -70,6 +70,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 alias gdf="cd ~/dotfiles/"
+alias gdb="cd ~/dropbox/"
 alias gdl="cd ~/Downloads/"
 alias gdt="cd ~/Desktop/"
 alias gdv="cd ~/Development/"
@@ -86,8 +87,11 @@ alias t="tmux"
 alias ta="tmux attach"
 alias q="qutebrowser"
 alias yt="youtube-dl"
-alias mp3='youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k'
-alias gif='convert -delay 35 -loop 0 source*.png animated.gif'
+alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
+alias gif="convert -delay 35 -loop 0 source*.png animated.gif"
+alias html="pandoc input.md -o output.html"
+
+alias d="w3m www.duckduckgo.com"
 
 alias commit='git commit -am '
 alias push='git push origin master'

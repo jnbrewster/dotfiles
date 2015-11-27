@@ -17,7 +17,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'plasticboy/vim-markdown'
 
@@ -65,6 +64,15 @@ set incsearch
 set splitbelow
 set splitright
 
+" Remaps for moving around tabs.
+nnoremap tn :tabnew<Space>
+
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+
+nnoremap th :tabfirst<CR>
+nnoremap tl :tablast<CR>
+
 
 "
 " UI
@@ -74,6 +82,9 @@ set splitright
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
+
+" Set the vertical fillcharacter
+set fillchars+=vert:│
 
 " Show line numbers.
 set relativenumber
@@ -100,8 +111,11 @@ syntax on
 set ttyfast
 set lazyredraw
 
+" Remove fill characters
+set fillchars=""
+
 " Set font and size.
-set guifont=Fira\ Mono\ OT:h14
+set guifont=Fira\ Mono\ OT:h13
 
 " Set theme.
 colorscheme seoul256
@@ -177,5 +191,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Enable spellchecking for Markdown files and git commit messages.
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
+
 
 

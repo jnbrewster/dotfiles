@@ -6,7 +6,7 @@ if cmus-remote -Q > /dev/null 2> /dev/null; then
   ARTIST+=$(cmus-remote -Q | grep 'tag artist' | head -n 1 | cut -d' ' -f3-)
   TITLE=$(cmus-remote -Q | grep 'tag title' | cut -d' ' -f3-)
   if [ -n "$TITLE" ]; then
-    OUTPUT="$ARTIST - $TITLE"
+    OUTPUT=" $ARTIST - $TITLE "
 
     # Only show the song title if we are over 50 characters
     if [ "${#OUTPUT}" -ge $MAX_TITLE_WIDTH ]; then
@@ -14,9 +14,9 @@ if cmus-remote -Q > /dev/null 2> /dev/null; then
     fi
 
     if [ "$STATUS" = "playing" ]; then
-      OUTPUT="[▶ $OUTPUT]"
+      OUTPUT=" « $OUTPUT « "
     else
-      OUTPUT="[❚❚$OUTPUT]"
+      OUTPUT=" « $OUTPUT «\ "
     fi
   else
     OUTPUT=''

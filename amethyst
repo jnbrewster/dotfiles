@@ -208,11 +208,13 @@
 
     "MISC": "----------------------",
     "floating": [
+    "com.ruiaureliano.Sip",
+    "com.googlecode.iterm2"
     ],
     "ignore-menu-bars": true,
     "float-small-windows": true,
     "mouse-follows-focus": false,
-    "focus-follows-mouse": true,
+    "focus-follows-mouse": false,
     "enables-layout-hud": true,
     "enables-layout-hud-on-space-change": true
 }
