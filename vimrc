@@ -19,6 +19,7 @@ Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'romainl/flattened'
 
 call plug#end()
 
