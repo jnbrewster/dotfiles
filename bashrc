@@ -43,6 +43,7 @@ export HISTSIZE=2000
 alias reload="exec $SHELL -l"
 alias theme="osascript ~/dotfiles/Scripts/themechanger.scpt"
 alias lock="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias kwm="~/dotfiles/kwm/kwm"
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
@@ -117,7 +118,6 @@ alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands'"
 alias todo="sh ~/dotfiles/Scripts/contexts.sh"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
-alias k="mplayer http://livesh.koffee.com.au:15004/listen.pls"
 
 
 #
