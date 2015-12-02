@@ -20,6 +20,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'romainl/flattened'
+Plug 'rstacruz/vim-closer'
 
 call plug#end()
 
@@ -141,23 +142,23 @@ map <silent> <leader>2  :call Light()<CR>
 " Enable full mouse usage.
 set mouse=a
 
-" Automatically match brackets.
-inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
-" Automatically match square brackets.
-inoremap        [  []<Left>
-inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-
-" Automatically match closing curly bracket.
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O<TAB>
-inoremap {{     {
-inoremap {}     {}
-
-" Automatically match single and double quotes.
-inoremap <expr> '' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
-inoremap <expr> "" strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+" " Automatically match brackets.
+" inoremap        (  ()<Left>
+" inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+"
+" " Automatically match square brackets.
+" inoremap        [  []<Left>
+" inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+"
+" " Automatically match closing curly bracket.
+" inoremap {      {}<Left>
+" inoremap {<CR>  {<CR>}<Esc>O<TAB>
+" inoremap {{     {
+" inoremap {}     {}
+"
+" " Automatically match single and double quotes.
+" inoremap <expr> '' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+" inoremap <expr> "" strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
 " Insert the date and 24hr time.
 nnoremap <Leader>t :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
