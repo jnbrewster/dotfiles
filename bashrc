@@ -162,3 +162,5 @@ alias whatislove?="play what it love"
 export EDITOR=vim
 export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

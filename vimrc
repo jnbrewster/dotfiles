@@ -14,12 +14,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'ap/vim-css-color'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'plasticboy/vim-markdown'
-Plug 'romainl/flattened'
-Plug 'rstacruz/vim-closer'
 
 call plug#end()
 
@@ -130,8 +129,8 @@ function Light ()
   colorscheme seoul256-light
 endfunction
 
-map <silent> <leader>1  :call Dark()<CR>
-map <silent> <leader>2  :call Light()<CR>
+map <silent> <leader>1 :call Dark()<CR>
+map <silent> <leader>2 :call Light()<CR>
 
 
 "
@@ -171,6 +170,17 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
+" Search for files in fzf.
+nnoremap <Leader>f :FZF<CR>
+
+" Search history with fzf.
+nmap <silent> <leader>h :History<CR>
+
+" Add keybindings to add located files to a new tab or to splits.
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 
 "
@@ -192,5 +202,4 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Enable spellchecking for Markdown files and git commit messages.
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
-
 
