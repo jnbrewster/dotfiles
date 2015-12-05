@@ -23,6 +23,7 @@ Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 
+
 "
 " GENERAL
 "
@@ -110,6 +111,9 @@ syntax on
 " Redraw screen quicker.
 set ttyfast
 set lazyredraw
+
+" Quicker timeout.
+set timeoutlen=100
 
 " Remove fill characters
 set fillchars=""
