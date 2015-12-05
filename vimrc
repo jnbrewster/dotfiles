@@ -122,7 +122,7 @@ set fillchars=""
 set guifont=Fira\ Mono\ OT:h13
 
 " Set theme.
-colorscheme seoul256
+colorscheme seoul256-light
 
 " Set shortcuts to change theme.
 function Dark ()

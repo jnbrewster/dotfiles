@@ -19,29 +19,29 @@ c13=$'\e[1;35m'
 c14=$'\e[1;36m'
 c15=$'\e[1;37m'
 
-f0=$'\e[1;30m'
-f1=$'\e[1;37m'
+f0=$'\e[1;37m'
+f1=$'\e[1;30m'
 
 # INFO
 
-USER="Joel"
+USER="joel"
 HOST="BirthdayBookPro"
-DISTRO="OS X 10.11.1"
-KERNEL="Darwin"
-SHELL="bash"
-TERMINAL="screen-256color"
-CPU="Intel Core i5-4278U CPU @ 2.60GHz"
-MEMORY="8 GB"
+OS="64bit Mac OS X 10.11.1 15B42"
+KERNEL="x86_64 Darwin 15.0.0"
+DE="Aqua"
+WM="Quartz Compositor"
+FONT="FiraMonoOT 14"
+LOVE="What is love?"
 
 cat << EOF
 
-${c00}██${c08}██ ${c07}User	: ${USER}
-${c01}██${c09}██ ${c07}Hostname 	: ${HOST}
-${c02}██${c10}██ ${c07}Distro   	: ${DISTRO}
-${c03}██${c11}██ ${c07}Kernal    	: ${KERNEL}
-${c04}██${c12}██ ${c07}Terminal 	: ${TERMINAL}
-${c05}██${c13}██ ${c07}CPU	: ${CPU}
-${c06}██${c14}██ ${c07}Shell    	: ${SHELL}
-${c07}██${c15}██ ${c07}Memory     : ${MEMORY}
+${c00}██${c08}██ ${c00}${USER}
+${c01}██${c09}██ ${c00}${HOST}
+${c02}██${c10}██ ${c00}${OS}
+${c03}██${c11}██ ${c00}${KERNEL}
+${c04}██${c12}██ ${c00}${DE}
+${c05}██${c13}██ ${c00}${WM}
+${c06}██${c14}██ ${c00}${FONT}
+${c07}██${c15}██ ${c00}${LOVE}
 
 EOF
