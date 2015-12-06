@@ -4,16 +4,18 @@
 brew update
 
 brew install cmus
+brew install fzf
 brew install git
 brew install imagemagick
 brew install mplayer
 brew install pandoc
 brew install ranger
+brew install screenfetch
 brew install tmux
 brew install tty-clock
+brew install w3m
 brew install wget
 brew install youtube-dl
-brew install w3m
 
 echo "Command line apps installed."
 
@@ -23,17 +25,22 @@ apps=(
   amethyst
   appcleaner
   bittorent-sync
-  clipmenu
+  dropbox
   firefox
+  flux
   google-chrome
+  hazel
   honer
   karabiner
-  nvalt
+  launchbar
+  macvim
+  monodraw
+  omnidisksweeper
+  pandoc
   qlmarkdown
   r-name
   sitesucker
   transmission
-  unpkg
   vimr
   vlc
 )
