@@ -31,6 +31,7 @@ apps=(
   google-chrome
   hazel
   honer
+  imageoptim
   karabiner
   launchbar
   macvim
