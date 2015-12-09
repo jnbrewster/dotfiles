@@ -1,3 +1,5 @@
+colorscheme seoul256
+
 set showtabline=never
 set hintkeys='sadfjklewcmpgh'
 hi -a Hint font-size: 10pt !important;

@@ -26,6 +26,7 @@ apps=(
   appcleaner
   bittorent-sync
   dropbox
+  dungeon-crawl-stone-soup
   firefox
   flux
   google-chrome
