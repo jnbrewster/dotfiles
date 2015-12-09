@@ -14,10 +14,12 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 
 call plug#end()
@@ -185,6 +187,9 @@ let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+" Easy align interactive.
+vnoremap <silent> <Enter> :EasyAlign<cr>
 
 
 "
