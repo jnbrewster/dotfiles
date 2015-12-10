@@ -19,11 +19,11 @@ Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 
 call plug#end()
-
 
 
 "
@@ -76,27 +76,11 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-
-"
-" UI
-"
-
-" Hide toolbar and scrollbars in macvim
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
-
-" Set the vertical fillcharacter
-set fillchars+=vert:│
-
-" Show line numbers.
-set relativenumber
-
-" Show cursor position.
-set ruler
-
 " Highlight current line.
 set cursorline
+
+" Show relative cursor number.
+set relativenumber
 
 " Show current command.
 set showcmd
@@ -114,35 +98,24 @@ syntax on
 set ttyfast
 set lazyredraw
 
-" Quicker timeout.
-set timeoutlen=100
-
 " Remove fill characters
 set fillchars=""
 
+" Hide scrollbars
+set go-=r
+set go-=L
+
 " Set font and size.
-set guifont=Fira\ Mono\ OT:h13
+set guifont=Input:h12
 
 " Set theme for term.
 colorscheme seoul256
 
-" Set theme for macvim.
+" Set theme for VimR.
 if has('gui_running')
+  let g:seoul256_background = 256
   colorscheme seoul256-light
 endif
-
-
-" Set shortcuts to change theme.
-function Dark ()
-  colorscheme seoul256
-endfunction
-
-function Light ()
-  colorscheme seoul256-light
-endfunction
-
-map <silent> <leader>1 :call Dark()<CR>
-map <silent> <leader>2 :call Light()<CR>
 
 
 "
