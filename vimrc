@@ -123,8 +123,14 @@ set fillchars=""
 " Set font and size.
 set guifont=Fira\ Mono\ OT:h13
 
-" Set theme.
-colorscheme seoul256-light
+" Set theme for term.
+colorscheme seoul256
+
+" Set theme for macvim.
+if has('gui_running')
+  colorscheme seoul256-light
+endif
+
 
 " Set shortcuts to change theme.
 function Dark ()
