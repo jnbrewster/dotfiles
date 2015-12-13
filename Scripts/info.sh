@@ -30,18 +30,18 @@ OS="64bit Mac OS X 10.11.1 15B42"
 KERNEL="x86_64 Darwin 15.0.0"
 DE="Aqua"
 WM="Quartz Compositor"
-FONT="FiraMonoOT 14"
+FONT="Input 13"
 LOVE="What is love?"
 
 cat << EOF
 
-${c00}██${c08}██ ${c00}${USER}
-${c01}██${c09}██ ${c00}${HOST}
-${c02}██${c10}██ ${c00}${OS}
-${c03}██${c11}██ ${c00}${KERNEL}
-${c04}██${c12}██ ${c00}${DE}
-${c05}██${c13}██ ${c00}${WM}
-${c06}██${c14}██ ${c00}${FONT}
-${c07}██${c15}██ ${c00}${LOVE}
+${c00}██${c08}██ ${c07}${USER}
+${c01}██${c09}██ ${c07}${HOST}
+${c02}██${c10}██ ${c07}${OS}
+${c03}██${c11}██ ${c07}${KERNEL}
+${c04}██${c12}██ ${c07}${DE}
+${c05}██${c13}██ ${c07}${WM}
+${c06}██${c14}██ ${c07}${FONT}
+${c07}██${c15}██ ${c07}${LOVE}
 
 EOF

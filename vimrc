@@ -101,12 +101,8 @@ set lazyredraw
 " Remove fill characters
 set fillchars=""
 
-" Hide scrollbars
-set go-=r
-set go-=L
-
 " Set font and size.
-set guifont=Input:h12
+set guifont=Fira\ Mono\ OT:h13
 
 " Set theme for term.
 colorscheme seoul256
@@ -116,6 +112,18 @@ if has('gui_running')
   let g:seoul256_background = 256
   colorscheme seoul256-light
 endif
+
+" Set shortcuts to change theme.
+function Dark ()
+  colorscheme seoul256
+endfunction
+
+function Light ()
+  colorscheme seoul256-light
+endfunction
+
+map <silent> <leader>1 :call Dark()<CR>
+map <silent> <leader>2 :call Light()<CR>
 
 
 "

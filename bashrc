@@ -52,16 +52,14 @@ alias eh="open vnc://192.168.0.12"
 alias ip="curl http://ipecho.net/plain; echo"
 alias ips="ifconfig | grep inet"
 
-
 alias clean="find . -name '*.DS_Store' -type f -ls -delete"
 alias empty="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 alias hidden="sh ~/dotfiles/Scripts/togglehidden"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; killall Finder"
 
-alias upgrade="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
+alias update="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
 alias karabinerexport="sh ~/dotfiles/Scripts/karabinerexport.sh"
-
 
 alias ls="ls -G"
 alias ll="ls -otW"
@@ -73,17 +71,17 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-alias gdf="cd ~/dotfiles/"
+alias gg="cd ~"
 alias gdb="cd ~/dropbox/"
+alias gdf="cd ~/dotfiles/"
 alias gdl="cd ~/Downloads/"
 alias gdt="cd ~/Desktop/"
 alias gdv="cd ~/Development/"
-alias gg="cd ~"
-alias gl="cd ~/Library/"
+alias glb="cd  ~/Library/"
 alias gms="cd ~/Music/"
 alias gmv="cd ~/Movies"
-alias gp="cd ~/Pictures/"
-alias gs="cd ~/Sync/"
+alias gpt="cd  ~/Pictures/"
+alias gsc="cd  ~/Sync/"
 
 alias v="vim"
 alias n="nvim"
@@ -101,15 +99,15 @@ alias commit='git commit -am '
 alias push='git push origin master'
 alias status='git status'
 
-alias info="sh ~/dotfiles/Scripts/info.sh"
-alias blocks="sh ~/dotfiles/Scripts/blocks"
-alias pipes="sh ~/dotfiles/Scripts/pipes"
+alias info="sh     ~/dotfiles/Scripts/info.sh"
+alias blocks="sh   ~/dotfiles/Scripts/blocks"
+alias pipes="sh    ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
 
-alias jeju="sh ~/dotfiles/Scripts/weather.sh "jeju""
+alias jeju="sh       ~/dotfiles/Scripts/weather.sh "jeju""
 alias kingscliff="sh ~/dotfiles/Scripts/weather.sh "kingscliff""
-alias melbourne="sh ~/dotfiles/Scripts/weather.sh "melbourne""
-alias leon="vim ~/Dropbox/LettersToLeon.md"
+alias melbourne="sh  ~/dotfiles/Scripts/weather.sh "melbourne""
+alias leon="vim      ~/Dropbox/LettersToLeon.md"
 
 alias @e="ls -c ~/Documents | grep @errands"
 alias @h="ls -c ~/Documents | grep @home"

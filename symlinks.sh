@@ -7,7 +7,7 @@ dotfiles directory to any desired dotfiles in ~/
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=" amethyst bashrc bash_profile config hushlogin profile pentadactyl pentadactylrc
+files=" amethyst bashrc bash_profile config hushlogin profile pentadactyl pentadactylrc qutebrowser
 tmux.conf vim vimrc xinitrc Xdefaults Xmodmap "    # list of files/folders to symlink in homedir
 
 # change to the dotfiles directory
@@ -25,6 +25,8 @@ echo "Linking karabiner keybindings"
 
 echo "Linking launchbar folder"
 ln -s ~/dotfiles/Launchbar/ ~/Library/Application\ Support/
+
+ln -s ~/dotfiles/qutebrowser/ ~/Library/Preferences/
 
 echo "All done!"
 
