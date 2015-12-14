@@ -101,6 +101,11 @@ set lazyredraw
 " Remove fill characters
 set fillchars=""
 
+" Remove the scrollbars
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
+
 " Set font and size.
 set guifont=Fira\ Mono\ OT:h13
 
