@@ -17,7 +17,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
@@ -67,7 +66,7 @@ set incsearch
 set splitbelow
 set splitright
 
-" Remaps for moving around tabs.
+" Remaps for moving around tabs with right hand.
 nnoremap tn :tabnew<Space>
 
 nnoremap tk :tabnext<CR>
@@ -101,21 +100,25 @@ set lazyredraw
 " Remove fill characters
 set fillchars=""
 
-" Remove the scrollbars
+" Remove the scrollbars.
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
 
 " Set font and size.
-set guifont=Fira\ Mono\ OT:h13
+set guifont=Input:h13
 
 " Set theme for term.
 colorscheme seoul256
 
+" Set background colors
+let g:seoul256_background = 235
+
 " Set theme for VimR.
 if has('gui_running')
-  let g:seoul256_background = 256
   colorscheme seoul256-light
+  let g:seoul256_light_background = 256
+  set background=light
 endif
 
 " Set shortcuts to change theme.
