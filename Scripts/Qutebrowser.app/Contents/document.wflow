@@ -59,10 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>/usr/local/bin/qutebrowser
-
-
-</string>
+					<string>/usr/local/bin/qutebrowser &amp;</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -86,8 +83,10 @@
 				</array>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
+				<key>IgnoresInput</key>
+				<true/>
 				<key>InputUUID</key>
-				<string>C3912637-5B79-4C27-A09B-5C3CAFB1FFEB</string>
+				<string>5DF1F876-01C8-4BB6-9709-D74690DC57BB</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -97,9 +96,9 @@
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>C7ABF20B-1D28-42C5-A851-74D345787811</string>
+				<string>252F64B5-9846-4852-8065-A91481B37081</string>
 				<key>UUID</key>
-				<string>F22D9067-ABE0-4797-B51F-32EBA2686512</string>
+				<string>9AABFBCB-39BA-4194-9F25-3B97CEF8B110</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -177,7 +176,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>229.000000:253.000000</string>
+				<string>649.000000:305.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
