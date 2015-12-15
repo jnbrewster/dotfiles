@@ -100,7 +100,8 @@ set fillchars=""
 " Remove the scrollbars.
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
-set guioptions-=r  "scrollbar
+set guioptions-=r  "right
+set guioptions-=L  "left
 
 " Set font and size.
 set guifont=Input:h13
@@ -108,8 +109,9 @@ set guifont=Input:h13
 " Set theme for term.
 colorscheme seoul256
 
-" Set lighter background colors for light theme.
+" Set lighter background colors.
 let g:seoul256_light_background = 256
+let g:seoul256_background = 235
 
 " Set theme for VimR.
 if has('gui_running')
@@ -138,12 +140,12 @@ map <silent> <leader>2 :call Light()<CR>
 set mouse=a
 
 " Automatically match brackets.
-inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
-" Automatically match square brackets.
-inoremap        [  []<Left>
-inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+" inoremap        (  ()<Left>
+" inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+"
+" " Automatically match square brackets.
+" inoremap        [  []<Left>
+" inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
 " Automatically match closing curly bracket.
 inoremap {      {}<Left>
