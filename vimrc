@@ -84,9 +84,6 @@ set relativenumber
 " Show current command.
 set showcmd
 
-" Show matching brackets.
-set showmatch
-
 " Highlight search matches.
 set hlsearch
 
@@ -111,13 +108,12 @@ set guifont=Input:h13
 " Set theme for term.
 colorscheme seoul256
 
-" Set background colors
-let g:seoul256_background = 235
+" Set lighter background colors for light theme.
+let g:seoul256_light_background = 256
 
 " Set theme for VimR.
 if has('gui_running')
   colorscheme seoul256-light
-  let g:seoul256_light_background = 256
   set background=light
 endif
 
