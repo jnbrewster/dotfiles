@@ -205,3 +205,5 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 
+" Set certain file extensions to use markdown formatting.
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*txt  set ft=markdown

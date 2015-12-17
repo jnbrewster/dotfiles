@@ -23,13 +23,9 @@ brew install caskroom/cask/brew-cask
 # Apps
 apps=(
   amethyst
-  appcleaner
   bittorent-sync
   dropbox
   dungeon-crawl-stone-soup
-  firefox
-  flux
-  google-chrome
   hazel
   honer
   imageoptim
@@ -43,7 +39,6 @@ apps=(
   r-name
   sitesucker
   transmission
-  vimr
   vlc
 )
 
