@@ -101,6 +101,7 @@ set guifont=Input:h13
 " Set colorscheme.
 colorscheme smyck
 
+
 "
 " INPUT
 "
@@ -108,6 +109,7 @@ colorscheme smyck
 " Enable full mouse usage.
 set mouse=a
 
+" Remove these if you don't use them...
 " Automatically match brackets.
 " inoremap        (  ()<Left>
 " inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"

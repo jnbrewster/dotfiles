@@ -23,6 +23,8 @@ hi StatusLineNC         cterm=none ctermbg=15       ctermfg=8       gui=none    
 hi Search               cterm=none ctermbg=6        ctermfg=15      gui=none        guibg=#2EB5C1   guifg=#F7F7F7
 hi IncSearch            cterm=none ctermbg=3        ctermfg=8       gui=none        guibg=#F6DC69   guifg=#8F8F8F
 hi ColumnMargin         cterm=none ctermbg=0                        gui=none        guibg=#000000
+hi TabLineFill          cterm=none ctermbg=0                        gui=bold
+hi TabLine              cterm=none ctermbg=0        ctermfg=7
 hi Error                cterm=none ctermbg=1        ctermfg=15      gui=none                        guifg=#F7F7F7
 hi ErrorMsg             cterm=none ctermbg=1        ctermfg=15      gui=none                        guifg=#F7F7F7
 hi Folded               cterm=none ctermbg=8        ctermfg=2       gui=none        guibg=#3B3B3B   guifg=#90AB41
