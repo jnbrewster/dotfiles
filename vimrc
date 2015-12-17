@@ -11,7 +11,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 
@@ -99,31 +98,8 @@ set guioptions-=L  "left
 " Set font and size.
 set guifont=Input:h13
 
-" Set theme for term.
-colorscheme seoul256
-
-" Set lighter background colors.
-let g:seoul256_light_background = 256
-let g:seoul256_background = 235
-
-" Set theme for VimR.
-if has('gui_running')
-  colorscheme seoul256-light
-  set background=light
-endif
-
-" Set shortcuts to change theme.
-function Dark ()
-  colorscheme seoul256
-endfunction
-
-function Light ()
-  colorscheme seoul256-light
-endfunction
-
-map <silent> <leader>1 :call Dark()<CR>
-map <silent> <leader>2 :call Light()<CR>
-
+" Set colorscheme.
+colorscheme smyck
 
 "
 " INPUT
