@@ -23,14 +23,11 @@ brew install caskroom/cask/brew-cask
 # Apps
 apps=(
   amethyst
-  bittorent-sync
+  bittorrent-sync
   dropbox
-  dungeon-crawl-stone-soup
   hazel
-  honer
   imageoptim
   karabiner
-  launchbar
   macvim
   monodraw
   omnidisksweeper
