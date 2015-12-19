@@ -96,7 +96,7 @@ set guioptions-=r  "right
 set guioptions-=L  "left
 
 " Set font and size.
-set guifont=Input:h13
+set guifont=Input\ Mono:h12
 
 " Set colorscheme.
 colorscheme smyck

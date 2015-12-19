@@ -35,6 +35,7 @@ apps=(
   qlmarkdown
   r-name
   sitesucker
+  the-unarchiver
   transmission
   vlc
 )

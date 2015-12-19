@@ -113,9 +113,10 @@ alias @e="ls -c ~/Documents | grep @errands"
 alias @h="ls -c ~/Documents | grep @home"
 alias @m="ls -c ~/Documents | grep @mac"
 alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands'"
-alias todo="sh ~/dotfiles/Scripts/contexts.sh"
+alias todo="vim ~/Documents/todo.txt"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
+alias dcss="ssh joshua@crawl.akrasiac.org"
 
 
 #
