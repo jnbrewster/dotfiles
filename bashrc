@@ -77,11 +77,12 @@ alias gdf="cd ~/dotfiles/"
 alias gdl="cd ~/Downloads/"
 alias gdt="cd ~/Desktop/"
 alias gdv="cd ~/Development/"
-alias glb="cd  ~/Library/"
+alias glb="cd ~/Library/"
 alias gms="cd ~/Music/"
 alias gmv="cd ~/Movies"
-alias gpt="cd  ~/Pictures/"
-alias gsc="cd  ~/Sync/"
+alias gpt="cd ~/Pictures/"
+alias gsc="cd ~/Sync/"
+alias gbu="cd /Volumes/Backup/"
 
 alias v="vim"
 alias n="nvim"
@@ -117,6 +118,7 @@ alias todo="vim ~/Documents/todo.txt"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
 alias dcss="ssh joshua@crawl.akrasiac.org"
+
 
 
 #

@@ -11,8 +11,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -96,10 +98,10 @@ set guioptions-=r  "right
 set guioptions-=L  "left
 
 " Set font and size.
-set guifont=Input\ Mono:h12
+set guifont=Fira\ Mono\ OT:h13
 
 " Set colorscheme.
-colorscheme smyck
+colorscheme seoul256
 
 
 "
@@ -177,4 +179,4 @@ autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 
 " Set certain file extensions to use markdown formatting.
-au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*txt  set ft=markdown
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*txt,*wiki  set ft=markdown
