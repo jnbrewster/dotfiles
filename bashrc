@@ -85,7 +85,7 @@ alias gsc="cd ~/Sync/"
 alias gbu="cd /Volumes/Backup/"
 
 alias v="vim"
-alias n="nvim"
+alias c="calcurse"
 alias t="tmux"
 alias ta="tmux attach"
 alias q="qutebrowser"

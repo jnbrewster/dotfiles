@@ -175,7 +175,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Enable spellchecking for Markdown files and git commit messages.
-autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 
 " Set certain file extensions to use markdown formatting.
