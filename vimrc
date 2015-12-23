@@ -15,6 +15,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki'
+Plug 'joshdick/onedark.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -98,10 +100,10 @@ set guioptions-=r  "right
 set guioptions-=L  "left
 
 " Set font and size.
-set guifont=Fira\ Mono\ OT:h13
+set guifont=Fira\ Code\ Retina:h13
 
 " Set colorscheme.
-colorscheme seoul256
+colorscheme Tomorrow-Night
 
 
 "
@@ -126,9 +128,9 @@ inoremap {<CR>  {<CR>}<Esc>O<TAB>
 inoremap {{     {
 inoremap {}     {}
 
-" Automatically match single and double quotes.
-inoremap <expr> '' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
-inoremap <expr> "" strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+" " Automatically match single and double quotes.
+" inoremap <expr> '' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+" inoremap <expr> "" strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
 
 " Insert the date and 24hr time.
 nnoremap <Leader>t :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>

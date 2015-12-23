@@ -208,8 +208,7 @@
 
     "MISC": "----------------------",
     "floating": [
-    "com.ruiaureliano.Sip",
-    "com.googlecode.iterm2"
+    "com.ruiaureliano.Sip"
     ],
     "ignore-menu-bars": true,
     "float-small-windows": true,

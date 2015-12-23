@@ -7,7 +7,7 @@ dotfiles directory to any desired dotfiles in ~/
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=" amethyst bashrc bash_profile config hushlogin profile pentadactyl pentadactylrc qutebrowser
+files=" amethyst atom bashrc bash_profile config hushlogin profile qutebrowser
 tmux.conf vim vimrc xinitrc Xdefaults Xmodmap "    # list of files/folders to symlink in homedir
 
 # change to the dotfiles directory
@@ -23,10 +23,4 @@ done
 echo "Linking karabiner keybindings"
 /Applications/Karabiner.app/Contents/Library/bin/karabiner export > ~/dotfiles/karabiner-import.sh
 
-echo "Linking launchbar folder"
-ln -s ~/dotfiles/Launchbar/ ~/Library/Application\ Support/
-
-ln -s ~/dotfiles/qutebrowser/ ~/Library/Preferences/
-
 echo "All done!"
-

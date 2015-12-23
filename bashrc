@@ -1,3 +1,7 @@
+export MUTT_EMAIL_ADDRESS="j.n.brewster@gmail.com"
+export MUTT_REALNAME="Joel Brewster"
+export MUTT_SMTP_URL="smtp://j.n.brewster@smtp.gmail.com:587/"
+
 #
 # ~/.bashrc
 #
@@ -84,8 +88,10 @@ alias gpt="cd ~/Pictures/"
 alias gsc="cd ~/Sync/"
 alias gbu="cd /Volumes/Backup/"
 
+
 alias v="vim"
 alias c="calcurse"
+alias m="mutt"
 alias t="tmux"
 alias ta="tmux attach"
 alias q="qutebrowser"
@@ -93,6 +99,7 @@ alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
 alias gif="convert -delay 35 -loop 0 source*.png animated.gif"
 alias html="pandoc input.md -o output.html"
+alias strongbad_email.exe="mutt"
 
 alias d="w3m www.duckduckgo.com"
 
