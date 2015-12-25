@@ -45,7 +45,8 @@ class LineNumberView
     @observer.disconnect()
 
   _spacer: (totalLines, currentIndex) ->
-    Array(totalLines.toString().length - currentIndex.toString().length + 1).join '&nbsp;'
+    width = Math.max(0, totalLines.toString().length - currentIndex.toString().length)
+    Array(width + 1).join '&nbsp;'
 
   # Update the line numbers on the editor
   _update: () =>
@@ -75,7 +76,7 @@ class LineNumberView
       relative = Math.abs(currentLineNumber - absolute)
       relativeClass = 'relative'
       if @trueNumberCurrentLine and relative == 0
-        relative = currentLineNumber
+        relative = currentLineNumber - 1
         relativeClass += ' current-line'
       # Apply offset last thing before rendering
       relative += offset

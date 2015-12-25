@@ -1,7 +1,7 @@
 {
   "name": "relative-numbers",
   "main": "./lib/relative-numbers",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Relative line numbers for Atom",
   "repository": {
     "type": "git",
@@ -19,10 +19,10 @@
     "url": "https://github.com/justmoon/relative-numbers/issues"
   },
   "homepage": "https://github.com/justmoon/relative-numbers#readme",
-  "_id": "relative-numbers@0.3.0",
-  "_shasum": "ce860f83cdbcfe131cfb0bda5cee0acfdbb0772b",
-  "_resolved": "file:../d-1151123-1206-1991vey/package.tgz",
-  "_from": "../d-1151123-1206-1991vey/package.tgz",
+  "_id": "relative-numbers@0.3.1",
+  "_shasum": "26bd39477ec712bec2cbd6d32a64d21860d2ee0c",
+  "_resolved": "file:../d-1151125-9080-hj1hgv/package.tgz",
+  "_from": "../d-1151125-9080-hj1hgv/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],
