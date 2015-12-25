@@ -23,8 +23,11 @@ brew install caskroom/cask/brew-cask
 # Apps
 apps=(
   amethyst
+  atom
   bittorrent-sync
+  clipmenu
   dropbox
+  firefox
   hazel
   imageoptim
   karabiner
