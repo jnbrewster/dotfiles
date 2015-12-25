@@ -16,7 +16,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki'
 Plug 'joshdick/onedark.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -103,8 +103,8 @@ set guioptions-=L  "left
 set guifont=Fira\ Code\ Retina:h13
 
 " Set colorscheme.
-colorscheme Tomorrow-Night
-
+colorscheme gruvbox
+set background=dark
 
 "
 " INPUT
