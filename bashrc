@@ -1,7 +1,3 @@
-export MUTT_EMAIL_ADDRESS="j.n.brewster@gmail.com"
-export MUTT_REALNAME="Joel Brewster"
-export MUTT_SMTP_URL="smtp://j.n.brewster@smtp.gmail.com:587/"
-
 #
 # ~/.bashrc
 #
