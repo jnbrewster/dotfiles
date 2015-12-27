@@ -14,6 +14,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'vimwiki/vimwiki'
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
@@ -103,8 +104,13 @@ set guioptions-=L  "left
 set guifont=Fira\ Code\ Retina:h13
 
 " Set colorscheme.
-colorscheme gruvbox
-set background=dark
+if has('gui_running')
+  colorscheme macvim
+  set background=light
+else
+  colorscheme gruvbox
+  set background=dark
+endif
 
 "
 " INPUT
@@ -120,7 +126,7 @@ inoremap {{     {
 inoremap {}     {}
 
 " Insert the date and 24hr time.
-nnoremap <Leader>t :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
+nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 
 " Load Goyo for writing.
 nnoremap <Leader>g :Goyo 50%<CR>
@@ -145,6 +151,12 @@ let g:fzf_action = {
 
 " Easy align interactive.
 vnoremap <silent> <Enter> :EasyAlign<cr>
+
+" Edit remind
+nnoremap <Leader>r :tabe ~/.reminders<CR>
+
+" Edit todo
+nnoremap <Leader>t :tabe ~/vimwiki/todo.wiki<CR>
 
 
 "
