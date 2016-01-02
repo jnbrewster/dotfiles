@@ -85,7 +85,6 @@ alias gbu="cd /Volumes/Backup/"
 
 
 alias v="vim"
-alias c="calcurse"
 alias r="vim .reminders"
 alias rc="rem -m -c"
 alias rn="rem -n"

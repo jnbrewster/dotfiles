@@ -210,10 +210,10 @@
     "floating": [
     "com.ruiaureliano.Sip"
     ],
-    "ignore-menu-bars": true,
+    "ignore-menu-bars": false,
     "float-small-windows": true,
     "mouse-follows-focus": false,
-    "focus-follows-mouse": false,
+    "focus-follows-mouse": true,
     "enables-layout-hud": true,
     "enables-layout-hud-on-space-change": true
 }

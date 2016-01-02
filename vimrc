@@ -9,15 +9,16 @@
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'plasticboy/vim-markdown'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'vimwiki/vimwiki'
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -101,16 +102,28 @@ set guioptions-=r  "right
 set guioptions-=L  "left
 
 " Set font and size.
-set guifont=Fira\ Code\ Retina:h13
+set guifont=Input\ Mono:h13
 
-" Set colorscheme.
-if has('gui_running')
-  colorscheme macvim
-  set background=light
-else
-  colorscheme gruvbox
-  set background=dark
-endif
+colorscheme smyck
+" " Set colorscheme.
+" if has('gui_running')
+"   colorscheme tomorrow
+" else
+"   colorscheme tomorrow-Night
+" endif
+"
+" " Set shortcuts to change theme.
+" function Dark ()
+"   colorscheme tomorrow-Night
+" endfunction
+"
+" function Light ()
+"   colorscheme Tomorrow
+" endfunction
+"
+" map <silent> <leader>1 :call Dark()<CR>
+" map <silent> <leader>2 :call Light()<CR>
+
 
 "
 " INPUT
