@@ -104,7 +104,7 @@ set guioptions-=L  "left
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-colorscheme smyck
+colorscheme seoul256
 " " Set colorscheme.
 " if has('gui_running')
 "   colorscheme tomorrow

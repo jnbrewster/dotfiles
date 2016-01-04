@@ -84,7 +84,8 @@ alias gsc="cd ~/Sync/"
 alias gbu="cd /Volumes/Backup/"
 
 
-alias v="vim"
+alias vim='mvim -v'
+alias v='mvim -v'
 alias r="vim .reminders"
 alias rc="rem -m -c"
 alias rn="rem -n"
