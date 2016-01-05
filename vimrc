@@ -104,7 +104,7 @@ set guioptions-=L  "left
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-colorscheme seoul256
+colorscheme smyck
 " " Set colorscheme.
 " if has('gui_running')
 "   colorscheme tomorrow
@@ -133,10 +133,15 @@ colorscheme seoul256
 set mouse=a
 
 " Automatically match closing curly bracket.
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O<TAB>
-inoremap {{     {
+inoremap {<cr>  {<cr>}<esc>O<tab>
 inoremap {}     {}
+
+" Automatically match square brackets.
+" inoremap        [  []<Left>
+inoremap [<cr>  [<cr>]<esc>O<tab>
+" inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+
+inoremap []     []
 
 " Insert the date and 24hr time.
 nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
