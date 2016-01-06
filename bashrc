@@ -93,6 +93,7 @@ alias rw="rem -m -c+1"
 alias rw2="rem -m -c+2"
 alias m="mutt"
 alias p="pymux"
+alias pa="pymux attach"
 alias t="tmux"
 alias ta="tmux attach"
 alias q="qutebrowser"
@@ -101,6 +102,7 @@ alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k
 alias gif="convert -delay 35 -loop 0 source*.png animated.gif"
 alias html="pandoc input.md -o output.html"
 alias strongbad_email.exe="mutt"
+alias calt='cal_head=`cal | head -1`; cal_tail=`cal | tail -7`; today=`date "+%e"`; echo "$cal_head"; echo -en "${cal_tail/${today}/\033[1;33m${today}\033[0m}";'
 
 alias d="w3m www.duckduckgo.com"
 

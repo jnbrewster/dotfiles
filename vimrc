@@ -10,14 +10,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
@@ -104,21 +100,12 @@ set guioptions-=T  "toolbar
 set guioptions-=r  "right
 set guioptions-=L  "left
 
-" Add statusline
-set laststatus=2
-
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-colorscheme seoul256
-
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"⭤":""}',
-      \ }
-      \ }
-set noshowmode
+" Set colorscheme.
+colorscheme Tomorrow-Night
+set background=dark
 
 
 "
@@ -130,14 +117,9 @@ set mouse=a
 
 " Automatically match closing curly bracket.
 inoremap {<cr>  {<cr>}<esc>O<tab>
-inoremap {}     {}
 
 " Automatically match square brackets.
-" inoremap        [  []<Left>
 inoremap [<cr>  [<cr>]<esc>O<tab>
-" inoremap <expr> ]  strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-
-inoremap []     []
 
 " Insert the date and 24hr time.
 nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
