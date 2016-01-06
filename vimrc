@@ -9,6 +9,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -18,6 +20,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 
 call plug#end()
@@ -101,28 +104,21 @@ set guioptions-=T  "toolbar
 set guioptions-=r  "right
 set guioptions-=L  "left
 
+" Add statusline
+set laststatus=2
+
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-colorscheme smyck
-" " Set colorscheme.
-" if has('gui_running')
-"   colorscheme tomorrow
-" else
-"   colorscheme tomorrow-Night
-" endif
-"
-" " Set shortcuts to change theme.
-" function Dark ()
-"   colorscheme tomorrow-Night
-" endfunction
-"
-" function Light ()
-"   colorscheme Tomorrow
-" endfunction
-"
-" map <silent> <leader>1 :call Dark()<CR>
-" map <silent> <leader>2 :call Light()<CR>
+colorscheme seoul256
+
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"⭤":""}',
+      \ }
+      \ }
+set noshowmode
 
 
 "
@@ -171,10 +167,10 @@ let g:fzf_action = {
 vnoremap <silent> <Enter> :EasyAlign<cr>
 
 " Edit remind
-nnoremap <Leader>r :tabe ~/.reminders<CR>
+nnoremap <Leader>r :e ~/.reminders<CR>
 
 " Edit todo
-nnoremap <Leader>t :tabe ~/vimwiki/todo.wiki<CR>
+nnoremap <Leader>t :e ~/vimwiki/todo.wiki<CR>
 
 
 "
