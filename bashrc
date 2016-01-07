@@ -163,7 +163,7 @@ function play {
 }
 
 # What is love?
-alias whatislove?="play what it love"
+alias whatislove?="play haddaway what it love"
 
 
 #

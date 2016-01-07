@@ -24,3 +24,10 @@ enc.warn=false
 wins.autotidy=false
 time.statusbar=
 roster.empty=false
+occupants.jid=true
+
+[otr]
+otr.char=@
+
+[pgp]
+pgp.char=%
