@@ -86,7 +86,7 @@ alias gbu="cd /Volumes/Backup/"
 
 alias vim='mvim -v'
 alias v='mvim -v'
-alias r="vim .reminders"
+alias r="vim ~/.reminders"
 alias rc="rem -m -c"
 alias rn="rem -n"
 alias rw="rem -m -c+1"

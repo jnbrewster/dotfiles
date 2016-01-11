@@ -18,6 +18,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
+Plug 'itspriddle/vim-javascript-indent'
+Plug 'Shougo/neocomplete.vim'
 
 call plug#end()
 
