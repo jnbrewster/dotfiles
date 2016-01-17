@@ -107,7 +107,12 @@ set guifont=Input\ Mono:h13
 
 " Set colorscheme.
 colorscheme Tomorrow-Night
-set background=dark
+
+if strftime("%H") < 17
+  colorscheme Tomorrow
+else
+  colorscheme Tomorrow-Night
+endif
 
 
 "
@@ -175,6 +180,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Enable spellchecking for Markdown files and git commit messages.
 autocmd FileType gitcommit setlocal spell
+autocmd Filetype mkd setlocal spell
+augroup Markdown
+    autocmd Filetype mkd setlocal spell spelllang=en_us
+augroup END
 
 " Set certain file extensions to use markdown formatting.
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*txt,*wiki  set ft=markdown
