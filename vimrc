@@ -20,8 +20,12 @@ Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'Shougo/neocomplete.vim'
+Plug 'tpope/vim-pathogen'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
+
+execute pathogen#infect()
 
 
 "
@@ -187,3 +191,6 @@ augroup END
 
 " Set certain file extensions to use markdown formatting.
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*txt,*wiki  set ft=markdown
+
+" Javascript auto complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS

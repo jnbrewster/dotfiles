@@ -109,6 +109,7 @@ alias d="w3m www.duckduckgo.com"
 alias commit='git commit -am '
 alias push='git push origin master'
 alias status='git status'
+alias add='git add'
 
 alias info="sh     ~/dotfiles/Scripts/info.sh"
 alias blocks="sh   ~/dotfiles/Scripts/blocks"
