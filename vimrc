@@ -25,7 +25,7 @@ Plug 'scrooloose/syntastic'
 
 call plug#end()
 
-execute pathogen#infect()
+" execute pathogen#infect()
 
 
 "

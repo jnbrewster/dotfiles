@@ -16,6 +16,8 @@ brew install tty-clock
 brew install w3m
 brew install wget
 brew install youtube-dl
+brew install node.js
+npm install -g jshint
 
 echo "Command line apps installed."
 
