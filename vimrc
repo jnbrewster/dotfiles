@@ -184,8 +184,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Enable spellchecking for Markdown files and git commit messages.
-autocmd FileType gitcommit setlocal spell
-autocmd Filetype mkd setlocal spell
 set spell
 set mousemodel=popup
 
