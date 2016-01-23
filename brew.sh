@@ -16,23 +16,28 @@ brew install tty-clock
 brew install w3m
 brew install wget
 brew install youtube-dl
+brew install ffmpeg
 brew install node.js
 npm install -g jshint
 
 echo "Command line apps installed."
+brew tap caskroom/versions
 
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
   amethyst
+  appcleaner
   atom
   bittorrent-sync
-  clipmenu
   dropbox
   firefox
+  google-chrome
   hazel
   imageoptim
+  iterm2-beta
   karabiner
+  launchbar
   macvim
   monodraw
   omnidisksweeper
@@ -40,8 +45,10 @@ apps=(
   qlmarkdown
   r-name
   sitesucker
+  steam
   the-unarchiver
   transmission
+  ubersicht
   vlc
 )
 

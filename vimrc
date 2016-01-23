@@ -70,7 +70,7 @@ set splitbelow
 set splitright
 
 " Remaps for moving around tabs with right hand.
-nnoremap tn :tabnew<Space>
+noremap tn :tabnew<Space>
 
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
