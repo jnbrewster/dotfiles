@@ -22,6 +22,7 @@ Plug 'itspriddle/vim-javascript-indent'
 Plug 'Shougo/neocomplete.vim'
 Plug 'tpope/vim-pathogen'
 Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
