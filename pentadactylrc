@@ -1,6 +1,11 @@
+colorscheme Tomorrow-Night
 set showtabline=never
-set hintkeys='sadfjklewcmpgh'
-hi -a Hint font-size: 10pt !important;
+set hintkeys='asdfghjkl'
+hi -a Hint font-size: 11pt !important;
+hi CmdLine -append font-size:13px
+hi CompDesc -append font-size:13px
+hi FontCode font-family: Input Mono !important;
+
 set hlfind
 set incfind
 set findcase=smart

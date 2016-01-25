@@ -127,11 +127,12 @@ set background=dark
 " Enable full mouse usage.
 set mouse=a
 
-" Automatically match closing curly bracket.
-inoremap {<cr>  {<cr>}<esc>O<tab>
-
-" Automatically match square brackets.
-inoremap [<cr>  [<cr>]<esc>O<tab>
+" These are annoying sometimes
+" " Automatically match closing curly bracket.
+" inoremap {<cr>  {<cr>}<esc>O<tab>
+"
+" " Automatically match square brackets.
+" inoremap [<cr>  [<cr>]<esc>O<tab>
 
 " Insert the date and 24hr time.
 nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
