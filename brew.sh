@@ -19,6 +19,7 @@ brew install youtube-dl
 brew install ffmpeg
 brew install node.js
 npm install -g jshint
+pip install livestreamer
 
 echo "Command line apps installed."
 brew tap caskroom/versions
@@ -48,7 +49,6 @@ apps=(
   steam
   the-unarchiver
   transmission
-  ubersicht
   vlc
 )
 

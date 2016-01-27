@@ -110,15 +110,15 @@ set guioptions-=L  "left
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-" Set colorscheme.
-colorscheme Tomorrow-Night
-set background=dark
+" Set colorscheme to change based on time with gui.
+if strftime("%H") < 17 && has('gui_running')
+    colorscheme Tomorrow
+    set background=light
+else
+    colorscheme Tomorrow-Night
+    set background=dark
+endif
 
-" if strftime("%H") < 17
-"   colorscheme Tomorrow
-" else
-"   colorscheme Tomorrow-Night
-" endif
 
 
 "
