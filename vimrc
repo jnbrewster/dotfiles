@@ -14,6 +14,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/seoul256.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
@@ -110,15 +111,17 @@ set guioptions-=L  "left
 " Set font and size.
 set guifont=Input\ Mono:h13
 
+let g:seoul256_light_background = 256
+let g:seoul256_background = 235
+
 " Set colorscheme to change based on time with gui.
 if strftime("%H") < 17 && has('gui_running')
-    colorscheme Tomorrow
+    colorscheme Seoul256-light
     set background=light
 else
-    colorscheme Tomorrow-Night
+    colorscheme Seoul256
     set background=dark
 endif
-
 
 
 "
