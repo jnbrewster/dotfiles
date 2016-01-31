@@ -18,7 +18,6 @@ Plug 'junegunn/seoul256.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'Shougo/neocomplete.vim'
 Plug 'tpope/vim-pathogen'
@@ -169,7 +168,7 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 nnoremap <Leader>r :e ~/.reminders<CR>
 
 " Edit todo
-nnoremap <Leader>t :e ~/vimwiki/todo.wiki<CR>
+nnoremap <Leader>t :e ~/Documents/todo.md<CR>
 
 
 "
