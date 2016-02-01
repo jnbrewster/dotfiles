@@ -164,7 +164,7 @@ let g:fzf_action = {
 vnoremap <silent> <Enter> :EasyAlign<cr>
 
 " Edit remind
-nnoremap <Leader>r :e ~/Documents/reminders.md<CR>
+nnoremap <Leader>r :e ~/.reminders<CR>
 
 " Edit todo
 nnoremap <Leader>t :e ~/Documents/todo.md<CR>
