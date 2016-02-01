@@ -7,23 +7,20 @@
 "
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/seoul256.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-surround'
-Plug 'itspriddle/vim-javascript-indent'
-Plug 'Shougo/neocomplete.vim'
-Plug 'tpope/vim-pathogen'
+Plug 'raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
-Plug 'Raimondi/delimitMate'
-
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " execute pathogen#infect()
@@ -107,19 +104,28 @@ set guioptions-=T  "toolbar
 set guioptions-=r  "right
 set guioptions-=L  "left
 
+" Show airline tabs and statusline
+let g:airline#extensions#tabline#enabled = 1
+
+set laststatus=2
+let g:airline_powerline_fonts = 1
+set noshowmode
+
+" Straight tabs
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+
+" Remove the silly arrows
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-let g:seoul256_light_background = 256
-let g:seoul256_background = 235
-
-" Set colorscheme to change based on time with gui.
-if strftime("%H") < 17 && has('gui_running')
-    colorscheme Seoul256-light
-    set background=light
+if has('gui_running')
+  colorscheme flatlandia
 else
-    colorscheme Seoul256
-    set background=dark
+  colorscheme Tomorrow-Night
 endif
 
 
