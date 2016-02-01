@@ -20,6 +20,9 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+# export reminders
+ln -s ~/Documents/Reminders.md ~/.reminders
+
 echo "Linking karabiner keybindings"
 /Applications/Karabiner.app/Contents/Library/bin/karabiner export > ~/dotfiles/karabiner-import.sh
 

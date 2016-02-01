@@ -136,13 +136,6 @@ endif
 " Enable full mouse usage.
 set mouse=a
 
-" These are annoying sometimes
-" " Automatically match closing curly bracket.
-" inoremap {<cr>  {<cr>}<esc>O<tab>
-"
-" " Automatically match square brackets.
-" inoremap [<cr>  [<cr>]<esc>O<tab>
-
 " Insert the date and 24hr time.
 nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 
@@ -171,7 +164,7 @@ let g:fzf_action = {
 vnoremap <silent> <Enter> :EasyAlign<cr>
 
 " Edit remind
-nnoremap <Leader>r :e ~/.reminders<CR>
+nnoremap <Leader>r :e ~/Documents/reminders.md<CR>
 
 " Edit todo
 nnoremap <Leader>t :e ~/Documents/todo.md<CR>
@@ -196,9 +189,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Enable spellchecking for Markdown files and git commit messages.
 set spell
 set mousemodel=popup
-
-" Set certain file extensions to use markdown formatting.
-au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*txt,*wiki  set ft=markdown
 
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
