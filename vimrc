@@ -17,10 +17,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
-Plug 'raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'Valloric/YouCompleteMe'
+
 call plug#end()
 
 " execute pathogen#infect()

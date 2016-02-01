@@ -3,6 +3,7 @@
 
 brew update
 
+brew install cmake
 brew install cmus
 brew install fzf
 brew install git
