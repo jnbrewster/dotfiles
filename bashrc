@@ -41,7 +41,7 @@ export HISTSIZE=2000
 #
 
 alias reload="exec $SHELL -l"
-alias theme="osascript ~/dotfiles/Scripts/themechanger.scpt"
+alias s="osascript ~/dotfiles/Scripts/themechanger.scpt"
 alias lock="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
 alias reboot="sudo reboot"

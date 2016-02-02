@@ -188,6 +188,9 @@ nnoremap <Leader>r :e ~/.reminders<CR>
 " Edit todo
 nnoremap <Leader>t :e ~/Documents/todo.md<CR>
 
+" Mapping to change between solarized backgrounds
+call togglebg#map("<leader>s")
+
 
 "
 " FILE
