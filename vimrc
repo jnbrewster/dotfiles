@@ -22,6 +22,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'Valloric/YouCompleteMe'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -106,7 +107,7 @@ set guioptions-=T  "toolbar
 set guioptions-=r  "right
 set guioptions-=L  "left
 
-" Show airline tabs and statusline
+" Show airline tabs and status line
 let g:airline#extensions#tabline#enabled = 1
 
 set laststatus=2
@@ -124,10 +125,26 @@ let g:airline_right_sep=''
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-if has('gui_running')
-  colorscheme flatlandia
-else
-  colorscheme Tomorrow-Night
+" Set colorscheme to solarized
+colorscheme solarized
+
+" Change the Solarized background to dark or light depending upon the time
+function! SetSolarizedBackground()
+    if strftime("%H") >= 7 && strftime("%H") < 19
+        if &background != 'light'
+            set background=light
+        endif
+    else
+        if &background != 'dark'
+            set background=dark
+        endif
+    endif
+endfunction
+
+" Every time you save a file, call the function to check the time and change
+" the background (if necessary).
+if has("autocmd")
+    autocmd bufwritepost * call SetSolarizedBackground()
 endif
 
 
@@ -170,6 +187,8 @@ nnoremap <Leader>r :e ~/.reminders<CR>
 
 " Edit todo
 nnoremap <Leader>t :e ~/Documents/todo.md<CR>
+
+nnoremap <leader>]
 
 
 "
