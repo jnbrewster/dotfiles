@@ -8,7 +8,9 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itspriddle/vim-javascript-indent'
@@ -17,16 +19,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
-Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'Valloric/YouCompleteMe'
-Plug 'altercation/vim-colors-solarized'
+Plug 'ajh17/VimCompletesMe'
 
 call plug#end()
-
-" execute pathogen#infect()
 
 
 "
@@ -181,12 +179,6 @@ let g:fzf_action = {
 
 " Easy align interactive.
 vnoremap <silent> <Enter> :EasyAlign<cr>
-
-" Edit remind
-nnoremap <Leader>r :e ~/.reminders<CR>
-
-" Edit todo
-nnoremap <Leader>t :e ~/Documents/todo.md<CR>
 
 " Mapping to change between solarized backgrounds
 call togglebg#map("<leader>s")
