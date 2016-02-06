@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itspriddle/vim-javascript-indent'
@@ -22,7 +21,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'ajh17/VimCompletesMe'
 Plug 'ryanss/vim-hackernews'
 
 call plug#end()
@@ -125,25 +123,24 @@ let g:airline_right_sep=''
 set guifont=Input\ Mono:h13
 
 " Set colorscheme to solarized
-colorscheme solarized
+colorscheme Tomorrow-Night
+set background=dark
 
-" Change the Solarized background to dark or light depending upon the time
-function! SetSolarizedBackground()
-    if strftime("%H") >= 7 && strftime("%H") < 19
-        if &background != 'light'
-            set background=light
-        endif
-    else
-        if &background != 'dark'
-            set background=dark
-        endif
-    endif
+" Change the background to dark or light depending upon the time
+function! SetColorscheme()
+  if strftime("%H") >= 7 && strftime("%H") < 19
+    colorscheme Tomorrow
+    set background=light
+  else
+    colorscheme Tomorrow-Night
+    set background=dark
+  endif
 endfunction
 
 " Every time you save a file, call the function to check the time and change
 " the background (if necessary).
 if has("autocmd")
-    autocmd bufwritepost * call SetSolarizedBackground()
+    autocmd bufwritepost * call SetColorscheme()
 endif
 
 
@@ -184,6 +181,9 @@ call togglebg#map("<leader>s")
 " Hacker news - totally useless but awesome
 nnoremap <Leader>h :HackerNews<CR>
 
+" Todo list shortcut
+nnoremap <Leader>t :e ~/Dropbox/todo.txt<CR>
+
 
 "
 " FILE
@@ -201,9 +201,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Enable spellchecking for Markdown files and git commit messages.
-set spell
-set mousemodel=popup
-
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+au! BufRead,BufNewFile *.md set filetype=markdown
+au! BufRead,BufNewFile *.txt set filetype=markdown
+
+" Remove whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
