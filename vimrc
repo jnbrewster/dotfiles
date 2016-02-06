@@ -23,6 +23,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'ajh17/VimCompletesMe'
+Plug 'ryanss/vim-hackernews'
 
 call plug#end()
 
@@ -177,11 +178,11 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-" Easy align interactive.
-vnoremap <silent> <Enter> :EasyAlign<cr>
-
 " Mapping to change between solarized backgrounds
 call togglebg#map("<leader>s")
+
+" Hacker news - totally useless but awesome
+nnoremap <Leader>h :HackerNews<CR>
 
 
 "

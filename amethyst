@@ -174,20 +174,20 @@
         "key": "4"
     },
     "throw-space-5": {
-        "mod": "",
-        "key": ""
+        "mod": "mod1",
+        "key": "5"
     },
     "throw-space-6": {
-        "mod": "",
-        "key": ""
+        "mod": "mod1",
+        "key": "6"
     },
     "throw-space-7": {
-        "mod": "",
-        "key": ""
+        "mod": "mod1",
+        "key": "7"
     },
     "throw-space-8": {
-        "mod": "",
-        "key": ""
+        "mod": "mod1",
+        "key": "8"
     },
     "throw-space-9": {
         "mod": "",

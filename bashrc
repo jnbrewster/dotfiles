@@ -132,6 +132,7 @@ alias todo="vim ~/Documents/todo.txt"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
 alias dcss="ssh joshua@crawl.akrasiac.org"
+alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
 
 
 
