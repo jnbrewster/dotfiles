@@ -114,6 +114,9 @@ set noshowmode
 " Straight tabs
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+
 
 " Remove the silly arrows
 let g:airline_left_sep=''
@@ -139,9 +142,9 @@ endfunction
 
 " Every time you save a file, call the function to check the time and change
 " the background (if necessary).
-if has("autocmd")
-    autocmd bufwritepost * call SetColorscheme()
-endif
+" if has("autocmd")
+"     autocmd bufwritepost * call SetColorscheme()
+" endif
 
 
 "
