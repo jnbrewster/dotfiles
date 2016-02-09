@@ -1,0 +1,6 @@
+set hintchars=hjklasdfg
+set gui=notabs
+
+" Options
+set guioptions=mrTb
+set showtabline=1
