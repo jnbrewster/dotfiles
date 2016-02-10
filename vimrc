@@ -2,6 +2,13 @@
 " ~/.vimrc
 "
 
+" download vim-plug if missing
+if empty(glob("~/.vim/autoload/plug.vim"))
+  silent! execute '!curl --create-dirs -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * silent! PlugInstall
+endif
+
+
 "
 " Plugins
 "
@@ -123,22 +130,22 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 " Set font and size.
-set guifont=Input\ Mono:h13
+set guifont=Input:h13
 
-" Set colorscheme to solarized
+" Set colorscheme
 colorscheme Tomorrow-Night
 set background=dark
 
 " Change the background to dark or light depending upon the time
-function! SetColorscheme()
-  if strftime("%H") >= 7 && strftime("%H") < 19
-    colorscheme Tomorrow
-    set background=light
-  else
-    colorscheme Tomorrow-Night
-    set background=dark
-  endif
-endfunction
+" function! SetColorscheme()
+"   if strftime("%H") >= 7 && strftime("%H") < 19
+"     colorscheme Tomorrow
+"     set background=light
+"   else
+"     colorscheme Tomorrow-Night
+"     set background=dark
+"   endif
+" endfunction
 
 " Every time you save a file, call the function to check the time and change
 " the background (if necessary).
@@ -177,9 +184,6 @@ let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
-
-" Mapping to change between solarized backgrounds
-call togglebg#map("<leader>s")
 
 " Hacker news - totally useless but awesome
 nnoremap <Leader>h :HackerNews<CR>
