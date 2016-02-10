@@ -7,6 +7,7 @@ brew install cmus
 brew install fzf
 brew install git
 brew install imagemagick
+brew install mackup
 brew install mplayer
 brew install pandoc
 brew install ranger
