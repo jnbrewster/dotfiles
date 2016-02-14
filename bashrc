@@ -66,6 +66,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias gg="cd ~"
+alias gdf="cd ~/dotfiles"
 alias gap="cd ~/Applications/"
 alias gbu="cd /Volumes/External/"
 alias gdb="cd /Volumes/External/Dropbox/"
@@ -80,6 +81,10 @@ alias gpt="cd /Volumes/External/Dropbox/Photos/"
 
 alias v='mvim -v'
 alias m="mutt"
+alias n="newsbeuter"
+alias r="ranger"
+alias i="irssi"
+alias h="hangups -c ~/.config/hangups/hangups.conf"
 alias t="tmux"
 alias ta="tmux attach"
 alias lsr="livestreamer"
