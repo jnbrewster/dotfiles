@@ -42,7 +42,6 @@ export HISTSIZE=2000
 
 alias reload="exec $SHELL -l"
 alias s="osascript ~/dotfiles/Scripts/themechanger.scpt"
-alias lock="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
@@ -58,100 +57,59 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; k
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; killall Finder"
 
 alias update="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
-alias karabinerexport="sh ~/dotfiles/Scripts/karabinerexport.sh"
 
 alias ls="ls -G"
 alias ll="ls -otW"
 alias la="ls -a"
 alias l="clear"
-alias d="cd ~/dotfiles"
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 
 alias gg="cd ~"
-alias gdb="cd ~/dropbox/"
-alias gdf="cd ~/dotfiles/"
+alias gap="cd ~/Applications/"
+alias gbu="cd /Volumes/External/"
+alias gdb="cd /Volumes/External/Dropbox/"
+alias gdc="cd /Volumes/External/Dropbox/Documents/"
 alias gdl="cd ~/Downloads/"
 alias gdt="cd ~/Desktop/"
-alias gdv="cd ~/Developer/"
-alias glb="cd ~/Library/"
-alias gms="cd ~/Music/"
-alias gmv="cd ~/Movies"
-alias gpt="cd ~/Pictures/"
-alias gsc="cd ~/Sync/"
-alias gbu="cd /Volumes/Backup/"
+alias gdv="cd /Volumes/External/Dropbox/Developer/"
+alias gms="cd /Volumes/External/Dropbox/Music/"
+alias gmv="cd /Volumes/External/Dropbox/Movies/"
+alias gpt="cd /Volumes/External/Dropbox/Photos/"
 
 
-alias vim='mvim -v'
 alias v='mvim -v'
-alias r="vim ~/.reminders"
-alias rc="rem -m -c"
-alias rn="rem -n"
-alias rw="rem -m -c+1"
-alias rw2="rem -m -c+2"
 alias m="mutt"
-alias p="pymux"
-alias pa="pymux attach"
 alias t="tmux"
 alias ta="tmux attach"
-alias q="qutebrowser"
 alias lsr="livestreamer"
 alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
 alias gif="convert -delay 35 -loop 0 source*.png animated.gif"
 alias html="pandoc input.md -o output.html"
-alias strongbad_email.exe="mutt"
-alias calt='cal_head=`cal | head -1`; cal_tail=`cal | tail -7`; today=`date "+%e"`; echo "$cal_head"; echo -en "${cal_tail/${today}/\033[1;33m${today}\033[0m}";'
-
-alias d="w3m www.duckduckgo.com"
 
 alias commit='git commit -am '
 alias push='git push origin master'
 alias status='git status'
 alias add='git add'
+alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
 
 alias info="sh     ~/dotfiles/Scripts/info.sh"
 alias blocks="sh   ~/dotfiles/Scripts/blocks"
 alias pipes="sh    ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
-alias skulls="sh ~/dotfiles/Scripts/skulls"
-alias skulls2="sh ~/dotfiles/Scripts/skulls2"
 
-alias jeju="sh       ~/dotfiles/Scripts/weather.sh "jeju""
-alias kingscliff="sh ~/dotfiles/Scripts/weather.sh "kingscliff""
-alias melbourne="sh  ~/dotfiles/Scripts/weather.sh "melbourne""
-alias leon="vim      ~/Dropbox/LettersToLeon.md"
-
-alias @e="ls -c ~/Documents | grep @errands"
-alias @h="ls -c ~/Documents | grep @home"
-alias @m="ls -c ~/Documents | grep @mac"
-alias @t="ls -c ~/Documents | grep '@home\|@mac\|@errands'"
-alias todo="vim ~/Documents/todo.txt"
+alias leon="vim /Volumes/External/Dropbox/Documents/Leon/Letters\ to\ Leon.txt"
+alias todo="vim ~/Dropbox/todo.txt"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
 alias dcss="ssh joshua@crawl.akrasiac.org"
-alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
 
 
 
 #
 # HELPERS
 #
-
-# Nvalt style note creator and searcher.
-function n {
-  if [ -n "$1" ]; then
-    vim ~/Documents/$1.md
-  else
-    echo "Usage: n <title>"
-  fi
-}
-
-function ns {
-	ls -c ~/Documents | grep -i $1
-}
 
 # Make a directory and change to it.
 function mkcd {
@@ -180,3 +138,4 @@ export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

@@ -15,20 +15,17 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'itspriddle/vim-javascript-indent'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'itspriddle/vim-javascript-indent'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'ryanss/vim-hackernews'
 
 call plug#end()
 
@@ -48,7 +45,6 @@ set pastetoggle=
 
 " Tab width.
 set tabstop=2
-
 " Tab width when editing.
 set softtabstop=2
 
@@ -105,36 +101,24 @@ set lazyredraw
 " Remove fill characters
 set fillchars=""
 
-" Remove the scrollbars.
-set guioptions-=m  "menu bar
-set guioptions-=T  "toolbar
-set guioptions-=r  "right
-set guioptions-=L  "left
-
-" Show airline tabs and status line
-let g:airline#extensions#tabline#enabled = 1
-
-set laststatus=2
-let g:airline_powerline_fonts = 0
-set noshowmode
-
-" Straight tabs
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-
-
-" Remove the silly arrows
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+" Remove elements.
+if exists("+guioptions")
+  set go-=m   " menu bar
+  set go-=T   " toolbar
+  set go-=r   " right
+  set go-=L   " left
+  set go-=a   " no autoselect to * register
+  set go-=e   " always use text-style tabs
+  set go-=tc  " tearoff menu items and small popup dialogs
+endif
 
 " Set font and size.
-set guifont=Input:h13
+set guifont=Fira\ Code:h13
 
 " Set colorscheme
-colorscheme Tomorrow-Night
+colorscheme spacegray
 set background=dark
+
 
 " Change the background to dark or light depending upon the time
 " function! SetColorscheme()
@@ -185,11 +169,18 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-" Hacker news - totally useless but awesome
-nnoremap <Leader>h :HackerNews<CR>
+" bind to autoclose { } and move up a line.
+inoremap {<CR> {<CR>}<C-o>O
 
-" Todo list shortcut
-nnoremap <Leader>t :e ~/Dropbox/todo.txt<CR>
+" bind to autoclose { }, add ; and move up a line
+inoremap {;<CR> {<CR>};<ESC>O
+
+" Resource vimrc
+nnoremap <Leader>r :so %<CR>
+
+" New tab bind
+nmap <leader>t :tabe<CR>
+
 
 
 "
@@ -202,11 +193,17 @@ set noswapfile
 " Search current folder recursively for searching (via :find)
 set path+=**
 
+" Fix up indents
+filetype plugin indent on
+
 " Remove auto comments.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Set syntax folding
+setlocal foldmethod=syntax
 
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -215,4 +212,6 @@ au! BufRead,BufNewFile *.txt set filetype=markdown
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+
 
