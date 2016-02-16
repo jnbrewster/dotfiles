@@ -26,6 +26,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
+Plug 'FelikZ/ctrlp-py-matcher'
 
 call plug#end()
 
@@ -169,10 +170,13 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-" bind to autoclose { } and move up a line.
+" Speed up ctrlP
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Bind to autoclose { } and move up a line.
 inoremap {<CR> {<CR>}<C-o>O
 
-" bind to autoclose { }, add ; and move up a line
+" Bind to autoclose { }, add ; and move up a line
 inoremap {;<CR> {<CR>};<ESC>O
 
 " Resource vimrc
