@@ -24,6 +24,7 @@ brew install caskroom/cask/brew-cask
 # Apps
 apps=(
   amethyst
+  atom
   dropbox
   firefox
   flux
@@ -49,6 +50,8 @@ apps=(
 # Install apps to /Applications
 echo "installing apps..."
 
+apm install close-onleft ex-mode file-tyle-icons github-plus linter linter-csslint linter-erb linter-jshint linter-ruby minimap minimap-linter minimap-pigments native-gui pigments relative-numbers vim-mode-plus Zen
+
 brew update
 brew upgrade
 brew cleanup
@@ -56,4 +59,3 @@ brew cask cleanup
 
 cd ~
 echo "Finished!"
-
