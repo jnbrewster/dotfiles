@@ -27,6 +27,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'jceb/vim-orgmode'
 
 call plug#end()
 
