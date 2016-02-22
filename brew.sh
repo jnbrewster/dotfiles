@@ -12,7 +12,6 @@ brew install mplayer
 brew install pandoc
 brew install ranger
 brew install screenfetch
-brew install tmux
 brew install wget
 brew install youtube-dl
 brew install ffmpeg
