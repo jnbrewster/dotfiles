@@ -1303,8 +1303,10 @@
 	</data>
 	<key>FontAntialias</key>
 	<true/>
+	<key>FontHeightSpacing</key>
+	<real>0.90000000000000002</real>
 	<key>FontWidthSpacing</key>
-	<real>1.004032258064516</real>
+	<real>0.90000000000000002</real>
 	<key>ProfileCurrentVersion</key>
 	<real>2.04</real>
 	<key>RunCommandAsShell</key>
@@ -1386,11 +1388,15 @@
 	</data>
 	<key>ShowActiveProcessInTabTitle</key>
 	<false/>
+	<key>ShowActiveProcessInTitle</key>
+	<false/>
 	<key>ShowCommandKeyInTitle</key>
 	<false/>
 	<key>ShowDimensionsInTitle</key>
 	<false/>
 	<key>ShowRepresentedURLInTabTitle</key>
+	<false/>
+	<key>ShowRepresentedURLInTitle</key>
 	<false/>
 	<key>ShowShellCommandInTitle</key>
 	<false/>
