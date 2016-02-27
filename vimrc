@@ -15,19 +15,19 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'itspriddle/vim-javascript-indent'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'itspriddle/vim-javascript-indent'
-" Plug 'jelera/vim-javascript-syntax'
+Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
-" Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'jceb/vim-orgmode'
 
 call plug#end()
 
@@ -117,28 +117,15 @@ endif
 " Set font and size.
 set guifont=Fira\ Code:h13
 
-" Set colorscheme
-colorscheme spacegray
-set background=dark
+" Set colortheme
+colorscheme solarized
 
-
-" Change the background to dark or light depending upon the time
-" function! SetColorscheme()
-"   if strftime("%H") >= 7 && strftime("%H") < 19
-"     colorscheme Tomorrow
-"     set background=light
-"   else
-"     colorscheme Tomorrow-Night
-"     set background=dark
-"   endif
-" endfunction
-
-" Every time you save a file, call the function to check the time and change
-" the background (if necessary).
-" if has("autocmd")
-"     autocmd bufwritepost * call SetColorscheme()
-" endif
-
+" Change the background to dark or light depending upon the time 7-7
+if strftime("%H") >= 7 && strftime("%H") < 19
+  set background=light
+else
+  set background=dark
+endif
 
 "
 " INPUT
@@ -174,18 +161,20 @@ let g:fzf_action = {
 " Speed up ctrlP
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
-" Bind to autoclose { } and move up a line.
-inoremap {<CR> {<CR>}<C-o>O
-
-" Bind to autoclose { }, add ; and move up a line
-inoremap {;<CR> {<CR>};<ESC>O
-
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
 
 " New tab bind
 nmap <leader>t :tabe<CR>
 
+" Auto close brackets
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {; {<CR>};<Esc>O
+inoremap {, {<CR>},<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
+inoremap [; [<CR>];<Esc>O
+inoremap [, [<CR>],<Esc>O
 
 
 "
