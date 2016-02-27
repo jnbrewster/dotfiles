@@ -1,8 +1,6 @@
-" download vim-plug if missing
-if empty(glob("~/.vim/autoload/plug.vim"))
-  silent! execute '!curl --create-dirs -fLo ~/.config/nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * silent! PlugInstall
-endif
+"
+" Plugins
+"
 
 call plug#begin('~/.config/nvim/plugged')
 " Pandoc / Markdown
@@ -14,6 +12,7 @@ Plug 'benekastah/neomake'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Raimondi/delimitMate'
 Plug 'ervandew/supertab'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 call plug#end()
 
@@ -21,10 +20,10 @@ call plug#end()
 autocmd! BufWritePost * Neomake
 
 " Tab settings
-set autoindent 
-set backspace=indent,eol,start 
-set complete-=i 
-set smarttab 
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -36,4 +35,22 @@ set relativenumber
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Set theme
-colorscheme spacegray
+set background=dark
+colorscheme solarized
+
+"
+" Remaps
+"
+
+" Search for files in fzf.
+nnoremap <Leader>f :FZF<CR>
+
+" Search history with fzf.
+nmap <silent> <leader>h :History<CR>
+
+" Add keybindings to add located files to a new tab or to splits.
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
