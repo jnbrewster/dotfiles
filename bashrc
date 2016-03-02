@@ -104,8 +104,9 @@ alias blocks="sh   ~/dotfiles/Scripts/blocks"
 alias pipes="sh    ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
 
-alias leon="vim /Volumes/External/Dropbox/Documents/Leon/Letters\ to\ Leon.txt"
-alias todo="vim ~/Dropbox/todo.txt"
+alias leon="v /Volumes/External/Dropbox/Documents/Leon/Letters\ to\ Leon.txt"
+alias to="v /Volumes/External/Dropbox/todo.txt"
+alias ca="v /Volumes/External/Dropbox/calendar.txt"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
 alias dcss="ssh joshua@crawl.akrasiac.org"
