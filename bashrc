@@ -98,6 +98,10 @@ alias push='git push origin master'
 alias status='git status'
 alias add='git add'
 alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
+alias t="tmux"
+alias ta="tmux attach"
+alias p="pymux"
+alias pa="pymux attach"
 
 alias info="sh     ~/dotfiles/Scripts/info.sh"
 alias blocks="sh   ~/dotfiles/Scripts/blocks"
