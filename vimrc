@@ -117,13 +117,16 @@ endif
 " Set font and size.
 set guifont=Fira\ Code:h13
 
-" Set colortheme
-colorscheme solarized
+" Set colorscheme
+colorscheme Tomorrow-Night
+set background=dark
 
 " Change the background to dark or light depending upon the time 7-7
 if strftime("%H") >= 7 && strftime("%H") < 19
+  colorscheme Tomorrow
   set background=light
 else
+  colorscheme Tomorrow-Night
   set background=dark
 endif
 
