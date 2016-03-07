@@ -15,16 +15,16 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'itspriddle/vim-javascript-indent'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
+Plug 'itspriddle/vim-javascript-indent'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
@@ -118,17 +118,29 @@ endif
 set guifont=Fira\ Code:h13
 
 " Set colorscheme
-colorscheme Tomorrow-Night
-set background=dark
+" colorscheme Tomorrow-Night
+" set background=dark
 
 " Change the background to dark or light depending upon the time 7-7
-if strftime("%H") >= 7 && strftime("%H") < 19
+if has ('gui_running')
+  if strftime("%H") >= 7 && strftime("%H") < 19
   colorscheme Tomorrow
   set background=light
 else
   colorscheme Tomorrow-Night
   set background=dark
 endif
+endif
+
+"
+" Theme
+"
+
+hi CursorLine      ctermbg=0    ctermfg=NONE  cterm=NONE
+hi LineNr          ctermbg=NONE ctermfg=0     cterm=NONE
+hi CursorLineNr    ctermbg=NONE ctermfg=3     cterm=NONE
+hi TabLine         ctermbg=15  ctermfg=0      cterm=NONE
+hi TabLineFill     ctermbg=15  ctermfg=239    cterm=NONE
 
 "
 " INPUT
