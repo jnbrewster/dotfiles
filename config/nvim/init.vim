@@ -29,7 +29,12 @@ set relativenumber
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Set colortheme
-colorscheme solarized
+hi CursorLine      ctermbg=0    ctermfg=NONE  cterm=NONE
+hi LineNr          ctermbg=NONE ctermfg=0     cterm=NONE
+hi CursorLineNr    ctermbg=NONE ctermfg=3     cterm=NONE
+hi TabLine         ctermbg=15  ctermfg=0      cterm=NONE
+hi TabLineFill     ctermbg=15  ctermfg=239    cterm=NONE
+
 
 " Change the background to dark or light depending upon the time 7-7
 if strftime("%H") >= 7 && strftime("%H") < 19
