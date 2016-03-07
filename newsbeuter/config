@@ -19,7 +19,7 @@ ignore-mode "display"
 
 # Formatting and colorization ------------------------------------------
 
-color listnormal        color240  default
-color listfocus         color255  color234
-color listfocus_unread  color255     color234
-color info              default   color0
+#color listnormal       white     default
+color listfocus         yellow    black
+color listfocus_unread  yellow    black
+color info              color0    color15
