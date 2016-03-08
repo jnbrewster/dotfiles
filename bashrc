@@ -113,8 +113,6 @@ alias to="v /Volumes/External/Dropbox/todo.txt"
 alias ca="v /Volumes/External/Dropbox/calendar.txt"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
-alias dcss="ssh joshua@crawl.akrasiac.org"
-
 
 
 #
