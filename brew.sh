@@ -15,6 +15,7 @@ brew install screenfetch
 brew install wget
 brew install youtube-dl
 brew install ffmpeg
+brew install https://www.soimort.org/translate-shell/translate-shell.rb
 
 echo "Command line apps installed."
 brew tap caskroom/versions
@@ -49,7 +50,7 @@ apps=(
 # Install apps to /Applications
 echo "installing apps..."
 
-apm install close-onleft ex-mode file-type-icons github-plus linter linter-csslint linter-erb linter-jshint linter-ruby native-gui relative-numbers vim-mode-plus 
+apm install close-onleft ex-mode file-type-icons github-plus linter linter-csslint linter-erb linter-jshint linter-ruby native-gui relative-numbers vim-mode-plus
 
 brew update
 brew upgrade

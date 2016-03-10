@@ -55,6 +55,8 @@ alias empty="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 alias hidden="sh ~/dotfiles/Scripts/togglehidden"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; killall Finder"
+alias tk="trans :ko "
+alias te="trans :en "
 
 alias update="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
 
