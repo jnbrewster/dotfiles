@@ -15,7 +15,7 @@ brew install screenfetch
 brew install wget
 brew install youtube-dl
 brew install ffmpeg
-brew install https://www.soimort.org/translate-shell/translate-shell.rb
+brew install translate-shell
 
 echo "Command line apps installed."
 brew tap caskroom/versions
