@@ -81,7 +81,7 @@ alias gmv="cd /Volumes/External/Dropbox/Movies/"
 alias gpt="cd /Volumes/External/Dropbox/Photos/"
 
 
-alias v='mvim -v'
+alias v='vim'
 alias n="nvim"
 alias mt="mutt"
 alias nb="newsbeuter"

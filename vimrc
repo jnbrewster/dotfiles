@@ -85,7 +85,8 @@ nnoremap tl :tablast<CR>
 set cursorline
 
 " Show relative cursor number.
-set relativenumber
+set number relativenumber
+
 
 " Show current command.
 set showcmd

@@ -1,2 +1,14 @@
 
 author.sh
+
+newsbeuter/cache.db
+
+newsbeuter/history.cmdline
+
+newsbeuter/history.search
+
+newsbeuter/newsbeuter
+
+newsbeuter/urls
+
+qutebrowser/qutebrowser

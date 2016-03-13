@@ -50,7 +50,7 @@ apps=(
 # Install apps to /Applications
 echo "installing apps..."
 
-apm install close-onleft ex-mode file-type-icons github-plus linter linter-csslint linter-erb linter-jshint linter-ruby native-gui relative-numbers vim-mode-plus
+apm install close-onleft ex-mode file-type-icons github-plus linter linter-csslint linter-erb linter-jshint linter-ruby native-gui relative-numbers vim-mode-plus theme-flux
 
 brew update
 brew upgrade
