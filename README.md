@@ -3,4 +3,4 @@
 - cd dotfiles
 - sh install.sh
 
-![Screenshot](https://github.com/jnbrewster/dotfiles/raw/master/assets/Screenshot.png
+![Screenshot](https://github.com/jnbrewster/dotfiles/raw/master/assets/Screenshot.png)
