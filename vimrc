@@ -87,6 +87,8 @@ set cursorline
 " Show relative cursor number.
 set number relativenumber
 
+" set folding
+setlocal foldmethod=manual
 
 " Show current command.
 set showcmd
