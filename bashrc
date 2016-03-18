@@ -109,6 +109,7 @@ alias info="sh     ~/dotfiles/Scripts/info.sh"
 alias blocks="sh   ~/dotfiles/Scripts/blocks"
 alias pipes="sh    ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
+alias poke="sh ~/dotfiles/Scripts/poke"
 
 alias leon="v /Volumes/External/Dropbox/Documents/Leon/Letters\ to\ Leon.txt"
 alias to="v /Volumes/External/Dropbox/todo.txt"
