@@ -79,6 +79,7 @@ alias gdv="cd /Volumes/External/Dropbox/Developer/"
 alias gms="cd /Volumes/External/Dropbox/Music/"
 alias gmv="cd /Volumes/External/Dropbox/Movies/"
 alias gpt="cd /Volumes/External/Dropbox/Photos/"
+alias gga="cd /Volumes/External/Dropbox/GeneralAssembly/"
 
 
 alias v='vim'
@@ -90,7 +91,6 @@ alias ir="irssi"
 alias cm="cmus"
 alias hu="hangups"
 alias lr="livestreamer"
-alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
 alias gif="convert -delay 35 -loop 0 source*.png animated.gif"
 alias html="pandoc input.md -o output.html"
