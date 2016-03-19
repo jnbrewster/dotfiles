@@ -28,6 +28,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
+Plug 'jnbrewster/plaintasks.vim'
 
 call plug#end()
 
@@ -88,7 +89,7 @@ set cursorline
 set number relativenumber
 
 " set folding
-setlocal foldmethod=manual
+set foldmethod=manual
 
 " Show current command.
 set showcmd
@@ -118,7 +119,7 @@ if exists("+guioptions")
 endif
 
 " Set font and size.
-set guifont=Fira\ Code:h13
+set guifont=Fira\ Code:h14
 
 " Set colorscheme
 " colorscheme Tomorrow-Night
@@ -219,11 +220,9 @@ setlocal foldmethod=syntax
 
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-au! BufRead,BufNewFile *.md set filetype=markdown
-au! BufRead,BufNewFile *.txt set filetype=markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.txt set filetype=markdown
+autocmd BufNewFile,BufRead todo.txt set filetype=plaintasks
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
-
-
-
