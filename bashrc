@@ -113,6 +113,10 @@ alias poke="sh ~/dotfiles/Scripts/poke"
 
 alias leon="v /Volumes/External/Dropbox/Documents/Leon/Letters\ to\ Leon.txt"
 alias to="v /Volumes/External/Dropbox/todo.txt"
+alias @m="grep @mac /Volumes/External/Dropbox/todo.txt"
+alias @h="grep @home /Volumes/External/Dropbox/todo.txt"
+alias @d="grep @due /Volumes/External/Dropbox/todo.txt"
+
 alias ca="v /Volumes/External/Dropbox/calendar.txt"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
