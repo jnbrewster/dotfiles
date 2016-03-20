@@ -44,7 +44,7 @@ apps=(
   steam
   the-unarchiver
   transmission
-  vlc
+  mplayerx
 )
 
 # Install apps to /Applications
