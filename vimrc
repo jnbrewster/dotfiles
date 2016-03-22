@@ -28,7 +28,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'jnbrewster/plaintasks.vim'
+Plug 'vim-scripts/todo-txt.vim'
 
 call plug#end()
 
@@ -218,8 +218,15 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.txt set filetype=markdown
-autocmd BufNewFile,BufRead todo.txt set filetype=plaintasks
+
+" Use todo#complete as the omni complete function for todo files
+au filetype todo setlocal omnifunc=todo#complete
+
+" Auto complete projects
+au filetype todo imap <buffer> + +<C-X><C-O>
+
+" Auto complete contexts
+au filetype todo imap <buffer> @ @<C-X><C-O>
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e

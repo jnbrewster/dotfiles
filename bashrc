@@ -100,9 +100,9 @@ alias push='git push origin master'
 alias status='git status'
 alias add='git add'
 alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
-alias t="tmux"
+alias tm="tmux"
 alias ta="tmux attach"
-alias p="pymux"
+alias pm="pymux"
 alias pa="pymux attach"
 
 alias info="sh     ~/dotfiles/Scripts/info.sh"
@@ -116,6 +116,8 @@ alias to="v /Volumes/External/Dropbox/todo.txt"
 alias @m="grep @mac /Volumes/External/Dropbox/todo.txt"
 alias @h="grep @home /Volumes/External/Dropbox/todo.txt"
 alias @d="grep @due /Volumes/External/Dropbox/todo.txt"
+alias t="todo.sh"
+alias +="todo.sh add"
 
 alias ca="v /Volumes/External/Dropbox/calendar.txt"
 
