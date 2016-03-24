@@ -1,10 +1,9 @@
-colorscheme Tomorrow-Night
 set showtabline=never
 set hintkeys='asdfghjkl'
 hi -a Hint font-size: 11pt !important;
 hi CmdLine -append font-size:12px
 hi CompDesc -append font-size:12px
-hi FontCode font-family: Fira Code Retina !important;
+hi FontCode font-family: Input !important;
 
 set hlfind
 set incfind
