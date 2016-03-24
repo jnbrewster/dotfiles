@@ -1,4 +1,4 @@
-cd /Volumes/External/Dropbox/Music
+cd ~/Music
 set softvol=true
 set color_cmdline_attr=default
 set color_cmdline_bg=default
