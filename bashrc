@@ -99,6 +99,7 @@ alias commit='git commit -am '
 alias push='git push origin master'
 alias status='git status'
 alias add='git add'
+alias clone="git clone"
 alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
 alias tm="tmux"
 alias ta="tmux attach"
@@ -155,4 +156,5 @@ export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PATH=/usr/local/bin:$PATH
 
