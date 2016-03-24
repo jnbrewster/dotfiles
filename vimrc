@@ -28,7 +28,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/todo-txt.vim'
+Plug 'freitass/todo.txt-vim'
 
 call plug#end()
 
@@ -86,7 +86,7 @@ nnoremap tl :tablast<CR>
 set cursorline
 
 " Show relative cursor number.
-set number relativenumber
+set relativenumber
 
 " set folding
 set foldmethod=manual
@@ -134,17 +134,20 @@ else
   colorscheme Tomorrow-Night
   set background=dark
 endif
+  colorscheme Tomorrow-Night
+  set background=dark
 endif
 
 "
 " Theme
 "
 
-hi CursorLine      ctermbg=0    ctermfg=NONE   cterm=NONE
-hi LineNr          ctermbg=NONE ctermfg=0      cterm=NONE
-hi CursorLineNr    ctermbg=NONE ctermfg=3      cterm=NONE
-hi TabLine         ctermbg=15   ctermfg=0      cterm=NONE
-hi TabLineFill     ctermbg=15   ctermfg=239    cterm=NONE
+" hi CursorLine      ctermbg=0    ctermfg=NONE   cterm=NONE
+" hi LineNr          ctermbg=NONE ctermfg=0      cterm=NONE
+" hi CursorLineNr    ctermbg=NONE ctermfg=3      cterm=NONE
+" hi TabLine         ctermbg=15   ctermfg=0      cterm=NONE
+" hi TabLineFill     ctermbg=15   ctermfg=239    cterm=NONE
+
 
 "
 " INPUT
@@ -220,13 +223,7 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Use todo#complete as the omni complete function for todo files
-au filetype todo setlocal omnifunc=todo#complete
-
-" Auto complete projects
-au filetype todo imap <buffer> + +<C-X><C-O>
-
-" Auto complete contexts
-au filetype todo imap <buffer> @ @<C-X><C-O>
+" au filetype todo setlocal omnifunc=todo#complete
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
