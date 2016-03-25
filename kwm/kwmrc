@@ -113,7 +113,8 @@ kwmc config prefix-border color FF34C749
 kwmc bind cmd+alt+ctrl-q quit
 
 # Launch applications
-kwmc bind cmd-return sys open -na ~/Applications/iTerm.app
+#kwmc bind cmd-return sys open -na ~/Applications/iTerm.app
+kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
 
 # Toggle Focus Autoraise
 kwmc bind cmd+alt+ctrl-t config focus toggle
@@ -128,7 +129,8 @@ kwmc bind cmd+ctrl-s space -t monocle
 kwmc bind cmd+ctrl-d space -t float
 
 # Rotate Window-Tree By 90* (Clockwise)
-kwmc bind cmd+ctrl-r tree -r 90
+kwmc bind cmd+ctrl-r tree -r 180
+# removed vertical as I never use it
 
 # Modify Container
 kwmc bind prefix-s window -c split
