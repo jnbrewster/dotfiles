@@ -143,7 +143,7 @@ endif
 "
 
 hi CursorLine      ctermbg=0    ctermfg=NONE   cterm=NONE
-hi LineNr          ctermbg=NONE ctermfg=0      cterm=NONE
+hi LineNr          ctermbg=NONE ctermfg=240    cterm=NONE
 hi TabLine         ctermbg=15   ctermfg=0      cterm=NONE
 hi TabLineFill     ctermbg=15   ctermfg=239    cterm=NONE
 
