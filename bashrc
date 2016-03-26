@@ -68,17 +68,18 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias gg="cd ~"
-alias gdf="cd ~/dotfiles"
+alias gdt="cd ~/dotfiles"
 alias gap="cd ~/Applications/"
-alias gbu="cd /Volumes/External/"
-alias gdb="cd /Volumes/External/Dropbox/"
+alias gex="cd /Volumes/External/"
+alias gdr="cd /Volumes/External/Dropbox/"
 alias gdc="cd /Volumes/External/Dropbox/Documents/"
-alias gdl="cd ~/Downloads/"
-alias gdt="cd ~/Desktop/"
+alias gdw="cd ~/Downloads/"
+alias gds="cd ~/Desktop/"
 alias gdv="cd /Volumes/External/Dropbox/Developer/"
 alias gms="cd /Volumes/External/Dropbox/Music/"
 alias gmv="cd /Volumes/External/Dropbox/Movies/"
-alias gpt="cd /Volumes/External/Dropbox/Photos/"
+alias gph="cd /Volumes/External/Dropbox/Photos/"
+alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
 alias gga="cd /Volumes/External/Dropbox/GeneralAssembly/"
 
 
