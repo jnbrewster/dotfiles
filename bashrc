@@ -68,6 +68,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias gg="cd ~"
+alias gh="cd ~"
 alias gdt="cd ~/dotfiles"
 alias gap="cd ~/Applications/"
 alias gex="cd /Volumes/External/"
