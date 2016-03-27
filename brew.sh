@@ -4,6 +4,7 @@
 brew update
 
 brew install cmus
+brew install --devel elinks
 brew install fzf
 brew install git
 brew install imagemagick
@@ -17,7 +18,6 @@ brew install poppler
 brew install ranger
 brew install screenfetch
 brew install todo-txt
-brew install w3m
 brew install wget
 brew install youtube-dl
 brew install ffmpeg

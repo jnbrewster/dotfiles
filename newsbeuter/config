@@ -1,4 +1,4 @@
-browser "w3m %u"
+browser "elinks %u"
 cleanup-on-quit yes
 refresh-on-startup yes
 show-read-feeds no

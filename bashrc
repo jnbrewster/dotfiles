@@ -96,6 +96,7 @@ alias lv="livestreamer"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
 alias gif="convert -delay 35 -loop 0 source*.png animated.gif"
 alias html="pandoc input.md -o output.html"
+alias pdf="pdftotext"
 
 alias commit='git commit -am '
 alias push='git push origin master'
@@ -103,6 +104,7 @@ alias status='git status'
 alias add='git add'
 alias clone="git clone"
 alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
+alias ddg="elinks www.duckduckgo.com"
 alias tm="tmux"
 alias ta="tmux attach"
 alias pm="pymux"
