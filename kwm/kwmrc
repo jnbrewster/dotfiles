@@ -84,7 +84,7 @@ kmc config add-role AXDialog mplayerX
 # If the name consist of multiple words, the command
 # looks like: kwmc config float Google Chrome
 kwmc config float Steam
-kwmc config float Photoshop
+kwmc config float Pixelmator
 
 # The following command captures an application to the
 # given screen, if the screen exists. By doing this
@@ -94,18 +94,19 @@ kwmc config float Photoshop
 # Enable border for focused window
 kwmc config focused-border on
 kwmc config focused-border size 2
-kwmc config focused-border color FFFC625D
+#kwmc config focused-border color FFC4C7C4
+kwmc config focused-border color FFE3E3E3
 #aarrggbb
 
 # Enable border for marked window
 kwmc config marked-border on
-kwmc config marked-border size 2
-kwmc config marked-border color FFFDBD41
+kwmc config marked-border size 4
+kwmc config marked-border color FF82A2BD
 
 # Change border color when prefix-key is active
 kwmc config prefix-border on
-kwmc config prefix-border size 2
-kwmc config prefix-border color FF34C749
+kwmc config prefix-border size 4
+kwmc config prefix-border color FF8C9346
 
 ########  Default Keybinds ########
 
@@ -113,8 +114,8 @@ kwmc config prefix-border color FF34C749
 kwmc bind cmd+alt+ctrl-q quit
 
 # Launch applications
-#kwmc bind cmd-return sys open -na ~/Applications/iTerm.app
-kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
+kwmc bind cmd-return sys open -na ~/Applications/iTerm2.app
+#kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
 
 # Toggle Focus Autoraise
 kwmc bind cmd+alt+ctrl-t config focus toggle
