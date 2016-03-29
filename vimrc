@@ -76,6 +76,10 @@ set incsearch
 set splitbelow
 set splitright
 
+" Remap leader
+let mapleader = ","
+let maplocalleader = ","
+
 " Remaps for moving around tabs with right hand.
 noremap tn :tabnew<Space>
 

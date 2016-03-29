@@ -19,7 +19,7 @@
 # include binds
 
 # Set default values for screen padding
-kwmc config padding 30 10 10 10
+kwmc config padding 25 10 10 10
 
 # Set default values for container gaps
 kwmc config gap 15 15
@@ -93,20 +93,21 @@ kwmc config float Pixelmator
 
 # Enable border for focused window
 kwmc config focused-border on
-kwmc config focused-border size 2
+kwmc config focused-border size 1
 #kwmc config focused-border color FFC4C7C4
 kwmc config focused-border color FFE3E3E3
+#kwmc config focused-border color FFB5BC6C
 #aarrggbb
 
 # Enable border for marked window
 kwmc config marked-border on
-kwmc config marked-border size 4
-kwmc config marked-border color FF82A2BD
+kwmc config marked-border size 1
+kwmc config marked-border color FFCA6768
 
 # Change border color when prefix-key is active
 kwmc config prefix-border on
-kwmc config prefix-border size 4
-kwmc config prefix-border color FF8C9346
+kwmc config prefix-border size 1
+kwmc config prefix-border color FFEFC57A
 
 ########  Default Keybinds ########
 
@@ -114,7 +115,8 @@ kwmc config prefix-border color FF8C9346
 kwmc bind cmd+alt+ctrl-q quit
 
 # Launch applications
-kwmc bind cmd-return sys open -na ~/Applications/iTerm2.app
+#kwmc bind cmd-return sys open -na ~/Applications/iTerm2.app
+kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
 #kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
 kwmc bind cmd+alt+-n sys /usr/local/bin/cmus-remote --next
 kwmc bind cmd+alt+-c sys /usr/local/bin/cmus-remote -u
