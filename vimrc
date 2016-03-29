@@ -29,6 +29,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'freitass/todo.txt-vim'
+Plug 'Raimondi/delimitMate'
+Plug 'jceb/vim-orgmode'
+Plug 'mattn/calendar-vim'
 
 call plug#end()
 
@@ -119,7 +122,7 @@ if exists("+guioptions")
 endif
 
 " Set font and size.
-set guifont=Fira\ Code:h14
+set guifont=Input:h14
 
 " Set colorscheme
 " colorscheme Tomorrow-Night
@@ -146,6 +149,14 @@ hi CursorLine      ctermbg=0    ctermfg=NONE   cterm=NONE
 hi LineNr          ctermbg=NONE ctermfg=240    cterm=NONE
 hi TabLine         ctermbg=15   ctermfg=0      cterm=NONE
 hi TabLineFill     ctermbg=15   ctermfg=239    cterm=NONE
+hi Pmenu           ctermbg=235  ctermfg=137    cterm=NONE
+hi PmenuSel        ctermbg=234  ctermfg=196    cterm=NONE
+hi PmenuSbar       ctermbg=235  ctermfg=000    cterm=NONE
+hi PmenuThumb      ctermbg=235  ctermfg=137    cterm=NONE
+hi Todo            ctermbg=NONE ctermfg=NONE   cterm=NONE
+hi IncSearch       ctermbg=9    ctermfg=0      cterm=NONE
+hi Search          ctermbg=2    ctermfg=232    cterm=NONE
+
 
 
 "
@@ -226,3 +237,5 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+:let g:org_agenda_files=['/Volumes/External/Dropbox/life.org', '/Volumes/External/Dropbox/dates.org']

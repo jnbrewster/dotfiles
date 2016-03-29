@@ -31,7 +31,7 @@ kwmc config tiling bsp
 kwmc config hotkeys on
 
 # Set prefix for Kwms hotkeys
-kwmc config prefix-key ctrl-x
+kwmc config prefix-key ctrl-z
 
 # Prefix is not applied globally
 kwmc config prefix-global off
@@ -116,6 +116,8 @@ kwmc bind cmd+alt+ctrl-q quit
 # Launch applications
 kwmc bind cmd-return sys open -na ~/Applications/iTerm2.app
 #kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
+kwmc bind cmd+alt+-n sys /usr/local/bin/cmus-remote --next
+kwmc bind cmd+alt+-c sys /usr/local/bin/cmus-remote -u
 
 # Toggle Focus Autoraise
 kwmc bind cmd+alt+ctrl-t config focus toggle
