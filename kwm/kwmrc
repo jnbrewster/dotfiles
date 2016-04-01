@@ -93,20 +93,18 @@ kwmc config float Pixelmator
 
 # Enable border for focused window
 kwmc config focused-border on
-kwmc config focused-border size 1
-#kwmc config focused-border color FFC4C7C4
+kwmc config focused-border size 2
 kwmc config focused-border color FFE3E3E3
-#kwmc config focused-border color FFB5BC6C
 #aarrggbb
 
 # Enable border for marked window
 kwmc config marked-border on
-kwmc config marked-border size 1
+kwmc config marked-border size 2
 kwmc config marked-border color FFCA6768
 
 # Change border color when prefix-key is active
 kwmc config prefix-border on
-kwmc config prefix-border size 1
+kwmc config prefix-border size 2
 kwmc config prefix-border color FFEFC57A
 
 ########  Default Keybinds ########
@@ -115,9 +113,17 @@ kwmc config prefix-border color FFEFC57A
 kwmc bind cmd+alt+ctrl-q quit
 
 # Launch applications
-#kwmc bind cmd-return sys open -na ~/Applications/iTerm2.app
 kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
-#kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
+kwmc bind cmd+alt-a sys open -na ~/Applications/Atom.app
+kwmc bind cmd+alt-c sys open -na /Applications/Calendar.app
+kwmc bind cmd+alt-g sys open -na ~/Applications/GitHub\ Desktop.app
+kwmc bind cmd+alt-i sys open -na ~/Applications/ImageOptim.app
+kwmc bind cmd+alt-m sys open -na ~/Applications/MPlayerX.app
+kwmc bind cmd+alt-p sys open -na /Applications/Photos.app
+kwmc bind cmd+alt-s sys open -na /Applications/Safari.app
+kwmc bind cmd+alt-t sys open -na ~/Applications/iTerm2.app
+kwmc bind cmd+alt-v sys open -na ~/Applications/MacVim.app
+
 kwmc bind cmd+alt+-n sys /usr/local/bin/cmus-remote --next
 kwmc bind cmd+alt+-c sys /usr/local/bin/cmus-remote -u
 

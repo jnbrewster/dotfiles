@@ -16,6 +16,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -28,10 +29,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'freitass/todo.txt-vim'
-Plug 'Raimondi/delimitMate'
-Plug 'jceb/vim-orgmode'
-Plug 'mattn/calendar-vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -133,17 +131,17 @@ set guifont=Input:h14
 " set background=dark
 
 " Change the background to dark or light depending upon the time 7-7
-if has ('gui_running')
-  if strftime("%H") >= 7 && strftime("%H") < 19
-  colorscheme Tomorrow
-  set background=light
-else
-  colorscheme Tomorrow-Night
-  set background=dark
-endif
-  colorscheme Tomorrow-Night
-  set background=dark
-endif
+"if has ('gui_running')
+ if strftime("%H") >= 7 && strftime("%H") < 19
+   colorscheme Tomorrow
+   set background=light
+ else
+   colorscheme Tomorrow-Night
+   set background=dark
+ endif
+"    colorscheme Tomorrow-Night
+"    set background=dark
+" endif
 
 "
 " Theme
@@ -235,6 +233,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost life.txt set filetype=markdown
 
 " Use todo#complete as the omni complete function for todo files
 " au filetype todo setlocal omnifunc=todo#complete
