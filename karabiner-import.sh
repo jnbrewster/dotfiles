@@ -12,7 +12,7 @@ $cli set remap.fkeys_to_consumer_f1 1
 /bin/echo -n .
 $cli set remap.help2f13 1
 /bin/echo -n .
-$cli set remap.vimnormal_toggle_fn2fn 1
+$cli set remap.vimnormal_commandr_toggle 1
 /bin/echo -n .
 $cli set repeat.wait 33
 /bin/echo -n .
