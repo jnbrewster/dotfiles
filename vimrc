@@ -240,4 +240,4 @@ autocmd BufNewFile,BufReadPost life.txt set filetype=markdown
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-:let g:org_agenda_files=['/Volumes/External/Dropbox/life.org', '/Volumes/External/Dropbox/dates.org']
+let g:vimwiki_list = [{'path': '/Volumes/External/Dropbox/Wiki/'}]
