@@ -16,10 +16,10 @@
 # include filename
 #
 # e.g: bind-commands in a separate file called 'binds'
-# include binds
+include binds
 
 # Set default values for screen padding
-kwmc config padding 25 10 10 10
+kwmc config padding 15 15 15 15
 
 # Set default values for container gaps
 kwmc config gap 15 15
@@ -70,21 +70,20 @@ kwmc config cycle-focus screen
 kwmc config split-ratio 0.5
 
 # New splits become the left leaf-node
-kwmc config spawn right
+kwmc config spawn left
 
 # Add custom tiling rules for applications that
 # does not get tiled by Kwm by default.
 # This is because some applications do not have the
 # AXWindowRole and AXStandardWindowSubRole
 kwmc config add-role AXDialog iTerm2
-kmc config add-role AXDialog mplayerX
 
 # The following command blacklists a specific application
 # from Kwms tiling (PS: The app name is case-sensitive)
 # If the name consist of multiple words, the command
 # looks like: kwmc config float Google Chrome
 kwmc config float Steam
-kwmc config float Pixelmator
+kwmc config float Photoshop
 
 # The following command captures an application to the
 # given screen, if the screen exists. By doing this
@@ -95,7 +94,6 @@ kwmc config float Pixelmator
 kwmc config focused-border on
 kwmc config focused-border size 2
 kwmc config focused-border color FFE3E3E3
-#aarrggbb
 
 # Enable border for marked window
 kwmc config marked-border on
@@ -112,20 +110,8 @@ kwmc config prefix-border color FFEFC57A
 # Quit Kwm
 kwmc bind cmd+alt+ctrl-q quit
 
-# Launch applications
-kwmc bind cmd-return sys open -na ~/Applications/iTerm2.app
-kwmc bind cmd+alt-a sys open -na ~/Applications/Atom.app
-kwmc bind cmd+alt-c sys open -na /Applications/Calendar.app
-kwmc bind cmd+alt-g sys open -na ~/Applications/GitHub\ Desktop.app
-kwmc bind cmd+alt-i sys open -na ~/Applications/ImageOptim.app
-kwmc bind cmd+alt-m sys open -na ~/Applications/MPlayerX.app
-kwmc bind cmd+alt-p sys open -na /Applications/Photos.app
-kwmc bind cmd+alt-s sys open -na /Applications/Safari.app
-kwmc bind cmd+alt-t sys open -na /Applications/Utilities/Terminal.app
-kwmc bind cmd+alt-v sys open -na ~/Applications/MacVim.app
-
-kwmc bind cmd+alt+-n sys /usr/local/bin/cmus-remote --next
-kwmc bind cmd+alt+-c sys /usr/local/bin/cmus-remote -u
+# Launch iTerm2
+# kwmc bind cmd-return sys open -na /Applications/iTerm2.app
 
 # Toggle Focus Autoraise
 kwmc bind cmd+alt+ctrl-t config focus toggle
@@ -140,8 +126,7 @@ kwmc bind cmd+ctrl-s space -t monocle
 kwmc bind cmd+ctrl-d space -t float
 
 # Rotate Window-Tree By 90* (Clockwise)
-kwmc bind cmd+ctrl-r tree -r 180
-# removed vertical as I never use it
+kwmc bind cmd+ctrl-r tree -r 90
 
 # Modify Container
 kwmc bind prefix-s window -c split
@@ -212,4 +197,4 @@ kwmc bind prefix-down space -p increase bottom
 kwmc bind prefix+shift-left space -p decrease left
 kwmc bind prefix+shift-right space -p decrease right
 kwmc bind prefix+shift-up space -p decrease top
-kwmc bind prefix+shift-down space -p decrease bottom
+kwmc bind prefix+shift-down space -p decrease bottom)
