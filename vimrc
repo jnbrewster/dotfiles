@@ -30,6 +30,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/seoul256.vim'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -75,8 +77,8 @@ set splitbelow
 set splitright
 
 " Remap leader
-let mapleader = ","
-let maplocalleader = ","
+let mapleader      = ' '
+let maplocalleader = ' '
 
 " Remaps for moving around tabs with right hand.
 noremap tn :tabnew<Space>
@@ -126,19 +128,16 @@ endif
 " Set font and size.
 set guifont=Input:h14
 
-" Set colorscheme
-" colorscheme Tomorrow-Night
-" set background=dark
-
+colo spacegray
 " Change the background to dark or light depending upon the time 7-7
 "if has ('gui_running')
- if strftime("%H") >= 7 && strftime("%H") < 19
-   colorscheme Tomorrow
-   set background=light
- else
-   colorscheme Tomorrow-Night
-   set background=dark
- endif
+"if strftime("%H") >= 7 && strftime("%H") < 19
+"  colorscheme Tomorrow
+"  set background=light
+"else
+"  colorscheme Tomorrow-Night
+"  set background=dark
+"endif
 "    colorscheme Tomorrow-Night
 "    set background=dark
 " endif
