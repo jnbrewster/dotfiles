@@ -1,14 +1,16 @@
 # Launch applications
-kwmc bind cmd-return sys open -na ~/Applications/iTerm2.app
-kwmc bind cmd+alt-a sys open -na ~/Applications/Atom.app
-kwmc bind cmd+alt-c sys open -na /Applications/Calendar.app
-kwmc bind cmd+alt-g sys open -na ~/Applications/GitHub\ Desktop.app
-kwmc bind cmd+alt-i sys open -na ~/Applications/ImageOptim.app
-kwmc bind cmd+alt-m sys open -na ~/Applications/MPlayerX.app
-kwmc bind cmd+alt-p sys open -na /Applications/Photos.app
-kwmc bind cmd+alt-s sys open -na /Applications/Safari.app
-kwmc bind cmd+alt-t sys open -na /Applications/Utilities/Terminal.app
-kwmc bind cmd+alt-v sys open -na ~/Applications/MacVim.app
+
+
+kwmc bind cmd-return sys open -na /Applications/Utilities/Terminal.app
+kwmc bind cmd+alt+ctrl-a sys open -na ~/Applications/Atom.app
+kwmc bind cmd+alt+ctrl-c sys open -na /Applications/Calendar.app
+kwmc bind cmd+alt+ctrl-g sys open -na ~/Applications/GitHub\ Desktop.app
+kwmc bind cmd+alt+ctrl-i sys open -na ~/Applications/ImageOptim.app
+kwmc bind cmd+alt+ctrl-m sys open -na ~/Applications/MPlayerX.app
+kwmc bind cmd+alt+ctrl-p sys open -na /Applications/Photos.app
+kwmc bind cmd+alt+ctrl-s sys open -na /Applications/Safari.app
+kwmc bind cmd+alt+ctrl-t sys open -na ~/Applications/iTerm2.app
+kwmc bind cmd+alt+ctrl-v sys open -na ~/Applications/MacVim.app
 
 kwmc bind cmd+alt+-n sys /usr/local/bin/cmus-remote --next
 kwmc bind cmd+alt+-c sys /usr/local/bin/cmus-remote -u
@@ -23,3 +25,5 @@ kwmc bind cmd+ctrl-j window -f south
 kwmc bind cmd+ctrl-k window -f north
 
 
+$kwmc display -c vertical
+kwmc display -c vertical
