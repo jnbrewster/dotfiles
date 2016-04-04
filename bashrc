@@ -86,7 +86,6 @@ alias gga="cd /Volumes/External/Dropbox/GeneralAssembly/"
 
 
 alias v='vim'
-alias n="nvim"
 alias mt="mutt"
 alias nw="newsbeuter"
 alias rn="ranger"
