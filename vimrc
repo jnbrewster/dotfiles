@@ -29,8 +29,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'vimwiki/vimwiki'
-Plug 'junegunn/seoul256.vim'
 Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
@@ -126,7 +124,7 @@ if exists("+guioptions")
 endif
 
 " Set font and size.
-set guifont=Input:h13
+set guifont=Input:h14
 
 if has ('gui_running')
   colo spacegray
@@ -236,7 +234,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost life.txt set filetype=markdown
 
 " Use todo#complete as the omni complete function for todo files
 " au filetype todo setlocal omnifunc=todo#complete
@@ -244,4 +241,3 @@ autocmd BufNewFile,BufReadPost life.txt set filetype=markdown
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-let g:vimwiki_list = [{'path': '/Volumes/External/Dropbox/Wiki/'}]
