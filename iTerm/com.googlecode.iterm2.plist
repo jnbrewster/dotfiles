@@ -399,13 +399,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>744 399 670 363 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 594 606 456 0 0 1680 1050 </string>
+	<string>270 571 606 456 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>71 11 700 497 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>848 12 820 1011 0 0 1680 1050 </string>
+	<string>18 19 1644 1013 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>431 12 397 497 0 0 1680 1027 </string>
+	<string>10 14 821 1007 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>847 14 821 1007 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -1210,6 +1210,8 @@
 	<false/>
 	<key>SUSkippedVersion</key>
 	<string>2.9.20160324-nightly</string>
+	<key>TabStyle</key>
+	<integer>1</integer>
 	<key>UseBorder</key>
 	<false/>
 	<key>iTerm Version</key>

@@ -2,6 +2,7 @@
   "LAYOUTS": "----------------------",
     "layouts": [
       "tall",
+      "wide",
     "fullscreen",
     ],
 
@@ -18,8 +19,9 @@
     "control"
     ],
     "mod2": [
-      "control",
-    "option",
+      "command",
+    "control",
+    "shift"
     ],
 
     "COMMANDS": "----------------------",
@@ -66,16 +68,16 @@
       "key": ""
     },
     "select-tall-layout": {
-      "mod": "",
-      "key": ""
+      "mod": "mod1",
+      "key": "a"
     },
     "select-wide-layout": {
-      "mod": "",
-      "key": ""
+      "mod": "mod1",
+      "key": "x"
     },
     "select-fullscreen-layout": {
-      "mod": "",
-      "key": ""
+      "mod": "mod1",
+      "key": "s"
     },
     "select-column-layout": {
       "mod": "",
@@ -195,11 +197,11 @@
     },
     "toggle-float": {
       "mod": "mod1",
-      "key": "w"
+      "key": "z"
     },
     "toggle-tiling": {
       "mod": "mod1",
-      "key": "t"
+      "key": "a"
     },
     "display-current-layout": {
       "mod": "",
