@@ -148,12 +148,12 @@
       "key": ""
     },
     "swap-ccw": {
-      "mod": "",
-      "key": ""
+      "mod": "mod2",
+      "key": "r"
     },
     "swap-cw": {
-      "mod": "",
-      "key": ""
+      "mod": "mod1",
+      "key": "r"
     },
     "swap-main": {
       "mod": "mod1",
