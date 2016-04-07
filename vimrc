@@ -126,23 +126,25 @@ endif
 " Set font and size.
 set guifont=Input:h14
 
-if has ('gui_running')
-  colo spacegray
-end
+" if has ('gui_running')
+"   colo spacegray
+" end
 
 set laststatus=2
 " Change the background to dark or light depending upon the time 7-7
-"if has ('gui_running')
-"if strftime("%H") >= 7 && strftime("%H") < 19
-"  colorscheme Tomorrow
-"  set background=light
-"else
-"  colorscheme Tomorrow-Night
-"  set background=dark
-"endif
-"    colorscheme Tomorrow-Night
-"    set background=dark
-" endif
+if strftime("%H") >= 7 && strftime("%H") < 19
+  colorscheme Tomorrow
+  set background=light
+else
+  colorscheme Tomorrow-Night
+  set background=dark
+endif
+
+
+if !has ('gui_running')
+  colorscheme Tomorrow-Night
+  set background=dark
+endif
 
 "
 " Theme
