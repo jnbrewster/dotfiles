@@ -401,7 +401,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>269 545 606 456 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 1679 1023 0 0 1680 1027 </string>
+	<string>14 15 482 340 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -648,7 +648,7 @@
 				<real>1</real>
 			</dict>
 			<key>Blinking Cursor</key>
-			<false/>
+			<true/>
 			<key>Blur</key>
 			<false/>
 			<key>Bold Color</key>
@@ -1110,7 +1110,7 @@
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
-			<true/>
+			<false/>
 			<key>Use Bright Bold</key>
 			<true/>
 			<key>Use Italic Font</key>
@@ -1175,6 +1175,8 @@
 	<key>PrefsCustomFolder</key>
 	<string>/Users/joel/dotfiles</string>
 	<key>PromptOnQuit</key>
+	<false/>
+	<key>RestoreWindowContents</key>
 	<false/>
 	<key>RunJobsInServers</key>
 	<false/>
