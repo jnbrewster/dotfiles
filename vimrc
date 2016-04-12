@@ -30,6 +30,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
+Plug 'joelbrewster/Tomorrow'
 
 call plug#end()
 
@@ -124,13 +125,11 @@ if exists("+guioptions")
 endif
 
 " Set font and size.
-set guifont=Input:h14
+set guifont=Fira\ Code:h13
 
-" if has ('gui_running')
-"   colo spacegray
-" end
-
+" Show statusline
 set laststatus=2
+
 " Change the background to dark or light depending upon the time 7-7
 if strftime("%H") >= 7 && strftime("%H") < 19
   colorscheme Tomorrow
@@ -139,29 +138,6 @@ else
   colorscheme Tomorrow-Night
   set background=dark
 endif
-
-
-if !has ('gui_running')
-  colorscheme Tomorrow-Night
-  set background=dark
-endif
-
-"
-" Theme
-"
-
-hi CursorLine      ctermbg=0    ctermfg=NONE   cterm=NONE
-hi LineNr          ctermbg=NONE ctermfg=240    cterm=NONE
-hi TabLine         ctermbg=15   ctermfg=0      cterm=NONE
-hi TabLineFill     ctermbg=15   ctermfg=239    cterm=NONE
-hi Pmenu           ctermbg=235  ctermfg=137    cterm=NONE
-hi PmenuSel        ctermbg=234  ctermfg=196    cterm=NONE
-hi PmenuSbar       ctermbg=235  ctermfg=000    cterm=NONE
-hi PmenuThumb      ctermbg=235  ctermfg=137    cterm=NONE
-hi Todo            ctermbg=NONE ctermfg=NONE   cterm=NONE
-hi IncSearch       ctermbg=9    ctermfg=0      cterm=NONE
-hi Search          ctermbg=2    ctermfg=232    cterm=NONE
-
 
 
 "
@@ -204,6 +180,7 @@ nnoremap <Leader>r :so %<CR>
 " New tab bind
 nmap <leader>t :tabe<CR>
 
+" Does delimitMate work better?
 " Auto close brackets
 inoremap (<CR> (<CR>)<Esc>O
 inoremap {<CR> {<CR>}<Esc>O
@@ -236,9 +213,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" Use todo#complete as the omni complete function for todo files
-" au filetype todo setlocal omnifunc=todo#complete
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
