@@ -120,11 +120,6 @@ alias invaders="sh ~/dotfiles/Scripts/invaders"
 alias poke="sh ~/dotfiles/Scripts/poke"
 
 alias leon="v /Volumes/External/Dropbox/Documents/Leon/LettersToLeon.md"
-alias td="v /Volumes/External/Dropbox/todo.txt"
-alias t="todo.sh"
-alias life="v /Volumes/External/Dropbox/life.org"
-alias shop="v /Volumes/External/Dropbox/shop.org"
-alias dates="v /Volumes/External/Dropbox/dates.org"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
 
