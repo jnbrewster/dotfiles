@@ -41,7 +41,7 @@ export HISTSIZE=2000
 #
 
 alias reload="exec $SHELL -l"
-alias s="osascript ~/dotfiles/Scripts/themechanger.scpt"
+alias s="osascript ~/.vim/plugged/Tomorrow/ThemeChanger.scpt"
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
