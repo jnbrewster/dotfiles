@@ -182,13 +182,13 @@ nmap <leader>t :tabe<CR>
 
 " Does delimitMate work better?
 " Auto close brackets
-inoremap (<CR> (<CR>)<Esc>O
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {; {<CR>};<Esc>O
-inoremap {, {<CR>},<Esc>O
-inoremap [<CR> [<CR>]<Esc>O
-inoremap [; [<CR>];<Esc>O
-inoremap [, [<CR>],<Esc>O
+"inoremap (<CR> (<CR>)<Esc>O
+"inoremap {<CR> {<CR>}<Esc>O
+"inoremap {; {<CR>};<Esc>O
+"inoremap {, {<CR>},<Esc>O
+"inoremap [<CR> [<CR>]<Esc>O
+"inoremap [; [<CR>];<Esc>O
+"inoremap [, [<CR>],<Esc>O
 
 
 "
