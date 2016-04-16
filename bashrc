@@ -113,6 +113,7 @@ alias tm="tmux"
 alias ta="tmux attach"
 alias pm="pymux"
 alias pa="pymux attach"
+alias ts="sh ~/dotfiles/Scripts/tmux.sh"
 
 alias info="sh     ~/dotfiles/Scripts/info.sh"
 alias blocks="sh   ~/dotfiles/Scripts/blocks"
