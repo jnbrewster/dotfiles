@@ -196,9 +196,9 @@
 	<key>FontAntialias</key>
 	<true/>
 	<key>FontHeightSpacing</key>
-	<real>0.90000000000000002</real>
+	<integer>1</integer>
 	<key>FontWidthSpacing</key>
-	<real>0.90000000000000002</real>
+	<integer>1</integer>
 	<key>Linewrap</key>
 	<true/>
 	<key>ProfileCurrentVersion</key>
@@ -208,14 +208,16 @@
 	<key>SelectionColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
-	AAGGoKMHCA9VJG51bGzTCQoLDA0OVU5TUkdCXE5TQ29sb3JTcGFjZVYkY2xhc3NPEB4w
-	LjE3MjU0OTAxOTYgMC4xODQzMTM3MjU1IDAuMgAQAYAC0hAREhNaJGNsYXNzbmFtZVgk
-	Y2xhc3Nlc1dOU0NvbG9yohIUWE5TT2JqZWN0XxAPTlNLZXllZEFyY2hpdmVy0RcYVHJv
-	b3SAAQgRGiMtMjc7QUhOW2KDhYeMl6Coq7TGyc4AAAAAAAABAQAAAAAAAAAZAAAAAAAA
-	AAAAAAAAAAAA0A==
+	AAGGoKMHCA9VJG51bGzTCQoLDA0OVU5TUkdCXE5TQ29sb3JTcGFjZVYkY2xhc3NPECcw
+	LjM2MDc4NDMxMzcgMC4zNjA3ODQzMTM3IDAuMzc2NDcwNTg4MgAQAYAC0hAREhNaJGNs
+	YXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yohIUWE5TT2JqZWN0XxAPTlNLZXllZEFyY2hp
+	dmVy0RcYVHJvb3SAAQgRGiMtMjc7QUhOW2KMjpCVoKmxtL3P0tcAAAAAAAABAQAAAAAA
+	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
 	<key>ShouldLimitScrollback</key>
 	<integer>0</integer>
+	<key>ShouldRestoreContent</key>
+	<false/>
 	<key>ShowActiveProcessInTitle</key>
 	<false/>
 	<key>ShowCommandKeyInTitle</key>
@@ -249,13 +251,13 @@
 	<key>UseBrightBold</key>
 	<true/>
 	<key>columnCount</key>
-	<integer>80</integer>
+	<integer>180</integer>
 	<key>deleteSendsBackspace</key>
 	<false/>
 	<key>name</key>
 	<string>Tomorrowspace</string>
 	<key>rowCount</key>
-	<integer>24</integer>
+	<integer>42</integer>
 	<key>scrollOnInput</key>
 	<false/>
 	<key>shellExitAction</key>
@@ -265,6 +267,6 @@
 	<key>useOptionAsMetaKey</key>
 	<true/>
 	<key>warnOnShellCloseAction</key>
-	<integer>0</integer>
+	<integer>1</integer>
 </dict>
 </plist>

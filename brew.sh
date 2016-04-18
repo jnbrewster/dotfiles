@@ -21,6 +21,8 @@ brew install youtube-dl
 brew install ffmpeg
 brew install translate-shell
 
+pip install rtv
+
 echo "Command line apps installed."
 brew tap caskroom/versions
 
@@ -54,18 +56,20 @@ apps=(
 # Install apps to /Applications
 echo "installing apps..."
 
-apm install close-onleft ex-mode file-type-icons github-plus linter linter-csslint linter-erb linter-jshint linter-ruby native-gui relative-numbers vim-mode-plus theme-flux
+#apm install close-onleft ex-mode file-type-icons github-plus linter linter-csslint linter-erb linter-jshint linter-ruby native-gui relative-numbers vim-mode-plus theme-flux
 
 # Download imgcar to ~/bin
-wget -O ~/bin/imgcat https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat
+#wget -O ~/bin/imgcat https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat
 
 # Download imgcar to /usr/local/bin (requires sudo)
-sudo wget -O /usr/local/bin/imgcat https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat
+#sudo wget -O /usr/local/bin/imgcat https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat
 
 brew update
 brew upgrade
 brew cleanup
 brew cask cleanup
+
+pip install rtv
 
 cd ~
 echo "Finished!"
