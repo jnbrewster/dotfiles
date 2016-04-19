@@ -23,6 +23,7 @@ brew install translate-shell
 brew install atool
 brew install highlight
 brew install libcaca --with-imlib2
+brew install /Caskroom/cask/xquartz
 
 pip install rtv
 
@@ -34,18 +35,22 @@ brew install caskroom/cask/brew-cask
 apps=(
   amethyst
   atom
+  bartender
   dropbox
   firefox
-  flux
+  github-desktop
   google-chrome
   hazel
   imageoptim
-  karabiner
   launchbar
   macvim
   monodraw
+  mplayerx
   omnidisksweeper
+  omnifocus
   pandoc
+  pdftotext
+  pocketcast
   qlmarkdown
   r-name
   sitesucker
@@ -53,7 +58,7 @@ apps=(
   steam
   the-unarchiver
   transmission
-  mplayerx
+  tunnelbear
 )
 
 # Install apps to /Applications
