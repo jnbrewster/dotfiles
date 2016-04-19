@@ -20,6 +20,8 @@ brew install wget
 brew install youtube-dl
 brew install ffmpeg
 brew install translate-shell
+brew install atool
+brew install highlight
 
 pip install rtv
 
