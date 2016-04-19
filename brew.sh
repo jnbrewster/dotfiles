@@ -22,6 +22,7 @@ brew install ffmpeg
 brew install translate-shell
 brew install atool
 brew install highlight
+brew install libcaca --with-imlib2
 
 pip install rtv
 

@@ -103,6 +103,8 @@ alias gifpng="convert -delay 35 -loop 0 source*.png animated.gif"
 alias gifjpg="convert -delay 35 -loop 0 source*.jpg animated.gif"
 alias html="pandoc input.md -o output.html"
 alias pdf="pdftotext"
+alias pv="open -a Preview"
+alias ql="qlmanage -p 2>/dev/null"
 
 alias commit='git commit -am '
 alias push='git push origin master'
