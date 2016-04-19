@@ -128,10 +128,10 @@ endif
 set guifont=Fira\ Code:h13
 
 " Show statusline
-set laststatus=2
+" set laststatus=2
 
 " Change the background to dark or light depending upon the time 7-7
-if strftime("%H") >= 7 && strftime("%H") < 19
+if strftime("%H") >= 6 && strftime("%H") < 18
   colorscheme Tomorrow
   set background=light
 else
