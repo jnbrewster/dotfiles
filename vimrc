@@ -131,7 +131,7 @@ set guifont=Fira\ Code:h13
 " set laststatus=2
 
 " Change the background to dark or light depending upon the time 7-7
-if strftime("%H") >= 6 && strftime("%H") < 18
+if strftime("%H") >= 6 && strftime("%H") < 17
   colorscheme Tomorrow
   set background=light
 else
