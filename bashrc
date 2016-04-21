@@ -84,7 +84,6 @@ alias gph="cd ~/Photos/"
 alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
 alias gga="cd ~/Developer/GeneralAssembly/"
 
-
 alias v='vim'
 alias mt="mutt"
 alias nw="newsbeuter"
@@ -162,3 +161,8 @@ export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=/usr/local/bin:$PATH
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR="/Users/joel/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
