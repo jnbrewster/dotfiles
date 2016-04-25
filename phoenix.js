@@ -3,11 +3,12 @@
 
 var keys = [];
 var meta = ['alt', 'shift'];
-var margin = 5;
+var margin = 4;
 
 var grids = {
   'Full': {rows: 1, cols: 1},
-  'Split': {rows: 1, cols: 2},
+  'SplitH': {rows: 1, cols: 2},
+  'SplitV': {rows: 2, cols: 1},
   'Grid': {rows: 2, cols: 2},
 };
 function grid(name) {
@@ -36,8 +37,10 @@ function grid(name) {
 }
 
 keys.push(Phoenix.bind('f', meta, grid('Full')));
-keys.push(Phoenix.bind('j', meta, grid('Split')));
-keys.push(Phoenix.bind('k', meta, grid('Grid')));
+keys.push(Phoenix.bind('j', meta, grid('SplitH')));
+keys.push(Phoenix.bind('k', meta, grid('SplitV')));
+keys.push(Phoenix.bind('l', meta, grid('Grid')));
+
 
 /* App launchers */
 /*
