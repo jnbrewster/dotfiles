@@ -1,117 +1,229 @@
-"use strict";
+'use strict';
 
-function centered_modal(message) {
-    var result = new Modal();
-    result.message = message;
-    var screen_frame = Screen.mainScreen().frameInRectangle();
-    var result_frame = result.frame();
-    result.origin = {
-        x: 0.5 * (screen_frame.width - result_frame.width),
-        y: 0.5 * (screen_frame.height - result_frame.height),
-    };
-    return result;
-}
+var keys = [];
+var altShift = [ 'alt', 'shift' ];
+var controlAltShift = [ 'ctrl', 'alt', 'shift' ];
+var margin = 0;
+var increment = 0.1;
 
-var h_reload = Phoenix.bind('r', ['alt'], function () {
-    Phoenix.reload();
-});
+/* Position */
 
-/* Window Handling */
+var Position = {
+    central: function (frame, window) {
+        return {
+            x: frame.x + ((frame.width - window.width) / 2),
+            y: frame.y + ((frame.height - window.height) / 2)
+        };
+    },
 
-function move_window(rect, screen) {
-    screen = screen || Screen.mainScreen();
-    var scr = screen.visibleFrameInRectangle();
-    var r = {
-        x: Math.round(scr.x + rect.x*scr.width),
-        y: Math.round(scr.y + rect.y*scr.height),
-        width: Math.round(scr.width * rect.width),
-        height: Math.round(scr.height * rect.height),
-    };
-    Window.focusedWindow().setFrame(r);
-}
+    top: function (frame, window) {
+        return {
+            x: window.x,
+            y: frame.y
+        };
+    },
 
-function move_window_to_next_screen() {
-    var currW = Window.focusedWindow();
-    var cwFrame = currW.frame();
-    var currScreen = currW.screen();
-    var nextScreen = currScreen.next();
-    var currScreenSize = currScreen.visibleFrameInRectangle();
-    var relative = {
-        x: (cwFrame.x - currScreenSize.x) / currScreenSize.width,
-        y: (cwFrame.y - currScreenSize.y) / currScreenSize.height,
-        width: cwFrame.width / currScreenSize.width,
-        height: cwFrame.height / currScreenSize.height,
-    };
-    move_window(relative, nextScreen);
-}
+    bottom: function (frame, window) {
+        return {
+            x: window.x,
+            y: (frame.y + frame.height) - window.height
+        };
+    },
 
-/* Support a prefix key with multiple suffix keys */
+    left: function (frame, window) {
+        return {
+            x: frame.x,
+            y: window.y
+        };
+    },
 
-function PrefixKey(key, modifiers, description) {
-    this.modal = centered_modal(description);
-    this.suffixes = [];
-    this.handlers = [];
-    var that = this;
-    this.prefix = Phoenix.bind(key, modifiers, function () {
-        that.enableSuffixes();
-        that.modal.show();
-    });
-}
+    right: function (frame, window) {
+        return {
+            x: (frame.x + frame.width) - window.width,
+            y: window.y
+        };
+    },
 
-PrefixKey.prototype.enableSuffixes = function () {
-    var that = this;
-    this.suffixes.forEach(function (x) {
-        var h = Phoenix.bind(x.key, x.modifiers, function () {
-            that.disableSuffixes();
-            x.cb();
-            that.modal.close();
-            Phoenix.reload();
-        });
-        h.enable();
-        that.handlers.push(h);
-    });
-};
-PrefixKey.prototype.disableSuffixes = function () {
-    this.handlers.forEach( function (x) {
-        x.disable();
-    });
-    this.handlers = [];
-};
-PrefixKey.prototype.addSuffix = function (key, modifiers, cb) {
-    this.suffixes.push({key: key, modifiers: modifiers, cb: cb});
+    topLeft: function (frame, window, margin) {
+        return {
+
+            x: Position.left(frame, window).x + margin,
+            y: Position.top(frame, window).y + margin
+        };
+    },
+
+    topRight: function (frame, window, margin) {
+        return {
+
+            x: Position.right(frame, window).x - margin,
+            y: Position.top(frame, window).y + margin
+        };
+    },
+
+    bottomLeft: function (frame, window, margin) {
+        return {
+            x: Position.left(frame, window).x + margin,
+            y: Position.bottom(frame, window).y - margin
+        };
+    },
+
+    bottomRight: function (frame, window, margin) {
+        return {
+            x: Position.right(frame, window).x - margin,
+            y: Position.bottom(frame, window).y - margin
+        };
+    }
 };
 
-/* Window handling prefix key */
+/* Grid */
 
-var wPrefix = new PrefixKey('space', ['ctrl', 'alt', 'cmd'],
-    "a - Small Left\ns - Small Right\nd - Wide Center\nf - Max\nh - Left Half\nj - big left\nk - big right\nl - Right Half\nesc - Abort");
-wPrefix.addSuffix('a', [], function () {
-    move_window({x: 0, y: 0, width: 0.4, height: 1.0});
-});
-wPrefix.addSuffix('s', [], function () {
-    move_window({x: 0.6, y: 0, width: 0.4, height: 1.0});
-});
-wPrefix.addSuffix('d', [], function () {
-    move_window({x: 0.15, y: 0, width: 0.7, height: 1.0});
-});
-wPrefix.addSuffix('f', [], function () {
-    move_window({x: 0, y: 0, width: 1.0, height: 1.0});
-});
-wPrefix.addSuffix('c', [], function () {
-    move_window({x: 0.2, y: 0.2, width: 0.6, height: 0.6});
-});
-wPrefix.addSuffix('h', [], function () {
-    move_window({x: 0, y: 0, width: 0.5, height: 1.0});
-});
-wPrefix.addSuffix('l', [], function () {
-    move_window({x: 0.5, y: 0, width: 0.5, height: 1.0});
-});
-wPrefix.addSuffix('j', [], function () {
-    move_window({x: 0, y: 0, width: 0.7, height: 1.0});
-});
-wPrefix.addSuffix('k', [], function () {
-    move_window({x: 0.4, y: 0, width: 0.7, height: 1.0});
-});
-wPrefix.addSuffix('escape', [], function () {});
-wPrefix.addSuffix('space', ['ctrl', 'alt', 'cmd'], function () {});
+var Frame = {
 
+    width: 1,
+    height: 1,
+
+    half: {
+
+        width: 0.5,
+        height: 0.5
+
+    }
+};
+
+/* Window Functions */
+
+Window.prototype.to = function (position) {
+
+    this.setTopLeft(position(this.screen().visibleFrameInRectangle(), this.frame(), margin));
+}
+
+Window.prototype.grid = function (x, y, reverse) {
+
+    var frame = this.screen().visibleFrameInRectangle();
+
+    var newWindowFrame = _(this.frame()).extend({
+
+        width: (frame.width * x) - (2 * margin),
+        height: (frame.height * y) - (2 * margin)
+
+    });
+
+    var position = reverse ? Position.topRight(frame, newWindowFrame, margin) :
+                             Position.topLeft(frame, newWindowFrame, margin);
+
+    this.setFrame(_(newWindowFrame).extend(position));
+}
+
+Window.prototype.reverseGrid = function (x, y) {
+
+    this.grid(x, y, true);
+}
+
+Window.prototype.resize = function (multiplier) {
+
+    var frame = this.screen().visibleFrameInRectangle();
+    var newSize = this.size();
+
+    if (multiplier.x) {
+        newSize.width += frame.width * multiplier.x;
+    }
+
+    if (multiplier.y) {
+        newSize.height += frame.height * multiplier.y;
+    }
+
+    this.setSize(newSize);
+}
+
+Window.prototype.increaseWidth = function () {
+
+    this.resize({ x: increment });
+}
+
+Window.prototype.decreaseWidth = function () {
+
+    this.resize({ x: -increment });
+}
+
+Window.prototype.increaseHeight = function () {
+
+    this.resize({ y: increment });
+}
+
+Window.prototype.decreaseHeight = function () {
+
+    this.resize({ y: -increment });
+}
+
+/* Position Bindings */
+
+keys.push(Phoenix.bind('h', controlAltShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().to(Position.topLeft);
+}));
+
+keys.push(Phoenix.bind('j', controlAltShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().to(Position.bottomLeft);
+}));
+
+keys.push(Phoenix.bind('k', controlAltShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().to(Position.topRight);
+}));
+
+keys.push(Phoenix.bind('l', controlAltShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().to(Position.bottomRight);
+}));
+
+keys.push(Phoenix.bind('c', altShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().to(Position.central);
+}));
+
+/* Grid Bindings */
+/* Change mode */
+
+keys.push(Phoenix.bind('a', altShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().grid(Frame.half.width, Frame.height);
+}));
+
+keys.push(Phoenix.bind('s', altShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().grid(Frame.width, Frame.half.height);
+}));
+
+keys.push(Phoenix.bind('d', altShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().grid(Frame.half.width, Frame.half.height);
+}));
+
+keys.push(Phoenix.bind('f', altShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().grid(Frame.width, Frame.height);
+}));
+
+
+/* Resize Bindings */
+
+keys.push(Phoenix.bind('.', altShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().increaseWidth();
+}));
+
+keys.push(Phoenix.bind(',', altShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().increaseHeight();
+}));
+
+keys.push(Phoenix.bind('.', controlAltShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().decreaseWidth();
+}));
+
+keys.push(Phoenix.bind(',', controlAltShift, function () {
+
+    Window.focusedWindow() && Window.focusedWindow().decreaseHeight();
+}));
