@@ -1,44 +1,4 @@
-#
-# ~/.bashrc
-#
 
-#
-# LANGUAGE
-#
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-
-
-#
-# SHELL
-#
-
-
-# Append instead of overwrite history.
-shopt -s histappend
-# Properly save multi-line commands.
-shopt -s cmdhist
-# Don't replace newlines with semicolons in history.
-shopt -s lithist
-# Fix typos when changing directories.
-shopt -s cdspell
-
-
-#
-# HISTORY
-#
-
-# Write more history.
-export HISTFILESIZE=2000
-# Remember more history.
-export HISTSIZE=2000
-
-
-#
-# ALIASES
-#
 
 alias reload="exec $SHELL -l"
 alias s="osascript ~/.vim/plugged/Tomorrow/ThemeChanger.scpt"
@@ -62,8 +22,10 @@ alias update="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgr
 
 alias ls="ls -G"
 alias ll="ls -otW"
+alias asl="ls -aslFh"
 alias la="ls -a"
-alias l="clear"
+alias lh="ls -lh"
+alias cl="clear"
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -73,7 +35,7 @@ alias gdt="cd ~/dotfiles"
 alias gap="cd ~/Applications/"
 alias gex="cd /Volumes/External/"
 alias gdr="cd /Volumes/External/Dropbox/"
-alias gdc="cd /Volumes/External/Dropbox/Documents/"
+alias gdc="cd ~/Documents/"
 alias gdw="cd ~/Downloads/"
 alias gds="cd ~/Desktop/"
 alias gpc="cd ~/Pictures/"
@@ -104,6 +66,7 @@ alias html="pandoc input.md -o output.html"
 alias pdf="pdftotext"
 alias pv="open -a Preview"
 alias ql="qlmanage -p 2>/dev/null"
+alias notes="vim ~/Documents/notes.md"
 
 alias commit='git commit -am '
 alias push='git push origin master'
@@ -122,6 +85,8 @@ alias blocks="sh   ~/dotfiles/Scripts/blocks"
 alias pipes="sh    ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
 alias poke="sh ~/dotfiles/Scripts/poke"
+
+alias weather="curl http://wttr.in/Melbourne"
 
 alias leon="v /Volumes/External/Dropbox/Documents/Leon/LettersToLeon.md"
 
@@ -149,20 +114,3 @@ function play {
 # What is love?
 alias whatislove?="play haddaway what is love"
 
-
-#
-# PREFERENCES
-#
-
-export EDITOR=vim
-export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
-
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export PATH=/usr/local/bin:$PATH
-
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export NVM_DIR="/Users/joel/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
