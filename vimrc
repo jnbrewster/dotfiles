@@ -31,6 +31,10 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
 Plug 'joelbrewster/Tomorrow'
+Plug 'tpope/vim-pathogen'
+
+"call pathogen#infect()
+
 
 call plug#end()
 
@@ -125,19 +129,17 @@ if exists("+guioptions")
 endif
 
 " Set font and size.
-set guifont=Fira\ Code:h13
-
-" Show statusline
-" set laststatus=2
+set guifont=Input:h13
 
 " Change the background to dark or light depending upon the time 7-7
-if strftime("%H") >= 6 && strftime("%H") < 17 && has("gui_running")
-  colorscheme Tomorrow
-  set background=light
-else
+" if strftime("%H") >= 6 && strftime("%H") < 17
+"   "&& has("gui_running")
+"   colorscheme Tomorrow
+"   set background=light
+" else
   colorscheme Tomorrow-Night
   set background=dark
-endif
+" endif
 
 
 "
@@ -152,6 +154,16 @@ nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 
 " Load Goyo for writing.
 nnoremap <Leader>g :Goyo 50%<CR>
+
+" Load :Ex
+nnoremap <Leader>\ :Ex<CR>
+
+" Save
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>s :w<CR>
+
+" Quit
+nnoremap <Leader>q :q<CR>
 
 " Arrowkeys resize viewports.
 nnoremap <Left> :vertical resize -2<CR>
@@ -182,14 +194,22 @@ nmap <leader>t :tabe<CR>
 
 " Does delimitMate work better?
 " Auto close brackets
-"inoremap (<CR> (<CR>)<Esc>O
-"inoremap {<CR> {<CR>}<Esc>O
-"inoremap {; {<CR>};<Esc>O
-"inoremap {, {<CR>},<Esc>O
-"inoremap [<CR> [<CR>]<Esc>O
-"inoremap [; [<CR>];<Esc>O
-"inoremap [, [<CR>],<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {; {<CR>};<Esc>O
+inoremap {, {<CR>},<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
+inoremap [; [<CR>];<Esc>O
+inoremap [, [<CR>],<Esc>O
 
+noremap ,cc :<C-B>silent <C-E>s/\V\.\*/\=
+            \printf(&commentstring,getline("."))/<CR>
+            \:nohlsearch<CR>
+noremap ,cu :<C-B>silent <C-E>s/\V\^<C-R>=
+            \escape(get(split(&commentstring,'%s'),0,''),'\/').'\\|'.
+            \escape(get(split(&commentstring,'%s'),1,''),'\/')
+            \<CR>\$//g<CR>
+            \:nohlsearch<CR>
 
 "
 " FILE
@@ -216,4 +236,15 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_loc_list_height=3
 
