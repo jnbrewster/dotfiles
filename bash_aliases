@@ -1,7 +1,5 @@
-
-
 alias reload="exec $SHELL -l"
-alias s="osascript ~/.vim/plugged/Tomorrow/ThemeChanger.scpt"
+alias theme="osascript ~/.vim/plugged/Tomorrow/ThemeChanger.scpt"
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
@@ -45,6 +43,8 @@ alias gmv="cd ~/Movies/"
 alias gph="cd ~/Photos/"
 alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
 alias gga="cd ~/Developer/GeneralAssembly/"
+alias wdi="cd ~/WDI-7 && ls"
+alias hw="cd ~/WDI-7/wdi7-homework && ls"
 
 alias v='vim'
 alias mt="mutt"
