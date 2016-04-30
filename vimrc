@@ -31,10 +31,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
 Plug 'joelbrewster/Tomorrow'
-Plug 'tpope/vim-pathogen'
-
-"call pathogen#infect()
-
+Plug 'tomtom/tcomment_vim'
 
 call plug#end()
 
@@ -54,8 +51,12 @@ set pastetoggle=
 
 " Tab width.
 set tabstop=2
+
 " Tab width when editing.
 set softtabstop=2
+
+" Set backspaces
+set backspace=2
 
 " Tab width when indenting in normal mode.
 set shiftwidth=2
@@ -129,18 +130,21 @@ if exists("+guioptions")
 endif
 
 " Set font and size.
-set guifont=Input:h13
+set guifont=Input\ Mono:h13
 
 " Change the background to dark or light depending upon the time 7-7
-" if strftime("%H") >= 6 && strftime("%H") < 17
-"   "&& has("gui_running")
-"   colorscheme Tomorrow
-"   set background=light
-" else
+if strftime("%H") >= 6 && strftime("%H") < 17 && has("gui_running")
+  colorscheme Tomorrow
+  set background=light
+else
   colorscheme Tomorrow-Night
   set background=dark
-" endif
+endif
 
+" Remove statusline
+set laststatus=2
+set statusline=[%n]\ %f\ %m%r%w%q
+set statusline+=%=%<\ %c/%l/%L
 
 "
 " INPUT
@@ -202,14 +206,6 @@ inoremap [<CR> [<CR>]<Esc>O
 inoremap [; [<CR>];<Esc>O
 inoremap [, [<CR>],<Esc>O
 
-noremap ,cc :<C-B>silent <C-E>s/\V\.\*/\=
-            \printf(&commentstring,getline("."))/<CR>
-            \:nohlsearch<CR>
-noremap ,cu :<C-B>silent <C-E>s/\V\^<C-R>=
-            \escape(get(split(&commentstring,'%s'),0,''),'\/').'\\|'.
-            \escape(get(split(&commentstring,'%s'),1,''),'\/')
-            \<CR>\$//g<CR>
-            \:nohlsearch<CR>
 
 "
 " FILE
@@ -237,6 +233,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Syntastic interface
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -245,6 +242,5 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-let g:syntastic_loc_list_height=3
+let g:syntastic_loc_list_height=1
 
