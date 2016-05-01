@@ -3,14 +3,14 @@
 
 var keys = [];
 var meta = ['alt', 'shift'];
-var margin = 4;
-
+var margin = 8;
 var grids = {
   'Full': {rows: 1, cols: 1},
   'SplitH': {rows: 1, cols: 2},
   'SplitV': {rows: 2, cols: 1},
   'Grid': {rows: 2, cols: 2},
 };
+
 function grid(name) {
   var rows = grids[name].rows;
   var cols = grids[name].cols;
