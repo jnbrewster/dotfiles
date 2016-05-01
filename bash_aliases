@@ -1,5 +1,7 @@
 alias reload="exec $SHELL -l"
-alias theme="osascript ~/.vim/plugged/Tomorrow/ThemeChanger.scpt"
+alias tomorrow="osascript ~/.vim/plugged/Tomorrow/ThemeChanger.scpt"
+alias solarized="osascript ~/Developer/HelperApplications/Solarized.scpt"
+alias gruvbox="osascript ~/Developer/HelperApplications/Gruvbox.scpt"
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
@@ -88,7 +90,7 @@ alias poke="sh ~/dotfiles/Scripts/poke"
 
 alias weather="curl http://wttr.in/Melbourne"
 
-alias leon="v /Volumes/External/Dropbox/Documents/Leon/LettersToLeon.md"
+alias leon="v ~/Documents/Leon/LettersToLeon.md"
 
 alias a="mplayer http://50.7.96.138:8115/listen/pls"
 
