@@ -17,21 +17,30 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
+Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
+Plug 'mattn/emmet-vim/'
+Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
-Plug 'joelbrewster/Tomorrow'
-Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 
 call plug#end()
 
@@ -56,7 +65,8 @@ set tabstop=2
 set softtabstop=2
 
 " Set backspaces
-set backspace=2
+set backspace=indent,eol,start
+
 
 " Tab width when indenting in normal mode.
 set shiftwidth=2
@@ -129,6 +139,9 @@ if exists("+guioptions")
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
+" Add airline tabs
+let g:airline#extensions#tabline#enabled = 1
+
 " Set font and size.
 set guifont=Input\ Mono:h13
 
@@ -141,10 +154,13 @@ else
   set background=dark
 endif
 
-" Remove statusline
+" Statusline
 set laststatus=2
-set statusline=[%n]\ %f\ %m%r%w%q
-set statusline+=%=%<\ %c/%l/%L
+let g:airline_powerline_fonts = 1
+
+" Hide mode
+set noshowmode
+
 
 "
 " INPUT
@@ -160,7 +176,11 @@ nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 nnoremap <Leader>g :Goyo 50%<CR>
 
 " Load :Ex
-nnoremap <Leader>\ :Ex<CR>
+nnoremap <Leader>e :Ex<CR>
+
+" Load nerdtree
+map <Leader>\ :NERDTreeToggle<CR>
+
 
 " Save
 nnoremap <Leader>w :w<CR>
