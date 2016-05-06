@@ -19,24 +19,19 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim/'
-Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -145,21 +140,20 @@ let g:airline#extensions#tabline#enabled = 1
 " Set font and size.
 set guifont=Input\ Mono:h13
 
-" Change the background to dark or light depending upon the time 7-7
-if strftime("%H") >= 6 && strftime("%H") < 17 && has("gui_running")
-  colorscheme Tomorrow
-  set background=light
-else
-  colorscheme Tomorrow-Night
-  set background=dark
-endif
+" Set colors
+hi LineNr          ctermbg=NONE ctermfg=0     cterm=NONE
+hi CursorLineNr    ctermbg=NONE ctermfg=3     cterm=NONE
+hi TabLine         ctermbg=15  ctermfg=0      cterm=NONE
+hi TabLineFill     ctermbg=15  ctermfg=239    cterm=NONE
+hi VertSplit       ctermfg=15  ctermbg=15  gui=NONE cterm=NONE
 
 " Statusline
+set statusline=\ %F%m%r%h%w
+set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=%=
+set statusline+=\ [%l\/%L\/%c]
 set laststatus=2
-let g:airline_powerline_fonts = 1
-
-" Hide mode
-set noshowmode
 
 
 "
@@ -181,6 +175,8 @@ nnoremap <Leader>e :Ex<CR>
 " Load nerdtree
 map <Leader>\ :NERDTreeToggle<CR>
 
+" Emmet keys
+let g:user_emmet_leader_key = '<c-e>'
 
 " Save
 nnoremap <Leader>w :w<CR>
