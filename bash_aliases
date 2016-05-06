@@ -46,6 +46,8 @@ alias gph="cd ~/Photos/"
 alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
 alias gga="cd ~/Developer/GeneralAssembly/"
 alias wdi="cd ~/WDI-7 && ls"
+alias br0="cd ~/WDI-7/br0c0d3/ && ls"
+alias warmups="cd ~/WDI-7/WDI7-Warmups && ls"
 alias hw="cd ~/WDI-7/wdi7-homework && ls"
 
 alias v='vim'
@@ -82,9 +84,9 @@ alias pm="pymux"
 alias pa="pymux attach"
 alias ts="sh ~/dotfiles/Scripts/tmux.sh"
 
-alias info="sh     ~/dotfiles/Scripts/info.sh"
-alias blocks="sh   ~/dotfiles/Scripts/blocks"
-alias pipes="sh    ~/dotfiles/Scripts/pipes"
+alias info="sh ~/dotfiles/Scripts/info.sh"
+alias blocks="sh ~/dotfiles/Scripts/blocks"
+alias pipes="sh ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
 alias poke="sh ~/dotfiles/Scripts/poke"
 
@@ -104,6 +106,7 @@ function mkcd {
   mkdir -p "$1" && cd "$1"
 }
 
+# Requres youtube-dl and mplayer
 function play {
   youtube-dl --default-search=ytsearch: \
              --youtube-skip-dash-manifest \
