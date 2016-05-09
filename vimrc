@@ -117,8 +117,8 @@ set hlsearch
 syntax on
 
 " Redraw screen quicker.
-set ttyfast
-set lazyredraw
+"set ttyfast
+"set lazyredraw
 
 " Remove fill characters
 set fillchars=""
@@ -134,18 +134,17 @@ if exists("+guioptions")
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
-" Add airline tabs
-let g:airline#extensions#tabline#enabled = 1
-
 " Set font and size.
 set guifont=Input\ Mono:h13
 
 " Set colors
-hi LineNr          ctermbg=NONE ctermfg=0     cterm=NONE
-hi CursorLineNr    ctermbg=NONE ctermfg=3     cterm=NONE
-hi TabLine         ctermbg=15  ctermfg=0      cterm=NONE
-hi TabLineFill     ctermbg=15  ctermfg=239    cterm=NONE
-hi VertSplit       ctermfg=15  ctermbg=15  gui=NONE cterm=NONE
+hi LineNr         ctermbg=NONE    ctermfg=0       cterm=NONE
+hi CursorLineNr   ctermbg=NONE    ctermfg=3       cterm=NONE
+hi TabLine        ctermbg=black   ctermfg=white   cterm=NONE
+hi TabLineFill    ctermbg=black   ctermfg=white   cterm=NONE
+hi VertSplit      ctermbg=black   ctermfg=black   cterm=NONE
+hi StatusLineNC   ctermbg=black   ctermfg=white   cterm=NONE
+hi StatusLine     ctermbg=black   ctermfg=yellow  cterm=NONE
 
 " Statusline
 set statusline=\ %F%m%r%h%w
