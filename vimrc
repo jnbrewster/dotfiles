@@ -142,9 +142,11 @@ hi LineNr         ctermbg=NONE    ctermfg=0       cterm=NONE
 hi CursorLineNr   ctermbg=NONE    ctermfg=3       cterm=NONE
 hi TabLine        ctermbg=black   ctermfg=white   cterm=NONE
 hi TabLineFill    ctermbg=black   ctermfg=white   cterm=NONE
+hi TabLineSel     ctermbg=black   ctermfg=yellow
 hi VertSplit      ctermbg=black   ctermfg=black   cterm=NONE
 hi StatusLineNC   ctermbg=black   ctermfg=white   cterm=NONE
 hi StatusLine     ctermbg=black   ctermfg=yellow  cterm=NONE
+hi Folded         ctermbg=black   ctermfg=green
 
 " Statusline
 set statusline=\ %F%m%r%h%w
