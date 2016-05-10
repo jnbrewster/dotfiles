@@ -18,23 +18,24 @@ call plug#begin('~/.vim/plugged')
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 
 call plug#end()
@@ -147,6 +148,12 @@ hi VertSplit      ctermbg=black   ctermfg=black   cterm=NONE
 hi StatusLineNC   ctermbg=black   ctermfg=white   cterm=NONE
 hi StatusLine     ctermbg=black   ctermfg=yellow  cterm=NONE
 hi Folded         ctermbg=black   ctermfg=green
+hi ModeMsg        ctermbg=green   ctermfg=black   cterm=NONE
+
+if has('gui_macvim')
+  colorscheme Tomorrow-Night
+  set background=dark
+end
 
 " Statusline
 set statusline=\ %F%m%r%h%w
@@ -230,6 +237,9 @@ inoremap [, [<CR>],<Esc>O
 
 " Disable swapfiles.
 set noswapfile
+
+" Spellcheck in local buffer
+setlocal spell spelllang=en_au
 
 " Search current folder recursively for searching (via :find)
 set path+=**
