@@ -31,11 +31,14 @@ Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
+Plug 'edkolev/tmuxline.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'itchyny/lightline.vim'
 
 
 call plug#end()
@@ -151,8 +154,9 @@ hi Folded         ctermbg=black   ctermfg=green
 hi ModeMsg        ctermbg=green   ctermfg=black   cterm=NONE
 
 if has('gui_macvim')
-  colorscheme Tomorrow-Night
-  set background=dark
+  let g:seoul256_background = 234
+  let g:seoul256_light_background = 256
+  colo seoul256
 end
 
 " Statusline
@@ -162,6 +166,56 @@ set statusline+=\ %{fugitive#statusline()}
 set statusline+=%=
 set statusline+=\ [%l\/%L\/%c]
 set laststatus=2
+
+" Hide mode
+set noshowmode
+
+" Light line info
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'readonly': 'LightLineReadonly',
+      \   'modified': 'LightLineModified',
+      \   'filename': 'LightLineFilename'
+      \ },
+      \ }
+
+function! LightLineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "*"
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineFugitive()
+  return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
 
 
 "
@@ -179,9 +233,12 @@ nnoremap <Leader>g :Goyo 50%<CR>
 
 " Load :Ex
 nnoremap <Leader>e :Ex<CR>
+nnoremap <C-e> :Ex <CR>
+
 
 " Load nerdtree
-map <Leader>\ :NERDTreeToggle<CR>
+map <Leader>\ :NERDTreeToggle <CR>
+nnoremap <C-\> :NERDTreeToggle <CR>
 
 " Emmet keys
 let g:user_emmet_leader_key = '<c-e>'
@@ -189,9 +246,11 @@ let g:user_emmet_leader_key = '<c-e>'
 " Save
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>s :w<CR>
+nnoremap <C-s>:w <CR>
 
 " Quit
 nnoremap <Leader>q :q<CR>
+nnoremap <C-q> :q <CR>
 
 " Arrowkeys resize viewports.
 nnoremap <Left> :vertical resize -2<CR>
@@ -214,8 +273,12 @@ let g:fzf_action = {
 " Speed up ctrlP
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
+" CtrlP dir search
+let g:ctrlp_working_path_mode = 'ar'
+
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
+nnoremap <C-r> :so % <CR>
 
 " New tab bind
 nmap <leader>t :tabe<CR>
@@ -239,10 +302,10 @@ inoremap [, [<CR>],<Esc>O
 set noswapfile
 
 " Spellcheck in local buffer
-setlocal spell spelllang=en_au
+"setlocal spell spelllang=en_au
 
 " Search current folder recursively for searching (via :find)
-set path+=**
+set path=$PWD/**
 
 " Fix up indents
 filetype plugin indent on
