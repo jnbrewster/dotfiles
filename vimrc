@@ -153,11 +153,9 @@ hi StatusLine     ctermbg=black   ctermfg=yellow  cterm=NONE
 hi Folded         ctermbg=black   ctermfg=green
 hi ModeMsg        ctermbg=green   ctermfg=black   cterm=NONE
 
-if has('gui_macvim')
-  let g:seoul256_background = 234
-  let g:seoul256_light_background = 256
-  colo seoul256
-end
+let g:seoul256_background = 234
+let g:seoul256_light_background = 256
+colo seoul256
 
 " Statusline
 set statusline=\ %F%m%r%h%w
