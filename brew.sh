@@ -3,26 +3,25 @@
 
 brew update
 
-brew install --devel elinks
-brew install atool
-brew install cmus
-brew install ffmpeg
-brew install fzf
+# brew install --devel elinks
+# brew install atool
+# brew install cmus
+# brew install ffmpeg
+# brew install fzf
 brew install git
-brew install highlight
-brew install imagemagick
-brew install libcaca --with-imlib2
+# brew install highlight
+# brew install imagemagick
+# brew install libcaca --with-imlib2
 brew install mplayer
-brew install mutt
-brew install pandoc
+# brew install mutt
+# brew install pandoc
 brew install ranger
-brew install screenfetch
+# brew install screenfetch
 brew install translate-shell
 brew install wget
 brew install youtube-dl
 
 npm install jslint
-pip install rtv
 
 echo "Command line apps installed."
 brew tap caskroom/versions
@@ -30,30 +29,29 @@ brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
-  amethyst
-  bartender
+  # amethyst
+  # bartender
   dropbox
-  firefox
+  # firefox
   github-desktop
   google-chrome
-  hazel
+  # hazel
   imageoptim
   launchbar
   macvim
   monodraw
   mplayerx
   omnidisksweeper
-  omnifocus
-  pandoc
-  pdftotext
-  phoenix
-  qlmarkdown
+  # pandoc
+  # pdftotext
+  # phoenix
+  # qlmarkdown
   r-name
   sitesucker
   slack
   the-unarchiver
   transmission
-  tunnelbear
+  # tunnelbear
 )
 
 # Install apps to /Applications
