@@ -94,6 +94,7 @@ alias invaders="sh ~/dotfiles/Scripts/invaders"
 alias poke="sh ~/dotfiles/Scripts/poke"
 
 alias weather="curl http://wttr.in/Melbourne"
+alias dcss="ssh joshua@crawl.akrasiac.org"
 
 alias leon="v /Volumes/External/Dropbox/Documents/Leon/LettersToLeon.md"
 
