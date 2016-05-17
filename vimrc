@@ -39,6 +39,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'edkolev/tmuxline.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'gosukiwi/vim-atom-dark'
 
 
 call plug#end()
@@ -139,7 +140,7 @@ if exists("+guioptions")
 endif
 
 " Set font and size.
-set guifont=Input\ Mono:h13
+set guifont=Fira\ Mono:h13
 
 " Set colors
 hi LineNr         ctermbg=NONE    ctermfg=0       cterm=NONE
@@ -152,10 +153,20 @@ hi StatusLineNC   ctermbg=black   ctermfg=white   cterm=NONE
 hi StatusLine     ctermbg=black   ctermfg=yellow  cterm=NONE
 hi Folded         ctermbg=black   ctermfg=green
 hi ModeMsg        ctermbg=green   ctermfg=black   cterm=NONE
+hi Search         ctermbg=yellow  ctermfg=NONE
 
-let g:seoul256_background = 234
-let g:seoul256_light_background = 256
-colo seoul256
+" let g:seoul256_background = 234
+" let g:seoul256_light_background = 256
+" if has('termguicolors')
+"   set termguicolors
+" endif
+
+if has("gui_running")
+  colo tomorrow-night
+end
+
+set background=dark
+colo tomorrow-night
 
 " Statusline
 set statusline=\ %F%m%r%h%w
@@ -170,7 +181,7 @@ set noshowmode
 
 " Light line info
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'Tomorrow_Night',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]
@@ -244,6 +255,7 @@ let g:user_emmet_leader_key = '<c-e>'
 " Save
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>s :w<CR>
+nnoremap <C-w>:w <CR>
 nnoremap <C-s>:w <CR>
 
 " Quit
