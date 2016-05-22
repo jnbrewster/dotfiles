@@ -8,7 +8,6 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   autocmd VimEnter * silent! PlugInstall
 endif
 
-
 "
 " Plugins
 "
@@ -17,17 +16,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
-Plug 'Valloric/YouCompleteMe'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joelbrewster/Tomorrow'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
@@ -36,10 +36,6 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
-Plug 'edkolev/tmuxline.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'gosukiwi/vim-atom-dark'
 
 
 call plug#end()
@@ -139,8 +135,14 @@ if exists("+guioptions")
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
+" Set title in terminal
+set title
+
+" minimize resizing
+set noequalalways
+
 " Set font and size.
-set guifont=Fira\ Mono:h13
+set guifont=Fira\ Code:h14
 
 " Set colors
 hi LineNr         ctermbg=NONE    ctermfg=0       cterm=NONE
@@ -154,16 +156,6 @@ hi StatusLine     ctermbg=black   ctermfg=yellow  cterm=NONE
 hi Folded         ctermbg=black   ctermfg=green
 hi ModeMsg        ctermbg=green   ctermfg=black   cterm=NONE
 hi Search         ctermbg=yellow  ctermfg=NONE
-
-" let g:seoul256_background = 234
-" let g:seoul256_light_background = 256
-" if has('termguicolors')
-"   set termguicolors
-" endif
-
-if has("gui_running")
-  colo tomorrow-night
-end
 
 set background=dark
 colo tomorrow-night
@@ -222,8 +214,8 @@ endfunction
 
 function! LightLineFilename()
   return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
 
@@ -244,10 +236,12 @@ nnoremap <Leader>g :Goyo 50%<CR>
 nnoremap <Leader>e :Ex<CR>
 nnoremap <C-e> :Ex <CR>
 
-
 " Load nerdtree
 map <Leader>\ :NERDTreeToggle <CR>
 nnoremap <C-\> :NERDTreeToggle <CR>
+
+" Make nerdtree sexier
+let g:netrw_liststyle=3
 
 " Emmet keys
 let g:user_emmet_leader_key = '<c-e>'
@@ -258,6 +252,9 @@ nnoremap <Leader>s :w<CR>
 nnoremap <C-w>:w <CR>
 nnoremap <C-s>:w <CR>
 
+" Lost focus save
+autocmd FocusLost * nested silent! wa
+
 " Quit
 nnoremap <Leader>q :q<CR>
 nnoremap <C-q> :q <CR>
@@ -267,18 +264,6 @@ nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
-
-" Search for files in fzf.
-nnoremap <Leader>f :FZF<CR>
-
-" Search history with fzf.
-nmap <silent> <leader>h :History<CR>
-
-" Add keybindings to add located files to a new tab or to splits.
-let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
 
 " Speed up ctrlP
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
@@ -293,7 +278,6 @@ nnoremap <C-r> :so % <CR>
 " New tab bind
 nmap <leader>t :tabe<CR>
 
-" Does delimitMate work better?
 " Auto close brackets
 inoremap (<CR> (<CR>)<Esc>O
 inoremap {<CR> {<CR>}<Esc>O
@@ -319,6 +303,11 @@ set path=$PWD/**
 
 " Fix up indents
 filetype plugin indent on
+
+" Fix indenting on save
+filetype indent on
+set smartindent
+" autocmd BufRead,BufWritePre *.* normal gg=G
 
 " Remove auto comments.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
