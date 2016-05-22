@@ -46,23 +46,14 @@ alias gmv="cd /Volumes/External/Dropbox/Movies/"
 alias gph="cd /Volumes/External/Dropbox/Photos/"
 alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
 alias gga="cd /Volumes/External/Dropbox/Developer/GeneralAssembly/"
-alias wdi="cd ~/WDI-7 && ls"
-alias gbr="cd ~/WDI-7/br0c0d3/ && ls"
-alias gwr="cd ~/WDI-7/WDI7-Warmups && ls"
-alias ghw="cd ~/WDI-7/wdi7-homework && ls"
+alias gbr="cd /Volumes/External/Dropbox/Developer/br0c0d3/ && ls"
+alias gwr="cd /Volumes/External/Dropbox/Developer/WDI7-Warmups && ls"
 
 alias v='vim'
 alias n="nvim"
 alias mt="mutt"
-alias nw="newsbeuter"
-alias rn="ranger"
-alias ir="irssi"
 alias cm="cmus"
-alias hu="hangups"
 alias mp="mplayer"
-alias rt="rtorrent"
-alias lv="livestreamer"
-alias el="elinks"
 alias ddg="elinks www.duckduckgo.com"
 alias hn="elinks https://news.ycombinator.com"
 alias yt="youtube-dl"
@@ -113,11 +104,11 @@ function mkcd {
 # Requres youtube-dl and mplayer
 function play {
   youtube-dl --default-search=ytsearch: \
-             --youtube-skip-dash-manifest \
-             --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
-             --restrict-filenames \
-             --format="bestaudio[ext!=webm]" \
-             --exec=mplayer -vvv "$*"
+    --youtube-skip-dash-manifest \
+    --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
+    --restrict-filenames \
+    --format="bestaudio[ext!=webm]" \
+    --exec=mplayer -vvv "$*"
 }
 
 # What is love?
