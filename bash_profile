@@ -1,5 +1,10 @@
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-source ~/.bashrc
+source ~/.bash_aliases
+source ~/.profile
 
-export PATH="/usr/local/bin:$PATH"
+export EDITOR=vim
+export PS1="\[\e[34m\]\w\[\e[m\] \[\e[32m\]>\[\e[m\] """
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
