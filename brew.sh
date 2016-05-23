@@ -62,5 +62,7 @@ brew upgrade
 brew cleanup
 brew cask cleanup
 
+ranger --copy-config=all
+
 cd ~
 echo "Finished!"
