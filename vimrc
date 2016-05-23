@@ -14,13 +14,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Raimondi/delimitMate'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'itspriddle/vim-javascript-indent'
@@ -31,11 +28,13 @@ Plug 'junegunn/seoul256.vim'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-rails'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 
 call plug#end()
@@ -90,15 +89,6 @@ set splitright
 let mapleader      = ' '
 let maplocalleader = ' '
 
-" Remaps for moving around tabs with right hand.
-noremap tn :tabnew<Space>
-
-nnoremap tk :tabnext<CR>
-nnoremap tj :tabprev<CR>
-
-nnoremap th :tabfirst<CR>
-nnoremap tl :tablast<CR>
-
 " Highlight current line.
 set cursorline
 
@@ -116,10 +106,6 @@ set hlsearch
 
 " Enable syntax highlighting.
 syntax on
-
-" Redraw screen quicker.
-"set ttyfast
-"set lazyredraw
 
 " Remove fill characters
 set fillchars=""
@@ -161,11 +147,6 @@ set background=dark
 colo tomorrow-night
 
 " Statusline
-set statusline=\ %F%m%r%h%w
-set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%=
-set statusline+=\ [%l\/%L\/%c]
 set laststatus=2
 
 " Hide mode
@@ -236,11 +217,10 @@ nnoremap <Leader>g :Goyo 50%<CR>
 nnoremap <Leader>e :Ex<CR>
 nnoremap <C-e> :Ex <CR>
 
-" Load nerdtree
-map <Leader>\ :NERDTreeToggle <CR>
-nnoremap <C-\> :NERDTreeToggle <CR>
+" FZF search
+nnoremap <Leader>f :FZF<CR>
 
-" Make nerdtree sexier
+" Make netrw sexier
 let g:netrw_liststyle=3
 
 " Emmet keys
@@ -265,18 +245,9 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
-" Speed up ctrlP
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-" CtrlP dir search
-let g:ctrlp_working_path_mode = 'ar'
-
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
-
-" New tab bind
-nmap <leader>t :tabe<CR>
 
 " Auto close brackets
 inoremap (<CR> (<CR>)<Esc>O
@@ -292,11 +263,11 @@ inoremap [, [<CR>],<Esc>O
 " FILE
 "
 
+"FZF search
+set rtp+=/usr/local/opt/fzf
+
 " Disable swapfiles.
 set noswapfile
-
-" Spellcheck in local buffer
-"setlocal spell spelllang=en_au
 
 " Search current folder recursively for searching (via :find)
 set path=$PWD/**
@@ -307,7 +278,6 @@ filetype plugin indent on
 " Fix indenting on save
 filetype indent on
 set smartindent
-" autocmd BufRead,BufWritePre *.* normal gg=G
 
 " Remove auto comments.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
