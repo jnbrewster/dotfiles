@@ -1,6 +1,5 @@
 "
 " ~/.vimrc
-"
 
 " download vim-plug if missing
 if empty(glob("~/.vim/autoload/plug.vim"))
@@ -19,7 +18,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'ervandew/supertab'
-Plug 'itchyny/lightline.vim'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joelbrewster/Tomorrow'
@@ -34,7 +32,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rails'
+Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'joelbrewster/mod8.vim'
 
 
 call plug#end()
@@ -128,76 +128,87 @@ set title
 set noequalalways
 
 " Set font and size.
-set guifont=Fira\ Code:h14
+set guifont=Fira\ Code:h13
 
 " Set colors
-hi LineNr         ctermbg=NONE    ctermfg=0       cterm=NONE
-hi CursorLineNr   ctermbg=NONE    ctermfg=3       cterm=NONE
-hi TabLine        ctermbg=black   ctermfg=white   cterm=NONE
-hi TabLineFill    ctermbg=black   ctermfg=white   cterm=NONE
-hi TabLineSel     ctermbg=black   ctermfg=yellow
-hi VertSplit      ctermbg=black   ctermfg=black   cterm=NONE
-hi StatusLineNC   ctermbg=black   ctermfg=white   cterm=NONE
-hi StatusLine     ctermbg=black   ctermfg=yellow  cterm=NONE
-hi Folded         ctermbg=black   ctermfg=green
-hi ModeMsg        ctermbg=green   ctermfg=black   cterm=NONE
-hi Search         ctermbg=yellow  ctermfg=NONE
+" colorscheme mod8
 
-set background=dark
-colo tomorrow-night
+
+hi DiffAdd        ctermfg=green
+hi DiffChange     ctermfg=black
+hi DiffDelete     ctermfg=red
+hi DiffText       ctermfg=blue
+hi DiffAdded      ctermfg=green
+hi DiffFile       ctermfg=red
+hi DiffNewFile    ctermfg=green
+hi DiffLine       ctermfg=blue
+hi DiffRemoved    ctermfg=red
+
+hi CursorLineNr   ctermbg=NONE      ctermfg=yellow      cterm=NONE
+hi Folded         ctermbg=NONE      ctermfg=black
+hi LineNr         ctermbg=NONE      ctermfg=black       cterm=NONE
+hi ModeMsg        ctermbg=NONE      ctermfg=white       cterm=NONE
+hi Search         ctermbg=yellow    ctermfg=black
+hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
+hi StatusLineNC   ctermbg=NONE      ctermfg=black       cterm=NONE
+hi TabLine        ctermbg=NONE      ctermfg=black       cterm=NONE
+hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
+hi TabLineSel     ctermbg=NONE      ctermfg=white
+hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
+hi visual         ctermbg=black     ctermfg=NONE
+
+hi Boolean        ctermfg=yellow
+hi Character      ctermfg=red
+hi Comment        ctermfg=black
+hi Conditional    ctermfg=magenta
+hi Constant       ctermfg=yellow
+hi Define         ctermfg=magenta
+hi Delimiter      ctermfg=blue
+hi Float          ctermfg=yellow
+hi Function       ctermfg=blue
+hi Identifier     ctermfg=red
+hi Include        ctermfg=blue
+hi Keyword        ctermfg=magenta
+hi Label          ctermfg=yellow
+hi Number         ctermfg=yellow
+hi Operator       ctermfg=white
+hi PreProc        ctermfg=yellow
+hi Repeat         ctermfg=yellow
+hi Special        ctermfg=cyan
+hi SpecialChar    ctermfg=red
+hi Statement      ctermfg=red
+hi StorageClass   ctermfg=yellow
+hi String         ctermfg=green
+hi Structure      ctermfg=magenta
+hi Tag            ctermfg=yellow
+hi Todo           ctermfg=yellow
+hi Type           ctermfg=yellow
+hi Typedef        ctermfg=yellow
+
+hi PMenuSel       ctermfg=black ctermbg=white
+hi PMenu          ctermfg=white ctermbg=black
+
+hi htmlBold       ctermfg=yellow
+hi htmlItalic     ctermfg=magenta
+hi htmlEndTag     ctermfg=white
+hi htmlTag        ctermfg=white
+
+hi javascript         ctermfg=white
+hi javascriptBraces   ctermfg=white
+hi javascriptNumber   ctermfg=yellow
+
+
+
+"Draw 80 column line
+highlight ColorColumn ctermbg=black
+set colorcolumn=80
 
 " Statusline
-set laststatus=2
-
-" Hide mode
-set noshowmode
-
-" Light line info
-let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
-      \   'readonly': 'LightLineReadonly',
-      \   'modified': 'LightLineModified',
-      \   'filename': 'LightLineFilename'
-      \ },
-      \ }
-
-function! LightLineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightLineReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "*"
-  else
-    return ""
-  endif
-endfunction
-
-function! LightLineFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! LightLineFilename()
-  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
+ set statusline=\ %F%m%r%h
+ set statusline+=\ %{fugitive#statusline()}
+ set statusline+=%=
+ set statusline+=\ [%l\:%c]
+ set laststatus=2
 
 
 "
@@ -213,15 +224,20 @@ nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 " Load Goyo for writing.
 nnoremap <Leader>g :Goyo 50%<CR>
 
-" Load :Ex
-nnoremap <Leader>e :Ex<CR>
-nnoremap <C-e> :Ex <CR>
+" Load :Lex and :Ex
+nnoremap <Leader>e :Lex<CR>
+nnoremap <C-e> :Lex <CR>
+nnoremap <C-\> :Explore <CR>
 
 " FZF search
 nnoremap <Leader>f :FZF<CR>
+nnoremap <C-p> :FZF<CR>
 
 " Make netrw sexier
 let g:netrw_liststyle=3
+
+"Tabs
+nnoremap <Leader>t :tabe<CR>
 
 " Emmet keys
 let g:user_emmet_leader_key = '<c-e>'
@@ -238,12 +254,6 @@ autocmd FocusLost * nested silent! wa
 " Quit
 nnoremap <Leader>q :q<CR>
 nnoremap <C-q> :q <CR>
-
-" Arrowkeys resize viewports.
-nnoremap <Left> :vertical resize -2<CR>
-nnoremap <Right> :vertical resize +2<CR>
-nnoremap <Up> :resize -2<CR>
-nnoremap <Down> :resize +2<CR>
 
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
@@ -278,6 +288,7 @@ filetype plugin indent on
 " Fix indenting on save
 filetype indent on
 set smartindent
+" autocmd BufRead,BufWritePre *.* normal gg=G
 
 " Remove auto comments.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -288,6 +299,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.wiki set filetype=markdown
 
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
