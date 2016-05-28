@@ -62,7 +62,6 @@ set softtabstop=2
 " Set backspaces
 set backspace=indent,eol,start
 
-
 " Tab width when indenting in normal mode.
 set shiftwidth=2
 
@@ -104,6 +103,12 @@ set showcmd
 " Highlight search matches.
 set hlsearch
 
+
+
+"
+" VISUAL
+"
+
 " Enable syntax highlighting.
 syntax on
 
@@ -127,13 +132,13 @@ set title
 " minimize resizing
 set noequalalways
 
+" visual
+set wildmode=longest:full,full
+
 " Set font and size.
 set guifont=Fira\ Code:h13
 
 " Set colors
-" colorscheme mod8
-
-
 hi DiffAdd        ctermfg=green
 hi DiffChange     ctermfg=black
 hi DiffDelete     ctermfg=red
@@ -147,7 +152,7 @@ hi DiffRemoved    ctermfg=red
 hi CursorLineNr   ctermbg=NONE      ctermfg=yellow      cterm=NONE
 hi Folded         ctermbg=NONE      ctermfg=black
 hi LineNr         ctermbg=NONE      ctermfg=black       cterm=NONE
-hi ModeMsg        ctermbg=NONE      ctermfg=white       cterm=NONE
+hi ModeMsg        ctermbg=NONE      ctermfg=yellow       cterm=NONE
 hi Search         ctermbg=yellow    ctermfg=black
 hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
 hi StatusLineNC   ctermbg=NONE      ctermfg=black       cterm=NONE
@@ -155,7 +160,13 @@ hi TabLine        ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLineSel     ctermbg=NONE      ctermfg=white
 hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
-hi visual         ctermbg=black     ctermfg=NONE
+hi visual         ctermbg=yellow     ctermfg=black
+hi PMenuSel       ctermfg=black ctermbg=white
+hi PMenu          ctermfg=white ctermbg=black
+hi Normal         ctermfg=white
+hi Question       ctermfg=magenta
+hi Underlined     ctermfg=NONE
+hi WarningMsg     ctermfg=red
 
 hi Boolean        ctermfg=yellow
 hi Character      ctermfg=red
@@ -185,23 +196,45 @@ hi Todo           ctermfg=yellow
 hi Type           ctermfg=yellow
 hi Typedef        ctermfg=yellow
 
-hi PMenuSel       ctermfg=black ctermbg=white
-hi PMenu          ctermfg=white ctermbg=black
-
 hi htmlBold       ctermfg=yellow
 hi htmlItalic     ctermfg=magenta
 hi htmlEndTag     ctermfg=white
 hi htmlTag        ctermfg=white
 
+hi cssBraces      ctermfg=white
+hi cssClassName   ctermfg=magenta
+hi cssColor       ctermfg=cyan
+
 hi javascript         ctermfg=white
 hi javascriptBraces   ctermfg=white
 hi javascriptNumber   ctermfg=yellow
 
+hi markdownCode       ctermfg=black
+hi markdownError      ctermfg=red
+hi markdownCodeBlock  ctermfg=blue
+hi markdownHeadingDelimiter     ctermfg=yellow
 
+hi pythonOperator ctermfg=magenta
+hi pythonRepeat   ctermfg=magenta
 
-"Draw 80 column line
-highlight ColorColumn ctermbg=black
-set colorcolumn=80
+hi rubyAttribute  ctermfg=blue
+hi rubyConstant   ctermfg=yellow
+hi rubyInterpolation ctermfg=green
+hi rubyInterpolationDelimiter ctermfg=yellow
+hi rubyRegexp     ctermfg=cyan
+hi rubySymbol     ctermfg=green
+hi rubyStringDelimiter ctermfg=green
+
+hi sassidChar     ctermfg=red
+hi sassClassChar  ctermfg=yellow
+hi sassInclude    ctermfg=magenta
+hi sassMixing     ctermfg=magenta
+hi sassMixinName  ctermfg=blue
+
+hi SpellBad       ctermfg=red
+hi SpellLocal     ctermfg=yellow
+hi SpellCap       ctermfg=yellow
+hi SpellRare      ctermfg=green
 
 " Statusline
  set statusline=\ %F%m%r%h
