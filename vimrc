@@ -21,6 +21,7 @@ Plug 'ervandew/supertab'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joelbrewster/Tomorrow'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'mattn/emmet-vim/'
@@ -29,12 +30,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-ruby/vim-ruby'
 Plug 'vimwiki/vimwiki'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'joelbrewster/mod8.vim'
 
 
 call plug#end()
@@ -115,6 +114,9 @@ syntax on
 " Remove fill characters
 set fillchars=""
 
+set list listchars=tab:❘-,extends:»,precedes:«,nbsp:×
+set list
+
 " Remove elements.
 if exists("+guioptions")
   set go-=m   " menu bar
@@ -160,13 +162,14 @@ hi TabLine        ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLineSel     ctermbg=NONE      ctermfg=white
 hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
-hi visual         ctermbg=yellow     ctermfg=black
+hi visual         ctermbg=black     ctermfg=white
 hi PMenuSel       ctermfg=black ctermbg=white
 hi PMenu          ctermfg=white ctermbg=black
 hi Normal         ctermfg=white
 hi Question       ctermfg=magenta
 hi Underlined     ctermfg=NONE
 hi WarningMsg     ctermfg=red
+hi nontext        ctermfg=black
 
 hi Boolean        ctermfg=yellow
 hi Character      ctermfg=red
