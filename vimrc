@@ -20,7 +20,6 @@ Plug 'ap/vim-css-color'
 Plug 'ervandew/supertab'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
@@ -29,12 +28,12 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vimwiki/vimwiki'
-
 
 call plug#end()
 
@@ -114,8 +113,8 @@ syntax on
 " Remove fill characters
 set fillchars=""
 
-set list listchars=tab:❘-,extends:»,precedes:«,nbsp:×
-set list
+" set list listchars=tab:❘-,extends:»,precedes:«,nbsp:×
+" set list
 
 " Remove elements.
 if exists("+guioptions")
@@ -138,7 +137,16 @@ set noequalalways
 set wildmode=longest:full,full
 
 " Set font and size.
-set guifont=Fira\ Code:h13
+set guifont=Input\ Mono:h12
+
+set linespace=5
+
+" Statusline
+set statusline=\ %f%m%r%h
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=%=
+set statusline+=\ [%l\:%c]
+set laststatus=2
 
 " Set colors
 hi DiffAdd        ctermfg=green
@@ -154,7 +162,7 @@ hi DiffRemoved    ctermfg=red
 hi CursorLineNr   ctermbg=NONE      ctermfg=yellow      cterm=NONE
 hi Folded         ctermbg=NONE      ctermfg=black
 hi LineNr         ctermbg=NONE      ctermfg=black       cterm=NONE
-hi ModeMsg        ctermbg=NONE      ctermfg=yellow       cterm=NONE
+hi ModeMsg        ctermbg=NONE      ctermfg=yellow      cterm=NONE
 hi Search         ctermbg=yellow    ctermfg=black
 hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
 hi StatusLineNC   ctermbg=NONE      ctermfg=black       cterm=NONE
@@ -163,8 +171,8 @@ hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLineSel     ctermbg=NONE      ctermfg=white
 hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
 hi visual         ctermbg=black     ctermfg=white
-hi PMenuSel       ctermfg=black ctermbg=white
-hi PMenu          ctermfg=white ctermbg=black
+hi PMenuSel       ctermfg=black     ctermbg=white
+hi PMenu          ctermfg=white     ctermbg=black
 hi Normal         ctermfg=white
 hi Question       ctermfg=magenta
 hi Underlined     ctermfg=NONE
@@ -217,35 +225,37 @@ hi markdownError      ctermfg=red
 hi markdownCodeBlock  ctermfg=blue
 hi markdownHeadingDelimiter     ctermfg=yellow
 
-hi pythonOperator ctermfg=magenta
-hi pythonRepeat   ctermfg=magenta
+hi pythonOperator     ctermfg=magenta
+hi pythonRepeat       ctermfg=magenta
 
-hi rubyAttribute  ctermfg=blue
-hi rubyConstant   ctermfg=yellow
+hi rubyAttribute      ctermfg=blue
+hi rubyConstant       ctermfg=yellow
 hi rubyInterpolation ctermfg=green
 hi rubyInterpolationDelimiter ctermfg=yellow
-hi rubyRegexp     ctermfg=cyan
-hi rubySymbol     ctermfg=green
+hi rubyRegexp         ctermfg=cyan
+hi rubySymbol         ctermfg=green
 hi rubyStringDelimiter ctermfg=green
 
-hi sassidChar     ctermfg=red
-hi sassClassChar  ctermfg=yellow
-hi sassInclude    ctermfg=magenta
-hi sassMixing     ctermfg=magenta
-hi sassMixinName  ctermfg=blue
+hi sassidChar         ctermfg=red
+hi sassClassChar      ctermfg=yellow
+hi sassInclude        ctermfg=magenta
+hi sassMixing         ctermfg=magenta
+hi sassMixinName      ctermfg=blue
 
-hi SpellBad       ctermfg=red
-hi SpellLocal     ctermfg=yellow
-hi SpellCap       ctermfg=yellow
-hi SpellRare      ctermfg=green
+hi SpellBad           ctermfg=red
+hi SpellLocal         ctermfg=yellow
+hi SpellCap           ctermfg=yellow
+hi SpellRare          ctermfg=green
 
-" Statusline
- set statusline=\ %F%m%r%h
- set statusline+=\ %{fugitive#statusline()}
- set statusline+=%=
- set statusline+=\ [%l\:%c]
- set laststatus=2
+" default
+" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
+
+if has("gui_running")
+  " colorscheme base16-ocean
+  " set background=dark
+  set laststatus=0
+endif
 
 "
 " INPUT
@@ -268,6 +278,24 @@ nnoremap <C-\> :Explore <CR>
 " FZF search
 nnoremap <Leader>f :FZF<CR>
 nnoremap <C-p> :FZF<CR>
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+      \   'source':  reverse(<sid>buflist()),
+      \   'sink':    function('<sid>bufopen'),
+      \   'options': '+m',
+      \   'down':    len(<sid>buflist()) + 2
+      \ })<CR>
 
 " Make netrw sexier
 let g:netrw_liststyle=3
@@ -334,7 +362,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.wiki set filetype=markdown
 
 " Remove whitespace on save
@@ -351,3 +379,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=1
 
+function RangerExplorer()
+  exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
+  if filereadable('/tmp/vim_ranger_current_file')
+    exec 'edit ' . system('cat /tmp/vim_ranger_current_file')
+    call system('rm /tmp/vim_ranger_current_file')
+  endif
+  redraw!
+endfun
+
+map <Leader>x :call RangerExplorer()<CR>
