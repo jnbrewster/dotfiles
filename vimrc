@@ -25,7 +25,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
-Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -34,6 +33,9 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vimwiki/vimwiki'
+Plug 'w0ng/vim-hybrid'
+Plug 'joshdick/onedark.vim'
+Plug 'digitaltoad/vim-pug'
 
 call plug#end()
 
@@ -162,7 +164,7 @@ hi DiffRemoved    ctermfg=red
 hi CursorLineNr   ctermbg=NONE      ctermfg=yellow      cterm=NONE
 hi Folded         ctermbg=NONE      ctermfg=black
 hi LineNr         ctermbg=NONE      ctermfg=black       cterm=NONE
-hi ModeMsg        ctermbg=NONE      ctermfg=yellow      cterm=NONE
+hi ModeMsg        ctermbg=NONE      ctermfg=yellow       cterm=NONE
 hi Search         ctermbg=yellow    ctermfg=black
 hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
 hi StatusLineNC   ctermbg=NONE      ctermfg=black       cterm=NONE
@@ -171,13 +173,15 @@ hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLineSel     ctermbg=NONE      ctermfg=white
 hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
 hi visual         ctermbg=black     ctermfg=white
-hi PMenuSel       ctermfg=black     ctermbg=white
-hi PMenu          ctermfg=white     ctermbg=black
+hi PMenuSel       ctermfg=black ctermbg=white
+hi PMenu          ctermfg=white ctermbg=black
 hi Normal         ctermfg=white
 hi Question       ctermfg=magenta
 hi Underlined     ctermfg=NONE
 hi WarningMsg     ctermfg=red
 hi nontext        ctermfg=black
+hi MatchParen     ctermfg=white
+hi vimBracket     ctermfg=white
 
 hi Boolean        ctermfg=yellow
 hi Character      ctermfg=red
@@ -225,34 +229,34 @@ hi markdownError      ctermfg=red
 hi markdownCodeBlock  ctermfg=blue
 hi markdownHeadingDelimiter     ctermfg=yellow
 
-hi pythonOperator     ctermfg=magenta
-hi pythonRepeat       ctermfg=magenta
+hi pythonOperator ctermfg=magenta
+hi pythonRepeat   ctermfg=magenta
 
-hi rubyAttribute      ctermfg=blue
-hi rubyConstant       ctermfg=yellow
+hi rubyAttribute  ctermfg=blue
+hi rubyConstant   ctermfg=yellow
 hi rubyInterpolation ctermfg=green
 hi rubyInterpolationDelimiter ctermfg=yellow
-hi rubyRegexp         ctermfg=cyan
-hi rubySymbol         ctermfg=green
+hi rubyRegexp     ctermfg=cyan
+hi rubySymbol     ctermfg=green
 hi rubyStringDelimiter ctermfg=green
 
-hi sassidChar         ctermfg=red
-hi sassClassChar      ctermfg=yellow
-hi sassInclude        ctermfg=magenta
-hi sassMixing         ctermfg=magenta
-hi sassMixinName      ctermfg=blue
+hi sassidChar     ctermfg=red
+hi sassClassChar  ctermfg=yellow
+hi sassInclude    ctermfg=magenta
+hi sassMixing     ctermfg=magenta
+hi sassMixinName  ctermfg=blue
 
-hi SpellBad           ctermfg=red
-hi SpellLocal         ctermfg=yellow
-hi SpellCap           ctermfg=yellow
-hi SpellRare          ctermfg=green
+hi SpellBad       ctermfg=red
+hi SpellLocal     ctermfg=yellow
+hi SpellCap       ctermfg=yellow
+hi SpellRare      ctermfg=green
 
 " default
 " set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 
 if has("gui_running")
-  " colorscheme base16-ocean
+  colorscheme onedark
   " set background=dark
   set laststatus=0
 endif
