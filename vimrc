@@ -15,25 +15,19 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
-Plug 'ap/vim-css-color'
-Plug 'ervandew/supertab'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
-Plug 'vimwiki/vimwiki'
-Plug 'w0ng/vim-hybrid'
 Plug 'joshdick/onedark.vim'
 Plug 'digitaltoad/vim-pug'
 
@@ -58,6 +52,7 @@ set tabstop=2
 
 " Tab width when editing.
 set softtabstop=2
+set expandtab
 
 " Set backspaces
 set backspace=indent,eol,start
@@ -373,23 +368,13 @@ autocmd BufNewFile,BufReadPost *.wiki set filetype=markdown
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Syntastic interface
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height=1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_loc_list_height=1
 
-function RangerExplorer()
-  exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
-  if filereadable('/tmp/vim_ranger_current_file')
-    exec 'edit ' . system('cat /tmp/vim_ranger_current_file')
-    call system('rm /tmp/vim_ranger_current_file')
-  endif
-  redraw!
-endfun
-
-map <Leader>x :call RangerExplorer()<CR>
