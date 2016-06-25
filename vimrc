@@ -15,21 +15,25 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'briancollins/vim-jst'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'digitaltoad/vim-pug'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
-" Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
-Plug 'joshdick/onedark.vim'
-Plug 'digitaltoad/vim-pug'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -134,7 +138,7 @@ set noequalalways
 set wildmode=longest:full,full
 
 " Set font and size.
-set guifont=Input\ Mono:h12
+set guifont=Fira\ Mono:h13
 
 set linespace=5
 
@@ -251,8 +255,8 @@ hi SpellRare      ctermfg=green
 
 
 if has("gui_running")
-  colorscheme onedark
-  " set background=dark
+  colorscheme Tomorrow
+  set background=light
   set laststatus=0
 endif
 
@@ -368,13 +372,12 @@ autocmd BufNewFile,BufReadPost *.wiki set filetype=markdown
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Syntastic interface
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_loc_list_height=1
-
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=1
