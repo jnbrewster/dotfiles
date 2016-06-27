@@ -1,8 +1,10 @@
 alias reload="exec $SHELL -l"
-alias tomorrow="osascript ~/.vim/plugged/Tomorrow/ThemeChanger.scpt"
+alias tomorrow="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Tomorrow.scpt"
 alias solarized="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Solarized.scpt"
 alias gruvbox="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Gruvbox.scpt"
 alias seoul="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Seoul256.scpt"
+alias ocean="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Ocean.scpt"
+alias one="osascript /Volumes/External/Dropbox/Developer/HelperApplications/One.scpt"
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
@@ -40,14 +42,13 @@ alias gdc="cd /Volumes/External/Dropbox/Documents/"
 alias gdw="cd ~/Downloads/"
 alias gds="cd ~/Desktop/"
 alias gpc="cd /Volumes/External/Dropbox/Pictures/"
-alias gdv="cd /Volumes/External/Dropbox/Developer/"
 alias gms="cd /Volumes/External/Dropbox/Music/"
 alias gmv="cd /Volumes/External/Dropbox/Movies/"
 alias gph="cd /Volumes/External/Dropbox/Photos/"
 alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
-alias gga="cd /Volumes/External/Dropbox/Developer/GeneralAssembly/"
+alias gdv="cd /Volumes/External/Dropbox/Developer/ && ls"
 alias gbr="cd /Volumes/External/Dropbox/Developer/br0c0d3/ && ls"
-alias gwr="cd /Volumes/External/Dropbox/Developer/WDI7-Warmups && ls"
+alias gwd="cd /Volumes/External/Dropbox/Developer/WDI7-Warmups && ls"
 
 alias v='vim'
 alias n="nvim"
@@ -56,6 +57,7 @@ alias cm="cmus"
 alias mp="mplayer"
 alias ddg="elinks www.duckduckgo.com"
 alias hn="elinks https://news.ycombinator.com"
+alias rn='ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; cd "$LASTDIR";ls -a'
 alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
 alias gifpng="convert -delay 35 -loop 0 source*.png animated.gif"
@@ -64,7 +66,9 @@ alias html="pandoc input.md -o output.html"
 alias pdf="pdftotext"
 alias pv="open -a Preview"
 alias ql="qlmanage -p 2>/dev/null"
-alias notes="vim ~/Documents/notes.md"
+alias atom="vim"
+alias cod="mplayer /Volumes/External/Dropbox/Public/WheelOfFortune.mp3"
+alias fondle="echo 'Mmmmmm oooh yeah....'; touch"
 
 alias commit='git commit -am '
 alias push='git push origin master'
@@ -95,6 +99,15 @@ alias a="mplayer http://50.7.96.138:8115/listen/pls"
 #
 # HELPERS
 #
+
+# Notational velocity style create and search
+n() {
+  $EDITOR /Volumes/External/Dropbox/Documents/"$*".md
+}
+
+nl() {
+  ls -c /Volumes/External/Dropbox/Documents/ | grep "$*"
+}
 
 # Make a directory and change to it.
 function mkcd {
