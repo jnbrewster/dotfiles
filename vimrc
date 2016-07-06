@@ -33,7 +33,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
-Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -138,7 +137,7 @@ set noequalalways
 set wildmode=longest:full,full
 
 " Set font and size.
-set guifont=Fira\ Mono:h13
+set guifont=Input\ Mono:h14
 
 set linespace=5
 
@@ -165,22 +164,24 @@ hi Folded         ctermbg=NONE      ctermfg=black
 hi LineNr         ctermbg=NONE      ctermfg=black       cterm=NONE
 hi ModeMsg        ctermbg=NONE      ctermfg=yellow       cterm=NONE
 hi Search         ctermbg=yellow    ctermfg=black
+" hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
 hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
 hi StatusLineNC   ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLine        ctermbg=NONE      ctermfg=black       cterm=NONE
 hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
-hi TabLineSel     ctermbg=NONE      ctermfg=white
+" hi TabLineSel     ctermbg=NONE      ctermfg=white
+hi TabLineSel     ctermbg=NONE
 hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
 hi visual         ctermbg=black     ctermfg=white
 hi PMenuSel       ctermfg=black ctermbg=white
 hi PMenu          ctermfg=white ctermbg=black
-hi Normal         ctermfg=white
+" hi Normal         ctermfg=white
 hi Question       ctermfg=magenta
 hi Underlined     ctermfg=NONE
 hi WarningMsg     ctermfg=red
 hi nontext        ctermfg=black
-hi MatchParen     ctermfg=white
-hi vimBracket     ctermfg=white
+hi MatchParen     ctermfg=red ctermbg=black
+" hi vimBracket     ctermfg=white
 
 hi Boolean        ctermfg=yellow
 hi Character      ctermfg=red
@@ -196,7 +197,7 @@ hi Include        ctermfg=blue
 hi Keyword        ctermfg=magenta
 hi Label          ctermfg=yellow
 hi Number         ctermfg=yellow
-hi Operator       ctermfg=white
+" hi Operator       ctermfg=white
 hi PreProc        ctermfg=yellow
 hi Repeat         ctermfg=yellow
 hi Special        ctermfg=cyan
@@ -206,21 +207,21 @@ hi StorageClass   ctermfg=yellow
 hi String         ctermfg=green
 hi Structure      ctermfg=magenta
 hi Tag            ctermfg=yellow
-hi Todo           ctermfg=yellow
+hi Todo           ctermfg=magenta ctermbg=black
 hi Type           ctermfg=yellow
 hi Typedef        ctermfg=yellow
 
 hi htmlBold       ctermfg=yellow
 hi htmlItalic     ctermfg=magenta
-hi htmlEndTag     ctermfg=white
-hi htmlTag        ctermfg=white
+" hi htmlEndTag     ctermfg=white
+" hi htmlTag        ctermfg=white
 
-hi cssBraces      ctermfg=white
+" hi cssBraces      ctermfg=white
 hi cssClassName   ctermfg=magenta
 hi cssColor       ctermfg=cyan
 
-hi javascript         ctermfg=white
-hi javascriptBraces   ctermfg=white
+" hi javascript         ctermfg=white
+" hi javascriptBraces   ctermfg=white
 hi javascriptNumber   ctermfg=yellow
 
 hi markdownCode       ctermfg=black
@@ -255,8 +256,7 @@ hi SpellRare      ctermfg=green
 
 
 if has("gui_running")
-  colorscheme Tomorrow
-  set background=light
+  colorscheme onedark
   set laststatus=0
 endif
 
@@ -379,5 +379,6 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_loc_list_height=1
+
