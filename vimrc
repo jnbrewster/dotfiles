@@ -33,6 +33,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
+Plug 'kshenoy/vim-signature'
 
 call plug#end()
 
@@ -91,6 +92,7 @@ set cursorline
 
 " Show relative cursor number.
 set relativenumber
+set nu
 
 " set folding
 set foldmethod=manual
@@ -137,7 +139,7 @@ set noequalalways
 set wildmode=longest:full,full
 
 " Set font and size.
-set guifont=Input\ Mono:h14
+set guifont=Input:h11
 
 set linespace=5
 
@@ -256,7 +258,6 @@ hi SpellRare      ctermfg=green
 
 
 if has("gui_running")
-  colorscheme onedark
   set laststatus=0
 endif
 
@@ -382,3 +383,4 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_loc_list_height=1
 
+let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-']
