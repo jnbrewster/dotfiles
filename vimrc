@@ -384,3 +384,4 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_loc_list_height=1
 
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-']
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
