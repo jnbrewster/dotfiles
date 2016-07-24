@@ -248,10 +248,13 @@ hi sassInclude    ctermfg=magenta
 hi sassMixing     ctermfg=magenta
 hi sassMixinName  ctermfg=blue
 
-hi SpellBad       ctermfg=red
+hi SpellBad       ctermfg=black
 hi SpellLocal     ctermfg=yellow
 hi SpellCap       ctermfg=yellow
 hi SpellRare      ctermfg=green
+
+hi link SyntasticError SpellBad
+hi link SyntasticWarning SpellCap
 
 " default
 " set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -340,6 +343,9 @@ inoremap [, [<CR>],<Esc>O
 "
 " FILE
 "
+
+" Spell check
+setlocal spell spelllang=en_us
 
 "FZF search
 set rtp+=/usr/local/opt/fzf
