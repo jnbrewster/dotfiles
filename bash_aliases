@@ -2,6 +2,7 @@ alias reload="exec $SHELL -l"
 alias tomorrow="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Tomorrow.scpt"
 alias solarized="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Solarized.scpt"
 alias gruvbox="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Gruvbox.scpt"
+alias hemisu="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Hemisu.scpt"
 alias seoul="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Seoul256.scpt"
 alias ocean="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Ocean.scpt"
 alias one="osascript /Volumes/External/Dropbox/Developer/HelperApplications/One.scpt"
@@ -9,6 +10,7 @@ alias one="osascript /Volumes/External/Dropbox/Developer/HelperApplications/One.
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
 
+alias cal='cal | head -n 1; cal | tail -n +2 | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"'
 alias eh="open vnc://192.168.0.12"
 alias ip="curl http://ipecho.net/plain; echo"
 alias ips="ifconfig | grep inet"
@@ -21,6 +23,15 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; ki
 alias tk="trans :ko "
 alias te="trans :en "
 
+alias fondle="echo 'Mmmmmm oooh yeah....'; touch"
+server(){
+  python -m SimpleHTTPServer ${1:-1337}
+}
+alias pys=server
+
+alias phps="php -S localhost:8000"
+alias zp="php -S localhost:7475"
+
 alias update="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
 
 alias ls="ls -G"
@@ -29,8 +40,8 @@ alias asl="ls -aslFh"
 alias la="ls -a"
 alias lh="ls -lh"
 alias cl="clear"
-alias ..='cd ..'
-alias ...='cd ../..'
+alias ..='cd .. && ls'
+alias ...='cd ../.. && ls'
 
 alias gg="cd ~"
 alias gh="cd ~"
@@ -48,7 +59,6 @@ alias gph="cd /Volumes/External/Dropbox/Photos/"
 alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
 alias gdv="cd /Volumes/External/Dropbox/Developer/ && ls"
 alias gbr="cd /Volumes/External/Dropbox/Developer/br0c0d3/ && ls"
-alias gwd="cd /Volumes/External/Dropbox/Developer/WDI7-Warmups && ls"
 
 alias v='vim'
 alias n="nvim"
@@ -66,9 +76,7 @@ alias html="pandoc input.md -o output.html"
 alias pdf="pdftotext"
 alias pv="open -a Preview"
 alias ql="qlmanage -p 2>/dev/null"
-alias atom="vim"
-alias cod="mplayer /Volumes/External/Dropbox/Public/WheelOfFortune.mp3"
-alias fondle="echo 'Mmmmmm oooh yeah....'; touch"
+alias df="sh /Applications/df_osx/df"
 
 alias commit='git commit -am '
 alias push='git push origin master'
