@@ -139,16 +139,11 @@ set noequalalways
 set wildmode=longest:full,full
 
 " Set font and size.
-set guifont=Input:h11
+set guifont=Input:h13
 
 set linespace=5
 
-" Statusline
-set statusline=\ %f%m%r%h
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%=
-set statusline+=\ [%l\:%c]
-set laststatus=2
+set ruler
 
 " Set colors
 hi DiffAdd        ctermfg=green
@@ -215,15 +210,16 @@ hi Typedef        ctermfg=yellow
 
 hi htmlBold       ctermfg=yellow
 hi htmlItalic     ctermfg=magenta
-" hi htmlEndTag     ctermfg=white
-" hi htmlTag        ctermfg=white
 
-" hi cssBraces      ctermfg=white
+hi htmlEndTag     ctermfg=green
+hi htmlTag        ctermfg=green
+
+hi cssBraces      ctermfg=green
 hi cssClassName   ctermfg=magenta
 hi cssColor       ctermfg=cyan
 
-" hi javascript         ctermfg=white
-" hi javascriptBraces   ctermfg=white
+hi javascript         ctermfg=cyan
+hi javascriptBraces   ctermfg=green
 hi javascriptNumber   ctermfg=yellow
 
 hi markdownCode       ctermfg=black
@@ -256,12 +252,9 @@ hi SpellRare      ctermfg=green
 hi link SyntasticError SpellBad
 hi link SyntasticWarning SpellCap
 
-" default
-" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-
 if has("gui_running")
   set laststatus=0
+  colorscheme Tomorrow
 endif
 
 "
@@ -272,7 +265,7 @@ endif
 set mouse=a
 
 " Insert the date and 24hr time.
-nnoremap <Leader>d :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
+nnoremap <Leader>da :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 
 " Load Goyo for writing.
 nnoremap <Leader>g :Goyo 50%<CR>
@@ -315,7 +308,6 @@ let g:user_emmet_leader_key = '<c-e>'
 
 " Save
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>s :w<CR>
 nnoremap <C-w>:w <CR>
 nnoremap <C-s>:w <CR>
 
