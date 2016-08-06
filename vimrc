@@ -244,13 +244,10 @@ hi sassInclude    ctermfg=magenta
 hi sassMixing     ctermfg=magenta
 hi sassMixinName  ctermfg=blue
 
-hi SpellBad       ctermfg=black
 hi SpellLocal     ctermfg=yellow
-hi SpellCap       ctermfg=yellow
 hi SpellRare      ctermfg=green
-
-hi link SyntasticError SpellBad
-hi link SyntasticWarning SpellCap
+hi SpellBad       ctermfg=white ctermbg=red
+hi SpellCap       ctermfg=white ctermbg=black
 
 if has("gui_running")
   set laststatus=0
