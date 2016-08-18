@@ -15,13 +15,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'briancollins/vim-jst'
-Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'digitaltoad/vim-pug'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim/'
@@ -141,8 +138,10 @@ set wildmode=longest:full,full
 " Set font and size.
 set guifont=Input:h13
 
+" Space out lines a bit cleaner on macvim
 set linespace=5
 
+" Statusline
 set ruler
 
 " Set colors
@@ -244,8 +243,11 @@ hi sassInclude    ctermfg=magenta
 hi sassMixing     ctermfg=magenta
 hi sassMixinName  ctermfg=blue
 
+hi SpellBad       ctermfg=black
 hi SpellLocal     ctermfg=yellow
+hi SpellCap       ctermfg=yellow
 hi SpellRare      ctermfg=green
+
 hi SpellBad       ctermfg=white ctermbg=red
 hi SpellCap       ctermfg=white ctermbg=black
 
