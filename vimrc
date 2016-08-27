@@ -138,10 +138,14 @@ set wildmode=longest:full,full
 " Set font and size.
 set guifont=Input:h13
 
-" Space out lines a bit cleaner on macvim
 set linespace=5
 
 " Statusline
+" set statusline=\ %f%m%r%h
+" set statusline+=\ %{fugitive#statusline()}
+" set statusline+=%=
+" set statusline+=\ [%l\:%c]
+" set laststatus=2
 set ruler
 
 " Set colors
@@ -252,8 +256,8 @@ hi SpellBad       ctermfg=white ctermbg=red
 hi SpellCap       ctermfg=white ctermbg=black
 
 if has("gui_running")
+  colorscheme one
   set laststatus=0
-  colorscheme Tomorrow
 endif
 
 "
@@ -363,6 +367,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
 " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.wiki set filetype=markdown
 
