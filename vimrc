@@ -135,9 +135,7 @@ set noequalalways
 " visual
 set wildmode=longest:full,full
 
-" Set font and size.
-set guifont=Input:h13
-
+" Add more space between lines
 set linespace=5
 
 " Statusline
@@ -256,9 +254,16 @@ hi SpellBad       ctermfg=white ctermbg=red
 hi SpellCap       ctermfg=white ctermbg=black
 
 if has("gui_running")
-  colorscheme one
+  if strftime("%H") < 12
+    set background=light
+  else
+    set background=dark
+  endif
   set laststatus=0
+  colorscheme one
+  set guifont=Input:h12
 endif
+
 
 "
 " INPUT
