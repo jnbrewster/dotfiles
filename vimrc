@@ -254,14 +254,15 @@ hi SpellBad       ctermfg=white ctermbg=red
 hi SpellCap       ctermfg=white ctermbg=black
 
 if has("gui_running")
-  if strftime("%H") < 12
-    set background=light
-  else
-    set background=dark
-  endif
   set laststatus=0
-  colorscheme one
+  set noruler
   set guifont=Input:h12
+  colorscheme one
+  if strftime("%H") < 12
+    set background=dark
+  else
+    set background=light
+  endif
 endif
 
 
@@ -373,7 +374,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Javascript auto complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.wiki set filetype=markdown
 
 " Remove whitespace on save
