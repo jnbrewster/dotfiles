@@ -9,6 +9,7 @@ alias one="osascript /Volumes/External/Dropbox/Developer/HelperApplications/One.
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
+alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
 
 alias cal='cal | head -n 1; cal | tail -n +2 | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"'
 alias eh="open vnc://192.168.0.12"
@@ -24,15 +25,15 @@ alias tk="trans :ko "
 alias te="trans :en "
 
 alias fondle="echo 'Mmmmmm oooh yeah....'; touch"
+
 server(){
   python -m SimpleHTTPServer ${1:-1337}
 }
-alias pys=server
+alias pserver=server
+alias wserver="php -S localhost:3000 -t ."
+alias phpserver="php -S localhost:8000"
 
-alias phps="php -S localhost:8000"
-alias zp="php -S localhost:7475"
-
-alias update="sudo softwareupdate -i -a ; brew update ; brew upgrade ; brew upgrade brew-cask ; brew cleanup ; brew cask cleanup"
+alias wget="wget -c"
 
 alias ls="ls -G"
 alias ll="ls -otW"
@@ -48,26 +49,19 @@ alias gh="cd ~"
 alias gdt="cd ~/dotfiles"
 alias gap="cd ~/Applications/"
 alias gex="cd /Volumes/External/"
-alias gdr="cd /Volumes/External/Dropbox/"
-alias gdc="cd /Volumes/External/Dropbox/Documents/"
+alias gdc="cd ~/Documents/"
 alias gdw="cd ~/Downloads/"
 alias gds="cd ~/Desktop/"
-alias gpc="cd /Volumes/External/Dropbox/Pictures/"
-alias gms="cd /Volumes/External/Dropbox/Music/"
-alias gmv="cd /Volumes/External/Dropbox/Movies/"
+alias gpc="cd ~/Pictures/"
+alias gms="cd ~/Music/"
+alias gmv="cd ~/Movies/"
 alias gph="cd /Volumes/External/Dropbox/Photos/"
 alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
-alias gdv="cd /Volumes/External/Dropbox/Developer/ && ls"
-alias gbr="cd /Volumes/External/Dropbox/Developer/br0c0d3/ && ls"
+alias gdv="cd ~/Developer/ && ls"
+alias gbf="cd ~/Developer/bingefest/wp-content/themes/bingefest && ls"
 
 alias v='vim'
-alias n="nvim"
-alias mt="mutt"
-alias cm="cmus"
-alias mp="mplayer"
-alias ddg="elinks www.duckduckgo.com"
-alias hn="elinks https://news.ycombinator.com"
-alias rn='ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; cd "$LASTDIR";ls -a'
+alias rn="ranger"
 alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
 alias gifpng="convert -delay 35 -loop 0 source*.png animated.gif"
@@ -76,10 +70,13 @@ alias html="pandoc input.md -o output.html"
 alias pdf="pdftotext"
 alias pv="open -a Preview"
 alias ql="qlmanage -p 2>/dev/null"
+alias notes="vim /Volumes/External/Dropbox/Documents/notes.md"
+alias cod="mplayer /Volumes/External/Dropbox/Public/WheelOfFortune.mp3"
 alias df="sh /Applications/df_osx/df"
+alias life="vim /Volumes/External/Dropbox/life.org"
 
 alias commit='git commit -am '
-alias push='git push origin master'
+alias push='git push'
 alias status='git status'
 alias add='git add'
 alias clone="git clone"
@@ -87,8 +84,7 @@ alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
 alias tm="tmux"
 alias ta="tmux attach"
 alias pm="pymux"
-alias pa="pymux attach"
-alias ts="sh ~/dotfiles/Scripts/tmux.sh"
+eval $(thefuck --alias)
 
 alias info="sh ~/dotfiles/Scripts/info.sh"
 alias blocks="sh ~/dotfiles/Scripts/blocks"
@@ -99,9 +95,8 @@ alias poke="sh ~/dotfiles/Scripts/poke"
 alias weather="curl http://wttr.in/Melbourne"
 alias dcss="ssh joshua@crawl.akrasiac.org"
 
-alias leon="v /Volumes/External/Dropbox/Documents/Leon/LettersToLeon.md"
+alias leon="v ~/Documents/Leon/LettersToLeon.md"
 
-alias a="mplayer http://50.7.96.138:8115/listen/pls"
 
 
 #
