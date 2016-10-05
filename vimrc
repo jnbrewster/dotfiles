@@ -16,11 +16,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'briancollins/vim-jst'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'digitaltoad/vim-pug'
+Plug 'dkprice/vim-easygrep'
 Plug 'itspriddle/vim-javascript-indent'
+Plug 'jacoborus/tender'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/goyo.vim'
+Plug 'kshenoy/vim-signature'
 Plug 'mattn/emmet-vim/'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/syntastic'
@@ -30,7 +32,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-ruby/vim-ruby'
-Plug 'kshenoy/vim-signature'
+Plug 'chriskempson/vim-tomorrow-theme'
 
 call plug#end()
 
@@ -53,7 +55,6 @@ set tabstop=2
 
 " Tab width when editing.
 set softtabstop=2
-set expandtab
 
 " Set backspaces
 set backspace=indent,eol,start
@@ -86,6 +87,7 @@ let maplocalleader = ' '
 
 " Highlight current line.
 set cursorline
+" Set 80 column
 
 " Show relative cursor number.
 set relativenumber
@@ -109,10 +111,12 @@ set hlsearch
 " Enable syntax highlighting.
 syntax on
 
+" Hide mode
+set noshowmode
+
 " Remove fill characters
 set fillchars=""
-
-" set list listchars=tab:❘-,extends:»,precedes:«,nbsp:×
+set listchars=tab:❘-,extends:»,precedes:«,nbsp:×
 " set list
 
 " Remove elements.
@@ -136,15 +140,15 @@ set noequalalways
 set wildmode=longest:full,full
 
 " Add more space between lines
-set linespace=5
+set linespace=3
 
 " Statusline
-" set statusline=\ %f%m%r%h
-" set statusline+=\ %{fugitive#statusline()}
-" set statusline+=%=
-" set statusline+=\ [%l\:%c]
-" set laststatus=2
-set ruler
+set statusline=\ %f%m%r%h
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=%=
+set statusline+=\ [%l\:%c]
+set laststatus=2
+" set ruler
 
 " Set colors
 hi DiffAdd        ctermfg=green
@@ -254,15 +258,9 @@ hi SpellBad       ctermfg=white ctermbg=red
 hi SpellCap       ctermfg=white ctermbg=black
 
 if has("gui_running")
-  set laststatus=0
-  set noruler
-  set guifont=Input:h12
-  colorscheme one
-  if strftime("%H") < 12
-    set background=dark
-  else
-    set background=light
-  endif
+  " set guifont=SF\ Mono:h13
+  colorscheme tomorrow-night
+  set colorcolumn=80
 endif
 
 
@@ -277,16 +275,16 @@ set mouse=a
 nnoremap <Leader>da :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 
 " Load Goyo for writing.
-nnoremap <Leader>g :Goyo 50%<CR>
+nnoremap <Leader>go :Goyo 50%<CR>
 
 " Load :Lex and :Ex
-nnoremap <Leader>e :Lex<CR>
+nnoremap <Leader>e :Ex<CR>
 nnoremap <C-e> :Lex <CR>
-nnoremap <C-\> :Explore <CR>
+nnoremap <C-\>e :ex<CR>
 
-" FZF search
-nnoremap <Leader>f :FZF<CR>
-nnoremap <C-p> :FZF<CR>
+" Search
+set grepprg=ack
+set path=$PWD/**
 
 function! s:buflist()
   redir => ls
@@ -346,16 +344,15 @@ inoremap [, [<CR>],<Esc>O
 "
 
 " Spell check
-setlocal spell spelllang=en_us
-
-"FZF search
-set rtp+=/usr/local/opt/fzf
+" setlocal spell spelllang=en_us
 
 " Disable swapfiles.
 set noswapfile
 
 " Search current folder recursively for searching (via :find)
-set path=$PWD/**
+set path=.,**
+
+let g:ctrlp_clear_cache_on_exit = 0
 
 " Fix up indents
 filetype plugin indent on
@@ -384,6 +381,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes':   [],'passive_filetypes': [] }
+
+nnoremap <Leader>s :SyntasticToggleMode<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
