@@ -10,8 +10,8 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 #defaults read -g | grep AppleHighlightColor
-## Set highlight color to yellow
-defaults write NSGlobalDomain AppleHighlightColor -string "1.000000 0.937255 0.690196"
+## Set highlight color to graphite
+defaults write NSGlobalDomain AppleHighlightColor -string "0.847059 0.847059 0.862745"
 
 ## Use Graphite color theme
 defaults write NSGlobalDomain AppleAquaColorVariant 6
@@ -37,6 +37,23 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 
 ## Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Open everything in Finder's list view
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Search only within the current directory
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Save to disk (rather than iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
 
 ## Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
