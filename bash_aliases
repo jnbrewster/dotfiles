@@ -1,18 +1,10 @@
 alias reload="exec $SHELL -l"
-alias tomorrow="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Tomorrow.scpt"
-alias solarized="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Solarized.scpt"
-alias gruvbox="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Gruvbox.scpt"
-alias hemisu="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Hemisu.scpt"
-alias seoul="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Seoul256.scpt"
-alias ocean="osascript /Volumes/External/Dropbox/Developer/HelperApplications/Ocean.scpt"
-alias one="osascript /Volumes/External/Dropbox/Developer/HelperApplications/One.scpt"
 
 alias reboot="sudo reboot"
 alias shutdown="sudo poweroff"
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
 
 alias cal='cal | head -n 1; cal | tail -n +2 | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"'
-alias eh="open vnc://192.168.0.12"
 alias ip="curl http://ipecho.net/plain; echo"
 alias ips="ifconfig | grep inet"
 
@@ -26,12 +18,13 @@ alias te="trans :en "
 
 alias fondle="echo 'Mmmmmm oooh yeah....'; touch"
 
+alias pg="postgres -D /usr/local/var/postgres"
 server(){
   python -m SimpleHTTPServer ${1:-1337}
 }
 alias pserver=server
-alias wserver="php -S localhost:3000 -t ."
-alias phpserver="php -S localhost:8000"
+alias server="php -S localhost:9000 -t ."
+alias server2="php -S localhost:9001 -t ."
 
 alias wget="wget -c"
 
@@ -49,18 +42,17 @@ alias gh="cd ~"
 alias gdt="cd ~/dotfiles"
 alias gap="cd ~/Applications/"
 alias gex="cd /Volumes/External/"
-alias gdc="cd ~/Documents/"
+alias gdc="cd ~/Dropbox/Documents/"
 alias gdw="cd ~/Downloads/"
 alias gds="cd ~/Desktop/"
 alias gpc="cd ~/Pictures/"
 alias gms="cd ~/Music/"
 alias gmv="cd ~/Movies/"
-alias gph="cd /Volumes/External/Dropbox/Photos/"
-alias gcu="cd /Volumes/External/Dropbox/Camera\ Uploads/"
+alias gcu="cd ~/Dropbox/Camera\ Uploads/"
 alias gdv="cd ~/Developer/ && ls"
-alias gbf="cd ~/Developer/bingefest/wp-content/themes/bingefest && ls"
 
-alias v='vim'
+alias vim="nvim"
+alias v="nvim"
 alias rn="ranger"
 alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
@@ -70,10 +62,7 @@ alias html="pandoc input.md -o output.html"
 alias pdf="pdftotext"
 alias pv="open -a Preview"
 alias ql="qlmanage -p 2>/dev/null"
-alias notes="vim /Volumes/External/Dropbox/Documents/notes.md"
-alias cod="mplayer /Volumes/External/Dropbox/Public/WheelOfFortune.mp3"
-alias df="sh /Applications/df_osx/df"
-alias life="vim /Volumes/External/Dropbox/life.org"
+alias theme="osascript ~/Dropbox/dotfiles/Scripts/themechanger.scpt"
 
 alias commit='git commit -am '
 alias push='git push'
@@ -91,12 +80,12 @@ alias blocks="sh ~/dotfiles/Scripts/blocks"
 alias pipes="sh ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
 alias poke="sh ~/dotfiles/Scripts/poke"
+alias about="neofetch --image ~/Pictures/about.png"
 
 alias weather="curl http://wttr.in/Melbourne"
-alias dcss="ssh joshua@crawl.akrasiac.org"
-
-alias leon="v ~/Documents/Leon/LettersToLeon.md"
-
+alias dcss="/Applications/Dungeon\ Crawl\ Stone\ Soup\ -\ Console.app/Contents/Resources/crawl"
+alias crawl="ssh joshua@crawl.akrasiac.org"
+alias cdda="export PATH=/usr/bin:/bin:/usr/sbin:/sbin DYLD_LIBRARY_PATH=. DYLD_FRAMEWORK_PATH=.; cd '/Applications/Cataclysm.app/Contents/Resources' && ./cataclysm"
 
 
 #
@@ -105,11 +94,11 @@ alias leon="v ~/Documents/Leon/LettersToLeon.md"
 
 # Notational velocity style create and search
 n() {
-  $EDITOR /Volumes/External/Dropbox/Documents/"$*".md
+  $EDITOR ~/Notes/"$*".md
 }
 
 nl() {
-  ls -c /Volumes/External/Dropbox/Documents/ | grep "$*"
+  ls -c ~/Notes/ | grep "$*"
 }
 
 # Make a directory and change to it.
