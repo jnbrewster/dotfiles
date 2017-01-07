@@ -1,4 +1,3 @@
-"
 " ~/.vimrc
 
 " download vim-plug if missing
@@ -14,50 +13,52 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'Raimondi/delimitMate'
+Plug 'Valloric/YouCompleteMe'
+Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'briancollins/vim-jst'
+Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'digitaltoad/vim-pug'
+Plug 'davidoc/taskpaper.vim'
 Plug 'dkprice/vim-easygrep'
+Plug 'ggreer/the_silver_searcher'
 Plug 'itspriddle/vim-javascript-indent'
-Plug 'jacoborus/tender'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'joelbrewster/Tomorrow'
+Plug 'joelbrewster/vim-quantum'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'mattn/emmet-vim/'
-Plug 'pangloss/vim-javascript'
+Plug 'rafi/vim-tinyline'
+Plug 'rakr/vim-one'
 Plug 'scrooloose/syntastic'
+Plug 'sheerun/vim-polyglot'
+Plug 't9md/vim-choosewin'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-ruby/vim-ruby'
-Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
 
-"
-" GENERAL
-"
-
-" Load bash.
-set shell=/bin/bash\ -i
+" Remap leader
+let mapleader      = ' '
+let maplocalleader = ' '
 
 " Share the clipboard outside of vim
 set clipboard=unnamed
-
-" Set paste when pasting, set no paste when done.
-set pastetoggle=
 
 " Tab width.
 set tabstop=2
 
 " Tab width when editing.
 set softtabstop=2
-
-" Set backspaces
-set backspace=indent,eol,start
 
 " Tab width when indenting in normal mode.
 set shiftwidth=2
@@ -68,30 +69,25 @@ set expandtab
 " Automatically indent on newline.
 set autoindent
 
-" Command history.
-set history=1000
+" Remove auto comments.
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Ignore character case when searching.
-set ignorecase
+" Remove whitespaces on save.
+autocmd BufWritePre * :%s/\s\+$//e
 
-" Start searching before pressing enter.
-set incsearch
-
-" Change order of default splits.
-set splitbelow
-set splitright
-
-" Remap leader
-let mapleader      = ' '
-let maplocalleader = ' '
+" Fuzzy finder stuff
+nnoremap <leader>p :CtrlP<CR>
+nnoremap <C-p> :FZF<CR>
+nnoremap <leader>f :Ag<CR>
+nnoremap <leader>h :History<CR>
+nnoremap <Leader><Space> :History<CR>
+nnoremap <leader>b :Buffer<CR>
 
 " Highlight current line.
 set cursorline
-" Set 80 column
 
 " Show relative cursor number.
 set relativenumber
-set nu
 
 " set folding
 set foldmethod=manual
@@ -102,22 +98,18 @@ set showcmd
 " Highlight search matches.
 set hlsearch
 
+" Theme stuff
+let hour = strftime("%H")
+if 6 <= hour && hour < 18
 
-
-"
-" VISUAL
-"
-
-" Enable syntax highlighting.
-syntax on
-
-" Hide mode
-set noshowmode
-
-" Remove fill characters
-set fillchars=""
-set listchars=tab:❘-,extends:»,precedes:«,nbsp:×
-" set list
+  set background=dark
+  colorscheme Tomorrow-Night
+  " set background=light
+  " colorscheme Tomorrow
+else
+  set background=dark
+  colorscheme Tomorrow-Night
+endif
 
 " Remove elements.
 if exists("+guioptions")
@@ -130,200 +122,21 @@ if exists("+guioptions")
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
-" Set title in terminal
-set title
+set guifont=Input\ Mono:h12
 
-" minimize resizing
-set noequalalways
-
-" visual
-set wildmode=longest:full,full
-
-" Add more space between lines
-set linespace=3
-
-" Statusline
-set statusline=\ %f%m%r%h
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%=
-set statusline+=\ [%l\:%c]
+" Show statusline with only 1 window
 set laststatus=2
-" set ruler
 
-" Set colors
-hi DiffAdd        ctermfg=green
-hi DiffChange     ctermfg=black
-hi DiffDelete     ctermfg=red
-hi DiffText       ctermfg=blue
-hi DiffAdded      ctermfg=green
-hi DiffFile       ctermfg=red
-hi DiffNewFile    ctermfg=green
-hi DiffLine       ctermfg=blue
-hi DiffRemoved    ctermfg=red
+" Spelling
+autocmd BufRead,BufNewFile *.wiki setlocal spell
+" Word completion
+set complete+=kspell
 
-hi CursorLineNr   ctermbg=NONE      ctermfg=yellow      cterm=NONE
-hi Folded         ctermbg=NONE      ctermfg=black
-hi LineNr         ctermbg=NONE      ctermfg=black       cterm=NONE
-hi ModeMsg        ctermbg=NONE      ctermfg=yellow       cterm=NONE
-hi Search         ctermbg=yellow    ctermfg=black
-" hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
-hi StatusLine     ctermbg=NONE      ctermfg=white       cterm=NONE
-hi StatusLineNC   ctermbg=NONE      ctermfg=black       cterm=NONE
-hi TabLine        ctermbg=NONE      ctermfg=black       cterm=NONE
-hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
-" hi TabLineSel     ctermbg=NONE      ctermfg=white
-hi TabLineSel     ctermbg=NONE
-hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
-hi visual         ctermbg=black     ctermfg=white
-hi PMenuSel       ctermfg=black ctermbg=white
-hi PMenu          ctermfg=white ctermbg=black
-" hi Normal         ctermfg=white
-hi Question       ctermfg=magenta
-hi Underlined     ctermfg=NONE
-hi WarningMsg     ctermfg=red
-hi nontext        ctermfg=black
-hi MatchParen     ctermfg=red ctermbg=black
-" hi vimBracket     ctermfg=white
-
-hi Boolean        ctermfg=yellow
-hi Character      ctermfg=red
-hi Comment        ctermfg=black
-hi Conditional    ctermfg=magenta
-hi Constant       ctermfg=yellow
-hi Define         ctermfg=magenta
-hi Delimiter      ctermfg=blue
-hi Float          ctermfg=yellow
-hi Function       ctermfg=blue
-hi Identifier     ctermfg=red
-hi Include        ctermfg=blue
-hi Keyword        ctermfg=magenta
-hi Label          ctermfg=yellow
-hi Number         ctermfg=yellow
-" hi Operator       ctermfg=white
-hi PreProc        ctermfg=yellow
-hi Repeat         ctermfg=yellow
-hi Special        ctermfg=cyan
-hi SpecialChar    ctermfg=red
-hi Statement      ctermfg=red
-hi StorageClass   ctermfg=yellow
-hi String         ctermfg=green
-hi Structure      ctermfg=magenta
-hi Tag            ctermfg=yellow
-hi Todo           ctermfg=magenta ctermbg=black
-hi Type           ctermfg=yellow
-hi Typedef        ctermfg=yellow
-
-hi htmlBold       ctermfg=yellow
-hi htmlItalic     ctermfg=magenta
-
-hi htmlEndTag     ctermfg=green
-hi htmlTag        ctermfg=green
-
-hi cssBraces      ctermfg=green
-hi cssClassName   ctermfg=magenta
-hi cssColor       ctermfg=cyan
-
-hi javascript         ctermfg=cyan
-hi javascriptBraces   ctermfg=green
-hi javascriptNumber   ctermfg=yellow
-
-hi markdownCode       ctermfg=black
-hi markdownError      ctermfg=red
-hi markdownCodeBlock  ctermfg=blue
-hi markdownHeadingDelimiter     ctermfg=yellow
-
-hi pythonOperator ctermfg=magenta
-hi pythonRepeat   ctermfg=magenta
-
-hi rubyAttribute  ctermfg=blue
-hi rubyConstant   ctermfg=yellow
-hi rubyInterpolation ctermfg=green
-hi rubyInterpolationDelimiter ctermfg=yellow
-hi rubyRegexp     ctermfg=cyan
-hi rubySymbol     ctermfg=green
-hi rubyStringDelimiter ctermfg=green
-
-hi sassidChar     ctermfg=red
-hi sassClassChar  ctermfg=yellow
-hi sassInclude    ctermfg=magenta
-hi sassMixing     ctermfg=magenta
-hi sassMixinName  ctermfg=blue
-
-hi SpellBad       ctermfg=black
-hi SpellLocal     ctermfg=yellow
-hi SpellCap       ctermfg=yellow
-hi SpellRare      ctermfg=green
-
-hi SpellBad       ctermfg=white ctermbg=red
-hi SpellCap       ctermfg=white ctermbg=black
-
-if has("gui_running")
-  " set guifont=SF\ Mono:h13
-  colorscheme tomorrow-night
-  set colorcolumn=80
-endif
-
-
-"
-" INPUT
-"
-
-" Enable full mouse usage.
-set mouse=a
-
-" Insert the date and 24hr time.
-nnoremap <Leader>da :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
-
-" Load Goyo for writing.
-nnoremap <Leader>go :Goyo 50%<CR>
-
-" Load :Lex and :Ex
-nnoremap <Leader>e :Ex<CR>
-nnoremap <C-e> :Lex <CR>
-nnoremap <C-\>e :ex<CR>
-
-" Search
-set grepprg=ack
-set path=$PWD/**
-
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-nnoremap <silent> <Leader><Enter> :call fzf#run({
-      \   'source':  reverse(<sid>buflist()),
-      \   'sink':    function('<sid>bufopen'),
-      \   'options': '+m',
-      \   'down':    len(<sid>buflist()) + 2
-      \ })<CR>
-
-" Make netrw sexier
-let g:netrw_liststyle=3
-
-"Tabs
-nnoremap <Leader>t :tabe<CR>
+" Disable swapfiles.
+set noswapfile
 
 " Emmet keys
 let g:user_emmet_leader_key = '<c-e>'
-
-" Save
-nnoremap <Leader>w :w<CR>
-nnoremap <C-w>:w <CR>
-nnoremap <C-s>:w <CR>
-
-" Lost focus save
-autocmd FocusLost * nested silent! wa
-
-" Quit
-nnoremap <Leader>q :q<CR>
-nnoremap <C-q> :q <CR>
 
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
@@ -339,58 +152,57 @@ inoremap [; [<CR>];<Esc>O
 inoremap [, [<CR>],<Esc>O
 
 
-"
-" FILE
-"
 
-" Spell check
-" setlocal spell spelllang=en_us
+" Vimwiki location
+let g:vimwiki_list = [{'path': '~/Dropbox/Documents'}]
 
-" Disable swapfiles.
-set noswapfile
+"Todo location
+nnoremap <Leader>tt :tabe ~/Dropbox/todo.taskpaper<CR>
 
-" Search current folder recursively for searching (via :find)
-set path=.,**
+" Export all Vim Wiki pages as html
+nnoremap <Leader>we :VimwikiAll2HTML<CR>
 
-let g:ctrlp_clear_cache_on_exit = 0
+" Enable full mouse usage.
+set mouse=a
 
-" Fix up indents
-filetype plugin indent on
+" Insert the date and 24hr time.
+nnoremap <Leader>da :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
 
-" Fix indenting on save
-filetype indent on
-set smartindent
-" autocmd BufRead,BufWritePre *.* normal gg=G
+" Insert a line
+nnoremap <Leader>li i-------------------------------------------------------------------------<CR>
 
-" Remove auto comments.
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Load Goyo for writing.
+nnoremap <Leader>go :Goyo 50%<CR>
 
-" Remove whitespaces on save.
-autocmd BufWritePre * :%s/\s\+$//e
+" Load :Lex and :Ex
+nnoremap <Leader>e :Ex<CR>
+nnoremap <C-e> :Lex <CR>
+nnoremap <C-\>e :ex<CR>
 
-" Javascript auto complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.wiki set filetype=markdown
-
-" Remove whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Syntastic interface
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes':   [],'passive_filetypes': [] }
-
-nnoremap <Leader>s :SyntasticToggleMode<CR>
-
+" Syntax stuff
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_loc_list_height=1
+let g:syntastic_loc_list_height=5
 
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-']
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+
+
+" use jshint
+let g:syntastic_javascript_checkers = ['jshint']
+
+" show any linting errors immediately
+let g:syntastic_check_on_open = 1
+
+" Set up the arrays to ignore for later
+if !exists('g:syntastic_html_tidy_ignore_errors')
+  let g:syntastic_html_tidy_ignore_errors = []
+endif
+
+if !exists('g:syntastic_html_tidy_blocklevel_tags')
+  let g:syntastic_html_tidy_blocklevel_tags = []
+endif
+
+
