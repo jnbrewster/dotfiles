@@ -50,10 +50,13 @@ alias gms="cd ~/Music/"
 alias gmv="cd ~/Movies/"
 alias gcu="cd ~/Dropbox/Camera\ Uploads/"
 alias gdv="cd ~/Developer/ && ls"
+alias todo="vim ~/Dropbox/todo.taskpaper"
+alias shop="vim ~/Dropbox/shopping.taskpaper"
 
-alias vim="nvim"
-alias v="nvim"
-alias rn="ranger"
+alias vim='mvim -v'
+alias v='mvim -v'
+alias m='mutt'
+alias r="ranger"
 alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
 alias gifpng="convert -delay 35 -loop 0 source*.png animated.gif"
@@ -62,7 +65,7 @@ alias html="pandoc input.md -o output.html"
 alias pdf="pdftotext"
 alias pv="open -a Preview"
 alias ql="qlmanage -p 2>/dev/null"
-alias theme="osascript ~/Dropbox/dotfiles/Scripts/themechanger.scpt"
+alias ra="sh ~/dotfiles/Scripts/restart-amethyst.sh"
 
 alias commit='git commit -am '
 alias push='git push'
@@ -81,11 +84,14 @@ alias pipes="sh ~/dotfiles/Scripts/pipes"
 alias invaders="sh ~/dotfiles/Scripts/invaders"
 alias poke="sh ~/dotfiles/Scripts/poke"
 alias about="neofetch --image ~/Pictures/about.png"
+alias ss='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
 alias weather="curl http://wttr.in/Melbourne"
 alias dcss="/Applications/Dungeon\ Crawl\ Stone\ Soup\ -\ Console.app/Contents/Resources/crawl"
 alias crawl="ssh joshua@crawl.akrasiac.org"
 alias cdda="export PATH=/usr/bin:/bin:/usr/sbin:/sbin DYLD_LIBRARY_PATH=. DYLD_FRAMEWORK_PATH=.; cd '/Applications/Cataclysm.app/Contents/Resources' && ./cataclysm"
+# Ambient sleeping pill
+alias a="mpv http://198.50.158.92:8447/h"
 
 
 #
@@ -106,14 +112,15 @@ function mkcd {
   mkdir -p "$1" && cd "$1"
 }
 
-# Requres youtube-dl and mplayer
+# Requres youtube-dl and mpv
+
 function play {
   youtube-dl --default-search=ytsearch: \
     --youtube-skip-dash-manifest \
     --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
     --restrict-filenames \
     --format="bestaudio[ext!=webm]" \
-    --exec=mplayer -vvv "$*"
+    --exec=mpv -vvv "$*"
 }
 
 # What is love?
