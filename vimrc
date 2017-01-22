@@ -16,24 +16,19 @@ Plug 'Raimondi/delimitMate'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-css-color'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'davidoc/taskpaper.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'ggreer/the_silver_searcher'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joelbrewster/Tomorrow'
-Plug 'joelbrewster/vim-quantum'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim/'
-Plug 'rakr/vim-one'
 Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 't9md/vim-choosewin'
@@ -42,6 +37,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
 Plug 'vimwiki/vimwiki'
 
 call plug#end()
@@ -108,11 +104,23 @@ set incsearch
 " Ignore case when search
 set ignorecase
 
+" Enable full mouse usage.
+set mouse=a
+
 " Theme stuff
 if has("gui_running")
-  set background=dark
-  colorscheme Tomorrow-Night
+
+  let hour = strftime("%H")
+  if 7 <= hour && hour < 19
+    set background=light
+    colorscheme Tomorrow
+  else
+    set background=dark
+    colorscheme Tomorrow-Night
+  endif
 endif
+
+colorscheme Tomorrow-Night
 
 " Remove elements.
 if exists("+guioptions")
@@ -125,10 +133,8 @@ if exists("+guioptions")
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
+" Set font for macvim
 set guifont=SF\ Mono:h12
-
-" Hide statusline with only 1 window
-set laststatus=2
 
 " Spelling
 autocmd BufRead,BufNewFile *.wiki setlocal spell
@@ -159,15 +165,8 @@ inoremap [, [<CR>],<Esc>O
 " Vimwiki location
 let g:vimwiki_list = [{'path': '~/Dropbox/Documents'}]
 
-"Todo location
-nnoremap <Leader>tt :tabe ~/Dropbox/todo.taskpaper<CR>
-nnoremap <Leader>ss :tabe ~/Dropbox/shopping.taskpaper<CR>
-
 " Export all Vim Wiki pages as html
 nnoremap <Leader>we :VimwikiAll2HTML<CR>
-
-" Enable full mouse usage.
-set mouse=a
 
 " Insert the date and 24hr time.
 nnoremap <Leader>da :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
@@ -181,7 +180,6 @@ nnoremap <Leader>go :Goyo 50%<CR>
 " Load :Lex and :Ex
 nnoremap <Leader>e :Ex<CR>
 nnoremap <C-e> :Lex <CR>
-nnoremap <C-\>e :ex<CR>
 
 " Syntax stuff
 let g:syntastic_always_populate_loc_list = 1
@@ -208,102 +206,57 @@ if !exists('g:syntastic_html_tidy_blocklevel_tags')
   let g:syntastic_html_tidy_blocklevel_tags = []
 endif
 
-" Statusline
-set statusline=\ %F%m%r%h
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%=
-set statusline+=\ [%l\:%c]
-set laststatus=2
+" Airline stuff
+set noshowmode
 
-" Colors for term
-hi DiffAdd        ctermfg=green
-hi DiffChange     ctermfg=black
-hi DiffDelete     ctermfg=red
-hi DiffText       ctermfg=blue
-hi DiffAdded      ctermfg=green
-hi DiffFile       ctermfg=red
-hi DiffNewFile    ctermfg=green
-hi DiffLine       ctermfg=blue
-hi DiffRemoved    ctermfg=red
+let g:airline_theme='tomorrow'
+let g:airline_powerline_fonts = 1
 
-hi CursorLineNr   ctermbg=NONE      ctermfg=yellow      cterm=NONE
-hi Folded         ctermbg=NONE      ctermfg=black
-hi LineNr         ctermbg=NONE      ctermfg=black       cterm=NONE
-hi ModeMsg        ctermbg=NONE      ctermfg=yellow       cterm=NONE
-hi Search         ctermbg=yellow    ctermfg=black
-hi StatusLine     ctermbg=NONE      ctermfg=blue       cterm=NONE
-hi StatusLineNC   ctermbg=NONE      ctermfg=black       cterm=NONE
-hi TabLine        ctermbg=NONE      ctermfg=black       cterm=NONE
-hi TabLineFill    ctermbg=NONE      ctermfg=black       cterm=NONE
-hi TabLineSel     ctermbg=NONE      ctermfg=blue
-hi VertSplit      ctermbg=NONE      ctermfg=black       cterm=NONE
-hi visual         ctermbg=yellow     ctermfg=black
-hi PMenuSel       ctermfg=black ctermbg=white
-hi PMenu           ctermbg=black ctermfg=white
-hi Question       ctermfg=magenta
-hi Underlined     ctermfg=NONE
-hi WarningMsg     ctermfg=red
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
-hi Boolean        ctermfg=yellow
-hi Character      ctermfg=red
-hi Comment        ctermfg=magenta
-hi Conditional    ctermfg=magenta
-hi Constant       ctermfg=yellow
-hi Define         ctermfg=magenta
-hi Delimiter      ctermfg=blue
-hi Float          ctermfg=yellow
-hi Function       ctermfg=blue
-hi Identifier     ctermfg=red
-hi Include        ctermfg=blue
-hi Keyword        ctermfg=magenta
-hi Label          ctermfg=yellow
-hi Number         ctermfg=yellow
-hi PreProc        ctermfg=yellow
-hi Repeat         ctermfg=yellow
-hi Special        ctermfg=cyan
-hi SpecialChar    ctermfg=red
-hi Statement      ctermfg=red
-hi StorageClass   ctermfg=yellow
-hi String         ctermfg=green
-hi Structure      ctermfg=magenta
-hi Tag            ctermfg=yellow
-hi Todo           ctermfg=yellow
-hi Type           ctermfg=yellow
-hi Typedef        ctermfg=yellow
+let g:airline_right_alt_sep = ''
+" unicode symbols
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.linenr = 'Ξ'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_detect_spell=0
+" Airline White Space Handling:
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline_symbols.whitespace = '□□'
 
-hi htmlBold       ctermfg=yellow
-hi htmlItalic     ctermfg=magenta
+"configure the formatting of the warning messages. >
+let g:airline#extensions#whitespace#mixed_indent_format = 'MI[%s]'
+let g:airline#extensions#whitespace#trailing_format = 'T[%s]'
+" regex for trailing white space, looks for TWO spaces, not one
+let g:airline#extensions#whitespace#trailing_regexp = '\s\s$'
+" orange for mixed-indent
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
+let g:airline#extensions#branch#enabled = 0
 
-hi cssBraces      ctermfg=green
-hi cssClassName   ctermfg=magenta
-hi cssColor       ctermfg=cyan
+" File Type File Encoding File Format:
+" Tells airline not to display file format
+let g:airline_section_x =''
+" Tells airline not to display fileencoding or fileformat
+let g:airline_section_y =''
+" If need to know these then simply do:
+" set ff for fileformat
+" set fenc for fileencoding
+" set ft for filetype
 
-hi javascriptBraces   ctermfg=green
-hi javascriptNumber   ctermfg=yellow
+" Airline Short Form Mode Indicators:
+" N instead of NORMAL, I instead of INSERT
 
-hi markdownCode       ctermfg=black
-hi markdownError      ctermfg=red
-hi markdownCodeBlock  ctermfg=blue
-hi markdownHeadingDelimiter     ctermfg=yellow
-
-hi pythonOperator ctermfg=magenta
-hi pythonRepeat   ctermfg=magenta
-
-hi rubyAttribute  ctermfg=blue
-hi rubyConstant   ctermfg=yellow
-hi rubyInterpolation ctermfg=green
-hi rubyInterpolationDelimiter ctermfg=yellow
-hi rubyRegexp     ctermfg=cyan
-hi rubySymbol     ctermfg=green
-hi rubyStringDelimiter ctermfg=green
-
-hi sassidChar     ctermfg=red
-hi sassClassChar  ctermfg=yellow
-hi sassInclude    ctermfg=magenta
-hi sassMixing     ctermfg=magenta
-hi sassMixinName  ctermfg=blue
-
-hi SpellBad       ctermfg=black       ctermbg=red
-hi SpellLocal     ctermfg=yellow
-hi SpellCap       ctermfg=yellow
-hi SpellRare      ctermfg=green
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n' : 'N',
+      \ 'i' : 'I',
+      \ 'R' : 'R',
+      \ 'c' : 'C',
+      \ 'v' : 'V',
+      \ 'V' : 'V',
+      \ 's' : 'S',
+      \ 'S' : 'S',
+      \ }
