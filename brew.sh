@@ -29,29 +29,23 @@ brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
-  # amethyst
-  # bartender
+  amethyst
   dropbox
-  # firefox
+  firefox
   github-desktop
   google-chrome
-  # hazel
   imageoptim
-  launchbar
   macvim
   monodraw
-  mplayerx
+  mpv
   omnidisksweeper
   # pandoc
   # pdftotext
-  # phoenix
   # qlmarkdown
-  r-name
   sitesucker
   slack
   the-unarchiver
   transmission
-  # tunnelbear
 )
 
 # Install apps to /Applications
