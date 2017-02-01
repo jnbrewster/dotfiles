@@ -9,17 +9,6 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-#defaults read -g | grep AppleHighlightColor
-## Set highlight color to yellow
-defaults write NSGlobalDomain AppleHighlightColor -string "1.000000 0.937255 0.690196"
-
-## Use Graphite color theme
-defaults write NSGlobalDomain AppleAquaColorVariant 6
-
-## Use Dark Mode
-defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
-sudo defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableThem
-
 ## Show scrollbars when scrolling
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
@@ -48,12 +37,6 @@ defaults write com.apple.dock autohide -bool true
 
 ## Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
-
-# Menu Bar
-
-## Hide the Menu Bar
-
-defaults write "Apple Global Domain" "_HIHideMenuBar" 1
 
 # Desktop / Screensaver
 
