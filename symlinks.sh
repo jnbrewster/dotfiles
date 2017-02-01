@@ -7,7 +7,7 @@ dotfiles directory to any desired dotfiles in ~/
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=" amethyst bash_aliases bash_profile config hushlogin kwm muttrc profile phoenix.js pentadactylrc tmux.conf vim vimrc vimperatorrc "    # list of files/folders to symlink in homedir
+files="bash_aliases bash_profile hushlogin profile tmux.conf vim vimrc vimperatorrc "    # list of files/folders to symlink in homedir
 
 # change to the dotfiles directory
 echo -n "Changing to the $dir directory ..."
