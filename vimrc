@@ -33,7 +33,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim/'
-Plug 'scrooloose/syntastic'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
 Plug 'sheerun/vim-polyglot'
 Plug 't9md/vim-choosewin'
 Plug 'tpope/vim-commentary'
@@ -42,6 +43,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -98,8 +100,11 @@ set mouse=a
 " Word completion
 set complete+=kspell
 
-" Remove auto comments from next line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Set wildmenu for matches on ctrl-n/p
+set wildmenu
+
+" Remove auto comments from next line with enter, o or O.
+autocmd FileType * setlocal fo-=c fo-=r fo-=o
 
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
@@ -108,6 +113,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.wiki setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
+" Ignore stuff
+set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
 " -------------------------------------------------------------------------
 " Visual
@@ -120,12 +127,14 @@ endif
 
 set background=dark
 colorscheme spacegray
-let g:spacegray_underline_search = 1
-let g:spacegray_italicize_comments = 1
+
+" Show list characters
+set list listchars=tab:»·,trail:·
 
 " Statusline
 set statusline=[%n]\ %F
 set statusline+=\ %{fugitive#statusline()}
+set statusline+=\ %{ALEGetStatusLine()}
 set statusline+=%=
 set statusline+=%(\[%{&fenc}\,%)
 set statusline+=%(\ %{&ft}]\%)
@@ -138,6 +147,7 @@ if exists("+guioptions")
   set go-=T   " toolbar
   set go-=r   " right scrollbar
   set go-=L   " left scrollbar
+  set go-=e   " remove gui tabs
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
@@ -197,32 +207,20 @@ nnoremap <leader>b :Buffer<CR>
 nnoremap K gT
 nnoremap J gt
 
+" toggle spellcheck
+nnoremap <leader>sc :setlocal spell!<CR>
+
+" Support flow types syntax
+let g:javascript_plugin_flow = 1
+
+" Don't need extension for jsx files
+let g:jsx_ext_required = 0
 
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 
-" Syntastic stuff
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_loc_list_height=5
-
-let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-']
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
-
-" use jshint
-let g:syntastic_javascript_checkers = ['jshint']
-
-" show any linting errors immediately
-let g:syntastic_check_on_open = 1
-
-" Set up the arrays to ignore for later
-if !exists('g:syntastic_html_tidy_ignore_errors')
-  let g:syntastic_html_tidy_ignore_errors = []
-endif
-
-if !exists('g:syntastic_html_tidy_blocklevel_tags')
-  let g:syntastic_html_tidy_blocklevel_tags = []
-endif
