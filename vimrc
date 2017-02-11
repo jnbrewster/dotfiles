@@ -15,18 +15,16 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Raimondi/delimitMate'
-Plug 'Valloric/YouCompleteMe'
-Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/Spacegray.vim'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
+Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'ggreer/the_silver_searcher'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'joelbrewster/Tomorrow'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -42,6 +40,8 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 
@@ -78,6 +78,7 @@ set cursorline
 
 " Show relative cursor number.
 set relativenumber
+set number
 
 " set folding
 set foldmethod=manual
@@ -104,7 +105,7 @@ set complete+=kspell
 set wildmenu
 
 " Remove auto comments from next line with enter, o or O.
-autocmd FileType * setlocal fo-=c fo-=r fo-=o
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
@@ -123,15 +124,14 @@ set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 " Theme stuff
 if has("gui_running")
   set guifont=SF\ Mono:h12
+  set background=dark
+  colorscheme base16-tomorrow-night
 endif
-
-set background=dark
-colorscheme spacegray
 
 " Show list characters
 set list listchars=tab:»·,trail:·
 
-" Statusline
+" Fall back statusline
 set statusline=[%n]\ %F
 set statusline+=\ %{fugitive#statusline()}
 set statusline+=\ %{ALEGetStatusLine()}
@@ -141,13 +141,31 @@ set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
 
+
+" Powerline setup
+function! AirlineInit()
+endfunction
+
+if !exists('g:airline_powerline_fonts') " Unicode fallback if no powerline font
+  let g:airline_symbols={} " Define symbols dictionary
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
+  let g:airline_symbols.linenr='㏑'
+  let g:airline_symbols.maxlinenr='☰'
+  let g:airline_symbols.branch='ᚠ'
+  let g:airline_symbols.whitespace='☲'
+endif
+
+" Hide the mode that is shown using Powerline
+set noshowmode
+
 " Remove elements for guivim.
 if exists("+guioptions")
   set go-=m   " menu bar
   set go-=T   " toolbar
   set go-=r   " right scrollbar
   set go-=L   " left scrollbar
-  set go-=e   " remove gui tabs
+" set go-=e   " remove gui tabs
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
@@ -166,15 +184,6 @@ let g:user_emmet_leader_key = '<c-e>'
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
-
-" Auto close brackets
-inoremap (<CR> (<CR>)<Esc>O
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {; {<CR>};<Esc>O
-inoremap {, {<CR>},<Esc>O
-inoremap [<CR> [<CR>]<Esc>O
-inoremap [; [<CR>];<Esc>O
-inoremap [, [<CR>],<Esc>O
 
 " Vimwiki location
 let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents'}]
@@ -213,14 +222,15 @@ nnoremap <leader>sc :setlocal spell!<CR>
 " Support flow types syntax
 let g:javascript_plugin_flow = 1
 
-" Don't need extension for jsx files
+" Don't need extension for jsx
 let g:jsx_ext_required = 0
 
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+let g:ale_javascript_eslint_use_global = 1
 
