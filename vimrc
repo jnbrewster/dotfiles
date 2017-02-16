@@ -25,6 +25,7 @@ Plug 'ggreer/the_silver_searcher'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jiangmiao/auto-pairs'
+Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -124,8 +125,18 @@ set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 " Theme stuff
 if has("gui_running")
   set guifont=SF\ Mono:h12
+  " Change time based on time of day for guivim
+  if strftime("%H") < 19
+    colorscheme Tomorrow
+    set background=light
+  else
+    colorscheme Tomorrow-Night
+    set background=dark
+  endif
+  " Set terminal theme
+else
+  colorscheme Tomorrow-Night
   set background=dark
-  colorscheme base16-tomorrow-night
 endif
 
 " Show list characters
@@ -140,7 +151,6 @@ set statusline+=%(\[%{&fenc}\,%)
 set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
-
 
 " Powerline setup
 function! AirlineInit()
