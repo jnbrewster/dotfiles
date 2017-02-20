@@ -34,6 +34,8 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 ## Hide the Dock
 defaults write com.apple.dock autohide -bool true
+## Basically hide the dock from mouseovers - use cmd+d to bring up when needed
+defaults write com.apple.dock autohide-delay -float 1000 && killall Dock
 
 ## Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
