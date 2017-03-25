@@ -22,6 +22,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'ggreer/the_silver_searcher'
+Plug 'itchyny/lightline.vim'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jiangmiao/auto-pairs'
@@ -29,6 +30,7 @@ Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim/'
@@ -41,8 +43,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'valloric/MatchTagAlways'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 
@@ -115,6 +116,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.wiki setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
+" Change filetype for wiki files to be markdown
+autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
+
 " Ignore stuff
 set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
@@ -125,19 +129,20 @@ set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 " Theme stuff
 if has("gui_running")
   set guifont=SF\ Mono:h12
+  let g:seoul256_background = 234
   " Change time based on time of day for guivim
-  if strftime("%H") < 19
-    colorscheme Tomorrow
-    set background=light
+  " if strftime("%H") < 19
+  "   set background=light
+  " else
+  "   set background=dark
+  " endif
   else
-    colorscheme Tomorrow-Night
-    set background=dark
-  endif
-  " Set terminal theme
-else
-  colorscheme Tomorrow-Night
-  set background=dark
+  let g:seoul256_background = 235
 endif
+
+" Colorscheme stuff
+set background=dark
+colorscheme seoul256
 
 " Show list characters
 set list listchars=tab:»·,trail:·
@@ -152,22 +157,67 @@ set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
 
-" Powerline setup
-function! AirlineInit()
+"Lightline
+let g:lightline = {
+  \ 'colorscheme': 'seoul256',
+  \ 'active': {
+  \   'left': [ [ 'filename' ],
+  \             [ 'readonly', 'fugitive' ] ],
+  \   'right': [ [ 'percent', 'lineinfo' ],
+  \              [ 'fileencoding', 'filetype' ],
+  \              [ 'fileformat', 'syntastic' ] ]
+  \ },
+  \ 'component_function': {
+  \   'modified': 'Mod',
+  \   'readonly': 'RO',
+  \   'fugitive': 'Git',
+  \   'filename': 'Name',
+  \   'filetype': 'Type',
+  \   'fileformat' : 'Format',
+  \   'fileencoding': 'Encoding',
+  \   'mode': 'Mode',
+  \ },
+  \ 'component_expand': {
+  \   'syntastic': 'ALEGetStatusLine',
+  \ },
+  \ 'component_type': {
+  \   'syntastic': 'error',
+  \ },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' }
+  \ }
+
+function! Mod()
+  return &ft =~ 'help\|vimfiler' ? '' : &modified ? '»' : &modifiable ? '' : ''
 endfunction
 
-if !exists('g:airline_powerline_fonts') " Unicode fallback if no powerline font
-  let g:airline_symbols={} " Define symbols dictionary
-  let g:airline_left_sep=''
-  let g:airline_right_sep=''
-  let g:airline_symbols.linenr='㏑'
-  let g:airline_symbols.maxlinenr='☰'
-  let g:airline_symbols.branch='ᚠ'
-  let g:airline_symbols.whitespace='☲'
-endif
+function! RO()
+  return &ft !~? 'help\|vimfiler' && &readonly ? 'x' : ''
+endfunction
 
-" Hide the mode that is shown using Powerline
-set noshowmode
+function! Git()
+  if &ft !~? 'help\|vimfiler' && exists("*fugitive#head")
+    return fugitive#head()
+  endif
+  return ''
+endfunction
+
+function! Name()
+  return ('' != Mod() ? Mod() . ' ' : '') .
+        \ ('' != expand('%:t') ? expand('%:t') : '[none]')
+endfunction
+
+function! Type()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
+endfunction
+
+function! Format()
+  return ''
+endfunction
+
+function! Encoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &enc : &enc) : ''
+endfunction
 
 " Remove elements for guivim.
 if exists("+guioptions")
@@ -180,10 +230,37 @@ if exists("+guioptions")
 endif
 
 
+" brighten/dim background with macOS dim screen function keys
+" 233 (darkest) ~ 239 (lightest) 252 (darkest) ~ 256 (lightest)
+function! Seoul256Brighten()
+    if g:seoul256_background == 239
+        let g:seoul256_background = 252
+    elseif g:seoul256_background == 256
+        let  g:seoul256_background = 256
+    else
+        let g:seoul256_background += 1
+    endif
+    colo seoul256
+endfunction
+
+function! Seoul256Dim()
+    if g:seoul256_background == 252
+        let g:seoul256_background = 239
+    elseif g:seoul256_background == 233
+        let g:seoul256_background = 233
+    else
+        let g:seoul256_background -= 1
+    endif
+    colo seoul256
+endfunction
+
+nmap <F1> :call Seoul256Dim()<CR>
+nmap <F2> :call Seoul256Brighten()<CR>
+
+
 " -------------------------------------------------------------------------
 " Bindings and plugin settings
 " -------------------------------------------------------------------------
-
 " Remap leader
 let mapleader      = ' '
 let maplocalleader = ' '
@@ -238,9 +315,16 @@ let g:jsx_ext_required = 0
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
-let g:ale_sign_error = '>'
+let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '-'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_echo_msg_format = '%linter% says %s'
+let g:ale_javascript_eslint_use_global = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-let g:ale_javascript_eslint_use_global = 1
+
+" Match tags in file
+let g:mta_use_matchparen_group = 1
 
