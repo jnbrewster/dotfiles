@@ -46,6 +46,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'valloric/MatchTagAlways'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
+Plug 'evidens/vim-twig'
 
 call plug#end()
 
@@ -103,8 +104,13 @@ set mouse=a
 " Word completion
 set complete+=kspell
 
-" Set wildmenu for matches on ctrl-n/p
+" Set wildmenu for matches on ctrl-n/p and wild searches
 set wildmenu
+
+" Don't offer to open certain files/directories
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
+set wildignore+=*.pdf,*.psd
+set wildignore+=node_modules/*,bower_components/*
 
 " Remove auto comments from next line with enter, o or O.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -122,13 +128,21 @@ autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
 " Ignore stuff
 set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
+" Netrw settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
 " -------------------------------------------------------------------------
 " Visual
 " -------------------------------------------------------------------------
 
 " Theme stuff
 if has("gui_running")
-  set guifont=SF\ Mono:h12
+  set guifont=SF\ Mono:h13
+  set linespace=3
   let g:seoul256_background = 234
   " Change time based on time of day for guivim
   " if strftime("%H") < 19
@@ -273,7 +287,7 @@ nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents'}]
+" let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents'}]
 
 " Export all Vim Wiki pages as html
 nnoremap <Leader>we :VimwikiAll2HTML<CR>
@@ -299,6 +313,10 @@ nnoremap <leader>h :History<CR>
 nnoremap <Leader><Space> :History<CR>
 nnoremap <leader>b :Buffer<CR>
 
+" FZF preview addition
+let g:fzf_files_options =
+  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
 " Remap change tabs
 nnoremap K gT
 nnoremap J gt
@@ -315,9 +333,9 @@ let g:jsx_ext_required = 0
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
-let g:ale_sign_error = '⨉'
+let g:ale_sign_error = 'x'
 let g:ale_sign_warning = '-'
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_statusline_format = ['x %d', '/ %d', '⬥ ok']
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_echo_msg_format = '%linter% says %s'
