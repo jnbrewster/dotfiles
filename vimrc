@@ -22,7 +22,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'ggreer/the_silver_searcher'
-Plug 'itchyny/lightline.vim'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jiangmiao/auto-pairs'
@@ -47,6 +46,7 @@ Plug 'valloric/MatchTagAlways'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'evidens/vim-twig'
+Plug 'dracula/vim'
 
 call plug#end()
 
@@ -112,6 +112,9 @@ set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
 set wildignore+=node_modules/*,bower_components/*
 
+" Set the working directory to wherever the open file lives
+set autochdir
+
 " Remove auto comments from next line with enter, o or O.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -143,7 +146,8 @@ let g:netrw_winsize = 25
 if has("gui_running")
   set guifont=SF\ Mono:h13
   set linespace=3
-  let g:seoul256_background = 234
+  " let g:seoul256_background = 234
+
   " Change time based on time of day for guivim
   " if strftime("%H") < 19
   "   set background=light
@@ -151,12 +155,12 @@ if has("gui_running")
   "   set background=dark
   " endif
   else
-  let g:seoul256_background = 235
+  " let g:seoul256_background = 235
 endif
 
 " Colorscheme stuff
 set background=dark
-colorscheme seoul256
+colorscheme dracula
 
 " Show list characters
 set list listchars=tab:»·,trail:·
@@ -171,68 +175,6 @@ set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
 
-"Lightline
-let g:lightline = {
-  \ 'colorscheme': 'seoul256',
-  \ 'active': {
-  \   'left': [ [ 'filename' ],
-  \             [ 'readonly', 'fugitive' ] ],
-  \   'right': [ [ 'percent', 'lineinfo' ],
-  \              [ 'fileencoding', 'filetype' ],
-  \              [ 'fileformat', 'syntastic' ] ]
-  \ },
-  \ 'component_function': {
-  \   'modified': 'Mod',
-  \   'readonly': 'RO',
-  \   'fugitive': 'Git',
-  \   'filename': 'Name',
-  \   'filetype': 'Type',
-  \   'fileformat' : 'Format',
-  \   'fileencoding': 'Encoding',
-  \   'mode': 'Mode',
-  \ },
-  \ 'component_expand': {
-  \   'syntastic': 'ALEGetStatusLine',
-  \ },
-  \ 'component_type': {
-  \   'syntastic': 'error',
-  \ },
-  \ 'separator': { 'left': '', 'right': '' },
-  \ 'subseparator': { 'left': '', 'right': '' }
-  \ }
-
-function! Mod()
-  return &ft =~ 'help\|vimfiler' ? '' : &modified ? '»' : &modifiable ? '' : ''
-endfunction
-
-function! RO()
-  return &ft !~? 'help\|vimfiler' && &readonly ? 'x' : ''
-endfunction
-
-function! Git()
-  if &ft !~? 'help\|vimfiler' && exists("*fugitive#head")
-    return fugitive#head()
-  endif
-  return ''
-endfunction
-
-function! Name()
-  return ('' != Mod() ? Mod() . ' ' : '') .
-        \ ('' != expand('%:t') ? expand('%:t') : '[none]')
-endfunction
-
-function! Type()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
-endfunction
-
-function! Format()
-  return ''
-endfunction
-
-function! Encoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &enc : &enc) : ''
-endfunction
-
 " Remove elements for guivim.
 if exists("+guioptions")
   set go-=m   " menu bar
@@ -246,30 +188,30 @@ endif
 
 " brighten/dim background with macOS dim screen function keys
 " 233 (darkest) ~ 239 (lightest) 252 (darkest) ~ 256 (lightest)
-function! Seoul256Brighten()
-    if g:seoul256_background == 239
-        let g:seoul256_background = 252
-    elseif g:seoul256_background == 256
-        let  g:seoul256_background = 256
-    else
-        let g:seoul256_background += 1
-    endif
-    colo seoul256
-endfunction
+" function! Seoul256Brighten()
+"     if g:seoul256_background == 239
+"         let g:seoul256_background = 252
+"     elseif g:seoul256_background == 256
+"         let  g:seoul256_background = 256
+"     else
+"         let g:seoul256_background += 1
+"     endif
+"     colo seoul256
+" endfunction
 
-function! Seoul256Dim()
-    if g:seoul256_background == 252
-        let g:seoul256_background = 239
-    elseif g:seoul256_background == 233
-        let g:seoul256_background = 233
-    else
-        let g:seoul256_background -= 1
-    endif
-    colo seoul256
-endfunction
+" function! Seoul256Dim()
+"     if g:seoul256_background == 252
+"         let g:seoul256_background = 239
+"     elseif g:seoul256_background == 233
+"         let g:seoul256_background = 233
+"     else
+"         let g:seoul256_background -= 1
+"     endif
+"     colo seoul256
+" endfunction
 
-nmap <F1> :call Seoul256Dim()<CR>
-nmap <F2> :call Seoul256Brighten()<CR>
+" nmap <F1> :call Seoul256Dim()<CR>
+" nmap <F2> :call Seoul256Brighten()<CR>
 
 
 " -------------------------------------------------------------------------
@@ -316,6 +258,8 @@ nnoremap <leader>b :Buffer<CR>
 " FZF preview addition
 let g:fzf_files_options =
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
+set rtp+=/usr/local/opt/fzf
 
 " Remap change tabs
 nnoremap K gT
