@@ -16,9 +16,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'ajh17/Spacegray.vim'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
-Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'ggreer/the_silver_searcher'
@@ -29,7 +28,6 @@ Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim/'
@@ -43,10 +41,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/MatchTagAlways'
+Plug 'vim-airline/vim-airline'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
-Plug 'evidens/vim-twig'
-Plug 'dracula/vim'
 
 call plug#end()
 
@@ -104,16 +101,8 @@ set mouse=a
 " Word completion
 set complete+=kspell
 
-" Set wildmenu for matches on ctrl-n/p and wild searches
+" Set wildmenu for matches on ctrl-n/p
 set wildmenu
-
-" Don't offer to open certain files/directories
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
-set wildignore+=*.pdf,*.psd
-set wildignore+=node_modules/*,bower_components/*
-
-" Set the working directory to wherever the open file lives
-set autochdir
 
 " Remove auto comments from next line with enter, o or O.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -131,23 +120,14 @@ autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
 " Ignore stuff
 set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
-" Netrw settings
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
 " -------------------------------------------------------------------------
 " Visual
 " -------------------------------------------------------------------------
 
 " Theme stuff
 if has("gui_running")
-  set guifont=SF\ Mono:h13
-  set linespace=3
+  set guifont=Source\ Code\ Pro:h12
   " let g:seoul256_background = 234
-
   " Change time based on time of day for guivim
   " if strftime("%H") < 19
   "   set background=light
@@ -160,7 +140,7 @@ endif
 
 " Colorscheme stuff
 set background=dark
-colorscheme dracula
+colorscheme nord
 
 " Show list characters
 set list listchars=tab:»·,trail:·
@@ -174,6 +154,9 @@ set statusline+=%(\[%{&fenc}\,%)
 set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
+
+" Hide status outside of airline
+set noshowmode
 
 " Remove elements for guivim.
 if exists("+guioptions")
@@ -229,7 +212,7 @@ nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-" let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents'}]
+let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents'}]
 
 " Export all Vim Wiki pages as html
 nnoremap <Leader>we :VimwikiAll2HTML<CR>
@@ -255,12 +238,6 @@ nnoremap <leader>h :History<CR>
 nnoremap <Leader><Space> :History<CR>
 nnoremap <leader>b :Buffer<CR>
 
-" FZF preview addition
-let g:fzf_files_options =
-  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-
-set rtp+=/usr/local/opt/fzf
-
 " Remap change tabs
 nnoremap K gT
 nnoremap J gt
@@ -277,9 +254,9 @@ let g:jsx_ext_required = 0
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
-let g:ale_sign_error = 'x'
+let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '-'
-let g:ale_statusline_format = ['x %d', '/ %d', '⬥ ok']
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_echo_msg_format = '%linter% says %s'
@@ -289,4 +266,5 @@ highlight clear ALEWarningSign
 
 " Match tags in file
 let g:mta_use_matchparen_group = 1
+
 
