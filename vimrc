@@ -15,6 +15,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'arcticicestudio/nord-vim'
@@ -33,6 +34,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim/'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 't9md/vim-choosewin'
 Plug 'tpope/vim-commentary'
@@ -126,7 +128,7 @@ set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
 " Theme stuff
 if has("gui_running")
-  set guifont=Source\ Code\ Pro:h12
+  set guifont=Menlo:h13
   " let g:seoul256_background = 234
   " Change time based on time of day for guivim
   " if strftime("%H") < 19
@@ -155,6 +157,23 @@ set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
 
+" Airline stuff
+" Add tabs to vim
+let g:airline#extensions#tabline#enabled = 1
+
+function! AirlineInit()
+endfunction
+
+if !exists('g:airline_powerline_fonts') " Unicode fallback if no powerline font
+  let g:airline_symbols={} " Define symbols dictionary
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
+  let g:airline_symbols.linenr='㏑'
+  let g:airline_symbols.maxlinenr='☰'
+  let g:airline_symbols.branch='ᚠ'
+  let g:airline_symbols.whitespace='☲'
+endif
+
 " Hide status outside of airline
 set noshowmode
 
@@ -164,7 +183,7 @@ if exists("+guioptions")
   set go-=T   " toolbar
   set go-=r   " right scrollbar
   set go-=L   " left scrollbar
-" set go-=e   " remove gui tabs
+  set go-=e   " remove gui tabs
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
@@ -229,6 +248,12 @@ nnoremap <Leader>go :Goyo 50%<CR>
 " Load :Lex and :Ex
 nnoremap <Leader>e :Ex<CR>
 nnoremap <C-e> :Lex <CR>
+
+" Nerdtree toggle
+map <C-n> :NERDTreeToggle<CR>
+
+" Close Nerdtree on vim quit
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Fuzzy finder stuff
 nnoremap <leader>p :CtrlP<CR>
