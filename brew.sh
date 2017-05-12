@@ -8,9 +8,7 @@ brew install mpv
 brew install node
 brew install python3
 brew install ranger
-brew install ranger
 brew install the_silver_searcher
-brew install thefuck
 brew install tmux
 brew install translate-shell
 brew install wget
@@ -27,24 +25,19 @@ brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
-  # pandoc
-  # pdftotext
-  # qlmarkdown
-  amethyst
+  appcleaner
+  atom
   dropbox
-  firefox
-  dropbox
-  firefox
-  flux
   github-desktop
   google-chrome
   imageoptim
+  keepingyouawake
   macvim
   monodraw
   mpv
+  slack
   the-unarchiver
   transmission
-  omnifocus
   transmit
   tunnelbear
 )
