@@ -34,6 +34,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim/'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 't9md/vim-choosewin'
@@ -117,7 +118,7 @@ autocmd BufRead,BufNewFile *.wiki setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Change filetype for wiki files to be markdown
-autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
+" autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
 
 " Ignore stuff
 set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
@@ -231,7 +232,15 @@ nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/Documents'}]
+
+" Vimwiki headings
+hi VimwikiHeader1 guifg=#98B77F ctermfg=green
+hi VimwikiHeader2 guifg=#7496BA ctermfg=blue
+hi VimwikiHeader3 guifg=#E9C57B ctermfg=yellow
+hi VimwikiHeader4 guifg=#AC82A4 ctermfg=cyan
+hi VimwikiHeader5 guifg=#7BB8CB ctermfg=magenta
+hi VimwikiHeader6 guifg=#B8555E ctermfg=red
 
 " Export all Vim Wiki pages as html
 nnoremap <Leader>we :VimwikiAll2HTML<CR>
@@ -292,4 +301,4 @@ highlight clear ALEWarningSign
 " Match tags in file
 let g:mta_use_matchparen_group = 1
 
-
+let g:indentLine_char = '│'
