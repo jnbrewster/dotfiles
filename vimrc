@@ -15,6 +15,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
@@ -31,6 +32,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim/'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -38,6 +40,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 't9md/vim-choosewin'
+Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -119,6 +122,8 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Change filetype for wiki files to be markdown
 " autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
+let g:vimwiki_list = [{'path': '~/Dropbox/Documents',
+      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Ignore stuff
 set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
@@ -227,12 +232,15 @@ let maplocalleader = ' '
 " Emmet keys
 let g:user_emmet_leader_key = '<c-e>'
 
+" Hide show indent lines
+nnoremap <Leader>\ :IndentLinesToggle<CR>
+
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-let g:vimwiki_list = [{'path': '~/Dropbox/Documents'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/Documents', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Vimwiki headings
 hi VimwikiHeader1 guifg=#98B77F ctermfg=green
@@ -260,6 +268,9 @@ nnoremap <C-e> :Lex <CR>
 
 " Nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
+
+" Nredtree width
+let g:NERDTreeWinSize=100
 
 " Close Nerdtree on vim quit
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -302,3 +313,5 @@ highlight clear ALEWarningSign
 let g:mta_use_matchparen_group = 1
 
 let g:indentLine_char = '│'
+
+" let g:rainbow_active = 1
