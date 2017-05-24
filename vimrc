@@ -32,7 +32,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim/'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -40,7 +39,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 't9md/vim-choosewin'
-Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -50,6 +48,8 @@ Plug 'valloric/MatchTagAlways'
 Plug 'vim-airline/vim-airline'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
+Plug 'luochen1990/rainbow'
+Plug 'tommcdo/vim-lion'
 
 call plug#end()
 
@@ -240,7 +240,7 @@ nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-let g:vimwiki_list = [{'path': '~/Dropbox/Documents', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Vimwiki headings
 hi VimwikiHeader1 guifg=#98B77F ctermfg=green
