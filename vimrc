@@ -189,8 +189,10 @@ if exists("+guioptions")
   set go-=T   " toolbar
   set go-=r   " right scrollbar
   set go-=L   " left scrollbar
-  set go-=e   " remove gui tabs
+  " set go-=e   " remove gui tabs
   set go-=tc  " tearoff menu items and small popup dialogs
+
+  let g:airline#extensions#tabline#enabled = 0
 endif
 
 
@@ -244,11 +246,11 @@ let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents', 'syntax': 'mar
 
 " Vimwiki headings
 hi VimwikiHeader1 guifg=#98B77F ctermfg=green
-hi VimwikiHeader2 guifg=#7496BA ctermfg=blue
-hi VimwikiHeader3 guifg=#E9C57B ctermfg=yellow
-hi VimwikiHeader4 guifg=#AC82A4 ctermfg=cyan
-hi VimwikiHeader5 guifg=#7BB8CB ctermfg=magenta
-hi VimwikiHeader6 guifg=#B8555E ctermfg=red
+hi VimwikiHeader2 guifg=#E9C57B ctermfg=yellow
+hi VimwikiHeader3 guifg=#AC82A4 ctermfg=cyan
+hi VimwikiHeader4 guifg=#7BB8CB ctermfg=magenta
+hi VimwikiHeader5 guifg=#B8555E ctermfg=red
+hi VimwikiHeader6 guifg=#7496BA ctermfg=blue
 
 " Export all Vim Wiki pages as html
 nnoremap <Leader>we :VimwikiAll2HTML<CR>
