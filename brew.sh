@@ -35,6 +35,7 @@ apps=(
   macvim
   monodraw
   mpv
+  PDFInfo
   slack
   the-unarchiver
   transmission
