@@ -8,7 +8,8 @@ alias cal='cal | head -n 1; cal | tail -n +2 | grep --before-context 6 --after-c
 alias ip="curl http://ipecho.net/plain; echo"
 alias ips="ifconfig | grep inet"
 
-alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+alias update="brew update && brew upgrade && brew cleanup"
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete && brew cleanup && brew cask cleanup"
 alias empty="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 alias hidden="sh ~/dotfiles/Scripts/togglehidden"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; killall Finder"
@@ -77,6 +78,9 @@ alias a="mpv http://198.50.158.92:8447/h"
 #
 # HELPERS
 #
+
+# Timer
+alias timer="time cat"
 
 # Make a directory and change to it.
 function mkcd {
