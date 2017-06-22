@@ -32,6 +32,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim/'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -39,6 +40,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 't9md/vim-choosewin'
+Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -46,10 +48,9 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/MatchTagAlways'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
-Plug 'luochen1990/rainbow'
-Plug 'tommcdo/vim-lion'
 
 call plug#end()
 
@@ -143,12 +144,17 @@ if has("gui_running")
   "   set background=dark
   " endif
   else
+  autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE
   " let g:seoul256_background = 235
 endif
 
 " Colorscheme stuff
 set background=dark
-colorscheme nord
+colorscheme Tomorrow-Night
+
+" Change TODO colors
+hi Todo guifg=yellow guibg=NONE
+hi Todo ctermbg=yellow ctermbg=NONE
 
 " Show list characters
 set list listchars=tab:»·,trail:·
@@ -170,15 +176,13 @@ let g:airline#extensions#tabline#enabled = 1
 function! AirlineInit()
 endfunction
 
-if !exists('g:airline_powerline_fonts') " Unicode fallback if no powerline font
-  let g:airline_symbols={} " Define symbols dictionary
-  let g:airline_left_sep=''
-  let g:airline_right_sep=''
-  let g:airline_symbols.linenr='㏑'
-  let g:airline_symbols.maxlinenr='☰'
-  let g:airline_symbols.branch='ᚠ'
-  let g:airline_symbols.whitespace='☲'
-endif
+let g:airline_symbols={} " Define symbols dictionary
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_symbols.linenr='㏑'
+let g:airline_symbols.maxlinenr='☰'
+let g:airline_symbols.branch='ᚠ'
+let g:airline_symbols.whitespace='☲'
 
 " Hide status outside of airline
 set noshowmode
@@ -190,9 +194,9 @@ if exists("+guioptions")
   set go-=r   " right scrollbar
   set go-=L   " left scrollbar
   " set go-=e   " remove gui tabs
-  set go-=tc  " tearoff menu items and small popup dialogs
 
   let g:airline#extensions#tabline#enabled = 0
+  set go-=tc  " tearoff menu items and small popup dialogs
 endif
 
 
@@ -242,15 +246,15 @@ nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-let g:vimwiki_list = [{'path': '/Volumes/Home/Dropbox/Documents', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/Documents', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Vimwiki headings
 hi VimwikiHeader1 guifg=#98B77F ctermfg=green
-hi VimwikiHeader2 guifg=#E9C57B ctermfg=yellow
-hi VimwikiHeader3 guifg=#AC82A4 ctermfg=cyan
-hi VimwikiHeader4 guifg=#7BB8CB ctermfg=magenta
-hi VimwikiHeader5 guifg=#B8555E ctermfg=red
-hi VimwikiHeader6 guifg=#7496BA ctermfg=blue
+hi VimwikiHeader2 guifg=#7496BA ctermfg=blue
+hi VimwikiHeader3 guifg=#E9C57B ctermfg=yellow
+hi VimwikiHeader4 guifg=#AC82A4 ctermfg=cyan
+hi VimwikiHeader5 guifg=#7BB8CB ctermfg=magenta
+hi VimwikiHeader6 guifg=#B8555E ctermfg=red
 
 " Export all Vim Wiki pages as html
 nnoremap <Leader>we :VimwikiAll2HTML<CR>
