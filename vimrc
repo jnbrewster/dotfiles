@@ -15,18 +15,16 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-
-Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
-Plug 'arcticicestudio/nord-vim'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'ggreer/the_silver_searcher'
+Plug 'herrbischoff/cobalt2.vim'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jiangmiao/auto-pairs'
-Plug 'joelbrewster/Tomorrow'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -44,6 +42,7 @@ Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/MatchTagAlways'
@@ -51,6 +50,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -69,10 +69,10 @@ set clipboard=unnamed
 set tabstop=2
 
 " Tab width when editing.
-set softtabstop=2
+set softtabstop=4
 
 " Tab width when indenting in normal mode.
-set shiftwidth=2
+set shiftwidth=4
 
 " Emit spaces instead of tabs.
 set expandtab
@@ -114,6 +114,9 @@ set wildmenu
 " Remove auto comments from next line with enter, o or O.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" scss syntax stuff
+au BufRead,BufNewFile *.sass set filetype=scss.css
+
 " Remove whitespaces on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -123,7 +126,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Change filetype for wiki files to be markdown
 " autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
-let g:vimwiki_list = [{'path': '~/Dropbox/Documents',
+let g:vimwiki_list = [{'path': '~/Documents',
       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Ignore stuff
@@ -135,26 +138,15 @@ set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
 " Theme stuff
 if has("gui_running")
-  set guifont=Menlo:h13
-  " let g:seoul256_background = 234
-  " Change time based on time of day for guivim
-  " if strftime("%H") < 19
-  "   set background=light
-  " else
-  "   set background=dark
-  " endif
-  else
-  autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE
-  " let g:seoul256_background = 235
+    set guifont=Menlo:h12
+    set background=dark
+    colorscheme cobalt2
+else
+    " autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE
+    highlight LineNr ctermfg=grey
+    hi Todo guifg=yellow guibg=NONE
+    hi Todo ctermbg=yellow ctermbg=NONE
 endif
-
-" Colorscheme stuff
-set background=dark
-colorscheme Tomorrow-Night
-
-" Change TODO colors
-hi Todo guifg=yellow guibg=NONE
-hi Todo ctermbg=yellow ctermbg=NONE
 
 " Show list characters
 set list listchars=tab:»·,trail:·
@@ -173,6 +165,9 @@ set laststatus=2
 " Add tabs to vim
 let g:airline#extensions#tabline#enabled = 1
 
+" Hide status outside of airline
+set noshowmode
+
 function! AirlineInit()
 endfunction
 
@@ -184,8 +179,6 @@ let g:airline_symbols.maxlinenr='☰'
 let g:airline_symbols.branch='ᚠ'
 let g:airline_symbols.whitespace='☲'
 
-" Hide status outside of airline
-set noshowmode
 
 " Remove elements for guivim.
 if exists("+guioptions")
@@ -198,35 +191,6 @@ if exists("+guioptions")
   let g:airline#extensions#tabline#enabled = 0
   set go-=tc  " tearoff menu items and small popup dialogs
 endif
-
-
-" brighten/dim background with macOS dim screen function keys
-" 233 (darkest) ~ 239 (lightest) 252 (darkest) ~ 256 (lightest)
-" function! Seoul256Brighten()
-"     if g:seoul256_background == 239
-"         let g:seoul256_background = 252
-"     elseif g:seoul256_background == 256
-"         let  g:seoul256_background = 256
-"     else
-"         let g:seoul256_background += 1
-"     endif
-"     colo seoul256
-" endfunction
-
-" function! Seoul256Dim()
-"     if g:seoul256_background == 252
-"         let g:seoul256_background = 239
-"     elseif g:seoul256_background == 233
-"         let g:seoul256_background = 233
-"     else
-"         let g:seoul256_background -= 1
-"     endif
-"     colo seoul256
-" endfunction
-
-" nmap <F1> :call Seoul256Dim()<CR>
-" nmap <F2> :call Seoul256Brighten()<CR>
-
 
 " -------------------------------------------------------------------------
 " Bindings and plugin settings
@@ -246,15 +210,7 @@ nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-let g:vimwiki_list = [{'path': '~/Dropbox/Documents', 'syntax': 'markdown', 'ext': '.md'}]
-
-" Vimwiki headings
-hi VimwikiHeader1 guifg=#98B77F ctermfg=green
-hi VimwikiHeader2 guifg=#7496BA ctermfg=blue
-hi VimwikiHeader3 guifg=#E9C57B ctermfg=yellow
-hi VimwikiHeader4 guifg=#AC82A4 ctermfg=cyan
-hi VimwikiHeader5 guifg=#7BB8CB ctermfg=magenta
-hi VimwikiHeader6 guifg=#B8555E ctermfg=red
+let g:vimwiki_list = [{'path': '~/Documents', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Export all Vim Wiki pages as html
 nnoremap <Leader>we :VimwikiAll2HTML<CR>
@@ -276,7 +232,7 @@ nnoremap <C-e> :Lex <CR>
 map <C-n> :NERDTreeToggle<CR>
 
 " Nredtree width
-let g:NERDTreeWinSize=100
+let g:NERDTreeWinSize=60
 
 " Close Nerdtree on vim quit
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -305,19 +261,27 @@ let g:jsx_ext_required = 0
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '-'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_echo_msg_format = '%linter% says %s'
 let g:ale_javascript_eslint_use_global = 1
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
+
+let g:airline#extensions#ale#enabled = 1
+
+" JSX for Ale
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
+let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_linter_aliases = {'jsx': 'css'}
+
 
 " Match tags in file
 let g:mta_use_matchparen_group = 1
-
 let g:indentLine_char = '│'
-
-" let g:rainbow_active = 1
