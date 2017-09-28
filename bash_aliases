@@ -45,8 +45,6 @@ alias gms="cd ~/Music/"
 alias gmv="cd ~/Movies/"
 alias gdv="cd ~/Developer/ && ls"
 
-alias vim='mvim -v'
-alias v='mvim -v'
 alias r="ranger"
 alias yt="youtube-dl"
 alias mp3="youtube-dl -t --extract-audio --audio-format mp3 --audio-quality 320k"
@@ -58,6 +56,8 @@ alias blocks="sh ~/Developer/dotfiles/Scripts/blocks"
 alias pipes="sh ~/Developer/dotfiles/Scripts/pipes"
 alias invaders="sh ~/Developer/dotfiles/Scripts/invaders"
 alias poke="sh ~/Developer/dotfiles/Scripts/poke"
+alias ia="cd ~/Developer/ia/build/ && ./ia"
+alias df="cd /Applications/Dwarf\ Fortress.app/Contents/MacOS/ && ./dfhack"
 
 alias commit='git commit -am '
 alias push='git push'
@@ -68,11 +68,11 @@ alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
 alias tm="tmux"
 alias ta="tmux attach"
 
+alias gif="convert -delay 35 -loop 0 *.jpg animated.gif"
+
 alias ss='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
 alias weather="curl http://wttr.in/Melbourne"
-# Ambient sleeping pill
-alias a="mpv http://198.50.158.92:8447/h"
 
 
 #
