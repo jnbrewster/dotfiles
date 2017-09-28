@@ -48,7 +48,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'valloric/MatchTagAlways'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 
@@ -121,12 +121,12 @@ au BufRead,BufNewFile *.sass set filetype=scss.css
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Set spelling for markdown and wiki files
-autocmd BufRead,BufNewFile *.wiki setlocal spell
+" autocmd BufRead,BufNewFile *.wiki setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Change filetype for wiki files to be markdown
 " autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
-let g:vimwiki_list = [{'path': '~/Documents',
+" let g:vimwiki_list = [{'path': '~/Documents',
       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Ignore stuff
@@ -138,7 +138,7 @@ set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
 " Theme stuff
 if has("gui_running")
-    set guifont=Menlo:h12
+    set guifont=Menlo:h13
     set background=dark
     colorscheme cobalt2
 else
@@ -210,10 +210,10 @@ nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
 
 " Vimwiki location
-let g:vimwiki_list = [{'path': '~/Documents', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/Documents', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Export all Vim Wiki pages as html
-nnoremap <Leader>we :VimwikiAll2HTML<CR>
+" nnoremap <Leader>we :VimwikiAll2HTML<CR>
 
 " Insert the date and 24hr time.
 nnoremap <Leader>da :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
@@ -285,3 +285,4 @@ let g:ale_linter_aliases = {'jsx': 'css'}
 " Match tags in file
 let g:mta_use_matchparen_group = 1
 let g:indentLine_char = '│'
+
