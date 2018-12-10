@@ -4,8 +4,8 @@
 
 " download vim-plug if missing
 if empty(glob("~/.vim/autoload/plug.vim"))
-  silent! execute '!curl --create-dirs -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * silent! PlugInstall
+    silent! execute '!curl --create-dirs -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * silent! PlugInstall
 endif
 
 
@@ -15,42 +15,45 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter'
-Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dkprice/vim-easygrep'
-Plug 'ggreer/the_silver_searcher'
-Plug 'herrbischoff/cobalt2.vim'
-Plug 'itspriddle/vim-javascript-indent'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'kshenoy/vim-signature'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'luochen1990/rainbow'
-Plug 'mattn/emmet-vim/'
+" language
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 't9md/vim-choosewin'
-Plug 'tommcdo/vim-lion'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
+Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'itspriddle/vim-javascript-indent'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-haml'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-vinegar'
-Plug 'valloric/MatchTagAlways'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
+
+" Search and navigation
+Plug 'tpope/vim-vinegar'
+Plug 'dkprice/vim-easygrep'
+Plug 'ggreer/the_silver_searcher'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+
+" Formatting and snippets
+Plug 'tpope/vim-commentary'
+Plug 'tommcdo/vim-lion'
+Plug 'mattn/emmet-vim/'
+Plug 'tpope/vim-surround'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
+Plug 'mhinz/vim-signify'
+
+" Interface
+Plug 'nightsense/stellarized'
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -58,6 +61,12 @@ call plug#end()
 " -------------------------------------------------------------------------
 " Settings
 " -------------------------------------------------------------------------
+
+" Setup expected backspace behavior
+set backspace=indent,eol,start
+
+" Remove bell nonsense
+set vb t_vb=
 
 " Disable swapfiles.
 set noswapfile
@@ -124,36 +133,54 @@ autocmd BufWritePre * :%s/\s\+$//e
 " autocmd BufRead,BufNewFile *.wiki setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
-" Change filetype for wiki files to be markdown
-" autocmd BufNewFile,BufFilePre,BufRead *.wiki set filetype=markdown
-" let g:vimwiki_list = [{'path': '~/Documents',
-      \ 'syntax': 'markdown', 'ext': '.md'}]
-
 " Ignore stuff
 set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
+
+" Split order
+set splitbelow
+set splitright
+
+" Set encoding for dev icons
+set encoding=UTF-8
+
 
 " -------------------------------------------------------------------------
 " Visual
 " -------------------------------------------------------------------------
 
-" Theme stuff
-if has("gui_running")
-    set guifont=Menlo:h13
-    set background=dark
-    colorscheme cobalt2
-else
-    " autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE
-    highlight LineNr ctermfg=grey
-    hi Todo guifg=yellow guibg=NONE
-    hi Todo ctermbg=yellow ctermbg=NONE
+" Set Font
+set guifont=Hack\ Nerd\ Font\ Mono:h13
+set linespace=1
+
+" Add TODO highlight across everything
+hi Todo guifg=yellow guibg=NONE ctermbg=yellow ctermbg=NONE
+
+
+" Change theme on time of the day in guivim
+if has('gui_running')
+    if strftime('%H') >= 7 && strftime('%H') < 20
+        set background=light
+        let g:airline_theme='stellarized_light'
+    else
+        set background=dark
+        let g:airline_theme='stellarized_dark'
+    endif
+
+    colorscheme stellarized
 endif
+
+" show the body width boundary
+setlocal colorcolumn=80
+setlocal textwidth=72
+
+" spell check on
+setlocal spell
 
 " Show list characters
 set list listchars=tab:»·,trail:·
 
 " Fall back statusline
 set statusline=[%n]\ %F
-set statusline+=\ %{fugitive#statusline()}
 set statusline+=\ %{ALEGetStatusLine()}
 set statusline+=%=
 set statusline+=%(\[%{&fenc}\,%)
@@ -161,35 +188,17 @@ set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
 
-" Airline stuff
-" Add tabs to vim
-let g:airline#extensions#tabline#enabled = 1
-
-" Hide status outside of airline
+" Hide status - use airline
 set noshowmode
-
-function! AirlineInit()
-endfunction
-
-let g:airline_symbols={} " Define symbols dictionary
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_symbols.linenr='㏑'
-let g:airline_symbols.maxlinenr='☰'
-let g:airline_symbols.branch='ᚠ'
-let g:airline_symbols.whitespace='☲'
-
 
 " Remove elements for guivim.
 if exists("+guioptions")
-  set go-=m   " menu bar
-  set go-=T   " toolbar
-  set go-=r   " right scrollbar
-  set go-=L   " left scrollbar
-  " set go-=e   " remove gui tabs
-
-  let g:airline#extensions#tabline#enabled = 0
-  set go-=tc  " tearoff menu items and small popup dialogs
+    set go-=m       " menu bar
+    set go-=T       " toolbar
+    set go-=r       " right scrollbar
+    set go-=L       " left scrollbar
+    set go-=e       " remove gui tabs
+    set go-=tc      " tear off menu items and small pop up dialogs
 endif
 
 " -------------------------------------------------------------------------
@@ -198,6 +207,9 @@ endif
 " Remap leader
 let mapleader      = ' '
 let maplocalleader = ' '
+
+" Magit for vim
+nnoremap <Leader>m :Magit<CR>
 
 " Emmet keys
 let g:user_emmet_leader_key = '<c-e>'
@@ -208,18 +220,6 @@ nnoremap <Leader>\ :IndentLinesToggle<CR>
 " Resource vimrc
 nnoremap <Leader>r :so %<CR>
 nnoremap <C-r> :so % <CR>
-
-" Vimwiki location
-" let g:vimwiki_list = [{'path': '~/Documents', 'syntax': 'markdown', 'ext': '.md'}]
-
-" Export all Vim Wiki pages as html
-" nnoremap <Leader>we :VimwikiAll2HTML<CR>
-
-" Insert the date and 24hr time.
-nnoremap <Leader>da :r! date "+ \%b \%d, \%Y, \%H:\%M"<CR>
-
-" Insert a line for wiki stuff
-nnoremap <Leader>li i-------------------------------------------------------------------------<CR>
 
 " Load Goyo for writing.
 nnoremap <Leader>go :Goyo 50%<CR>
@@ -233,9 +233,6 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Nredtree width
 let g:NERDTreeWinSize=60
-
-" Close Nerdtree on vim quit
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Fuzzy finder stuff
 nnoremap <leader>p :CtrlP<CR>
@@ -261,16 +258,18 @@ let g:jsx_ext_required = 0
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
+let g:ale_completion_enabled = 1
+let g:airline#extensions#ale#enabled = 1
+
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+
 let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '-'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_lint_on_text_changed = 0
 let g:ale_echo_msg_format = '%linter% says %s'
 let g:ale_javascript_eslint_use_global = 1
-
-let g:airline#extensions#ale#enabled = 1
 
 " JSX for Ale
 augroup FiletypeGroup
@@ -281,8 +280,4 @@ augroup END
 let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
 let g:ale_linter_aliases = {'jsx': 'css'}
 
-
-" Match tags in file
-let g:mta_use_matchparen_group = 1
-let g:indentLine_char = '│'
 
