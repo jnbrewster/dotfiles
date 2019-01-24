@@ -8,7 +8,6 @@ if empty(glob("~/.vim/autoload/plug.vim"))
     autocmd VimEnter * silent! PlugInstall
 endif
 
-
 " -------------------------------------------------------------------------
 " Plugins
 " -------------------------------------------------------------------------
@@ -16,17 +15,36 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " language
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'plasticboy/vim-markdown'
+Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
+Plug 'jiangmiao/auto-pairs'
+
+" JavaScript
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'itspriddle/vim-javascript-indent'
+Plug 'cdata/vim-tagged-template'
+
+" TypeScript
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript'
+
+" Markdown
+Plug 'reedes/vim-pencil'
+" Needed for vim-markdown
+Plug 'godlygeek/tabular',                 { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
+
+" CSS
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'itspriddle/vim-javascript-indent'
-Plug 'jiangmiao/auto-pairs'
+Plug 'hail2u/vim-css3-syntax',            { 'for': 'css' }
+
+" Ruby
+Plug 'vim-ruby/vim-ruby',                 { 'for': 'ruby' }
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-haml'
-Plug 'w0rp/ale'
 
 " Search and navigation
 Plug 'tpope/vim-vinegar'
@@ -36,31 +54,62 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'mhinz/vim-grepper'
+Plug 'vim-scripts/ctags.vim'
+Plug 'majutsushi/tagbar'
+Plug 'haya14busa/incsearch.vim'
 
 " Formatting and snippets
 Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
 Plug 'mattn/emmet-vim/'
 Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
+Plug 'leshill/vim-json'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'jreybert/vimagit'
 Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 
 " Interface
-Plug 'nightsense/stellarized'
-Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-webdevicons'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/goyo.vim'
 
+" Theme
+Plug 'itchyny/lightline.vim'
+Plug 'kaicataldo/material.vim'
+
 call plug#end()
+
+" -------------------------------------------------------------------------
+" Auto Commands
+" -------------------------------------------------------------------------
+" Remove white spaces on save.
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Markdown file stuff
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
+
+autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc set ft=json
+au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+
+au BufRead,BufNewFile *.scss set filetype=scss.css
+
+" Prettier stuff
+autocmd FileType javascript set formatprg=prettier\ --stdin
 
 
 " -------------------------------------------------------------------------
 " Settings
 " -------------------------------------------------------------------------
+
+" Interactive shell
+set shellcmdflag=-ic
 
 " Setup expected backspace behavior
 set backspace=indent,eol,start
@@ -126,13 +175,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " scss syntax stuff
 au BufRead,BufNewFile *.sass set filetype=scss.css
 
-" Remove whitespaces on save.
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Set spelling for markdown and wiki files
-" autocmd BufRead,BufNewFile *.wiki setlocal spell
-autocmd BufRead,BufNewFile *.md setlocal spell
-
 " Ignore stuff
 set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
 
@@ -149,29 +191,21 @@ set encoding=UTF-8
 " -------------------------------------------------------------------------
 
 " Set Font
-set guifont=Hack\ Nerd\ Font\ Mono:h13
-set linespace=1
+set guifont=Blex\ Mono\ Nerd\ Font\ Complete\ Mono:h13
 
 " Add TODO highlight across everything
 hi Todo guifg=yellow guibg=NONE ctermbg=yellow ctermbg=NONE
 
-
 " Change theme on time of the day in guivim
 if has('gui_running')
-    if strftime('%H') >= 7 && strftime('%H') < 20
-        set background=light
-        let g:airline_theme='stellarized_light'
-    else
-        set background=dark
-        let g:airline_theme='stellarized_dark'
-    endif
-
-    colorscheme stellarized
+    set background=dark
+    let g:material_theme_style ='dark'
+    colorscheme material
+    let g:lightline = { 'colorscheme': 'material_vim' }
+else
+    hi Normal ctermbg=NONE
+    hi LineNr ctermfg=BLACK
 endif
-
-" show the body width boundary
-setlocal colorcolumn=80
-setlocal textwidth=72
 
 " spell check on
 setlocal spell
@@ -201,6 +235,9 @@ if exists("+guioptions")
     set go-=tc      " tear off menu items and small pop up dialogs
 endif
 
+" Display extra whitespace characters
+set list listchars=tab:»·,trail:·
+
 " -------------------------------------------------------------------------
 " Bindings and plugin settings
 " -------------------------------------------------------------------------
@@ -217,12 +254,8 @@ let g:user_emmet_leader_key = '<c-e>'
 " Hide show indent lines
 nnoremap <Leader>\ :IndentLinesToggle<CR>
 
-" Resource vimrc
-nnoremap <Leader>r :so %<CR>
-nnoremap <C-r> :so % <CR>
-
 " Load Goyo for writing.
-nnoremap <Leader>go :Goyo 50%<CR>
+nnoremap <Leader>g :Goyo 50%<CR>
 
 " Load :Lex and :Ex
 nnoremap <Leader>e :Ex<CR>
@@ -231,7 +264,7 @@ nnoremap <C-e> :Lex <CR>
 " Nerdtree toggle
 map <C-n> :NERDTreeToggle<CR>
 
-" Nredtree width
+" Nerdtree width
 let g:NERDTreeWinSize=60
 
 " Fuzzy finder stuff
@@ -255,11 +288,13 @@ let g:javascript_plugin_flow = 1
 " Don't need extension for jsx
 let g:jsx_ext_required = 0
 
+
 " -------------------------------------------------------------------------
 " Syntax
 " -------------------------------------------------------------------------
 let g:ale_completion_enabled = 1
-let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
@@ -268,16 +303,7 @@ let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '-'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_lint_on_text_changed = 0
-let g:ale_echo_msg_format = '%linter% says %s'
-let g:ale_javascript_eslint_use_global = 1
-
-" JSX for Ale
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
-
 let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
-
 
