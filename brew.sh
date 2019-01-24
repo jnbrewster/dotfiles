@@ -5,6 +5,7 @@ brew update
 
 brew install ffmpeg
 brew install mpv
+brew install imagemagick
 brew install node
 brew install python3
 brew install ranger
@@ -16,7 +17,6 @@ brew install youtube-dl
 brew install --devel elinks
 
 # brew install highlight
-# brew install imagemagick
 # npm install jslint
 
 echo "Command line apps installed."
@@ -25,22 +25,23 @@ brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
-  appcleaner
-  atom
-  dropbox
-  github-desktop
-  google-chrome
-  imageoptim
-  keepingyouawake
-  macvim
-  monodraw
-  mpv
-  PDFInfo
-  slack
-  the-unarchiver
-  transmission
-  transmit
-  tunnelbear
+    amethyst
+    appcleaner
+    atom
+    dropbox
+    github-desktop
+    imageoptim
+    macvim
+    monodraw
+    mpv
+    PDFInfo
+    r-name
+    pocket-casts
+    resilio-sync
+    slack
+    the-unarchiver
+    transmission
+    transmit
 )
 
 # Install apps to /Applications

@@ -8,17 +8,11 @@ else
 fi
 
 
-echo "Setting up mac osx preferences"
-sh defaults.sh
-
 echo "Installing brew apps"
 sh brew.sh
 
 echo "Making symlinks"
 sh symlinks.sh
-
-echo "Setting up keyboard shortcuts"
-sh karabiner.sh
 
 cd ~
 echo "Finished!"
