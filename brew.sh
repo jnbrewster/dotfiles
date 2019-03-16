@@ -3,6 +3,9 @@
 
 brew update
 
+brew tap koekeishiya/formulae
+brew install koekeishiya/formulae/skhd
+brew install chunkwm
 brew install ffmpeg
 brew install mpv
 brew install imagemagick
@@ -25,23 +28,28 @@ brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
 # Apps
 apps=(
-    amethyst
     appcleaner
-    atom
+    bitbar
     dropbox
-    github-desktop
+    fontplop
+    hyper
     imageoptim
+    kap
+    launchbar
     macvim
     monodraw
     mpv
+    omnifocus
+    pocket-casts
     PDFInfo
     r-name
-    pocket-casts
     resilio-sync
     slack
+    spotify
     the-unarchiver
     transmission
     transmit
+    visual-studio-code
 )
 
 # Install apps to /Applications
@@ -53,6 +61,9 @@ brew cleanup
 brew cask cleanup
 
 ranger --copy-config=all
+
+brew services start skhd
+brew services start chunkwm
 
 cd ~
 echo "Finished!"
