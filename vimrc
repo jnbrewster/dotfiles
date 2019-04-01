@@ -16,8 +16,8 @@ call plug#begin('~/.vim/plugged')
 
 " language
 Plug 'w0rp/ale'
-Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
 
 " JavaScript
 Plug 'jelera/vim-javascript-syntax'
@@ -35,6 +35,9 @@ Plug 'reedes/vim-pencil'
 " Needed for vim-markdown
 Plug 'godlygeek/tabular',                 { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
+
+" Org
+Plug 'jceb/vim-orgmode'
 
 " CSS
 Plug 'ap/vim-css-color', {'for': ['css', 'scss']}
@@ -75,13 +78,14 @@ Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 
 " Interface
-Plug 'ryanoasis/vim-webdevicons'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/goyo.vim'
 
 " Theme
+Plug 'joshdick/onedark.vim'
+Plug 'joelbrewster/tomorrow'
+Plug 'dracula/vim'
 Plug 'itchyny/lightline.vim'
-Plug 'kaicataldo/material.vim'
 
 call plug#end()
 
@@ -93,7 +97,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Markdown file stuff
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
 
 autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc set ft=json
 au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
@@ -191,24 +194,31 @@ set encoding=UTF-8
 " -------------------------------------------------------------------------
 
 " Set Font
-set guifont=Blex\ Mono\ Nerd\ Font\ Complete\ Mono:h13
+set guifont=Operator\ Mono\ Lig:h13
 
 " Add TODO highlight across everything
 hi Todo guifg=yellow guibg=NONE ctermbg=yellow ctermbg=NONE
 
-" Change theme on time of the day in guivim
-if has('gui_running')
-    set background=dark
-    let g:material_theme_style ='dark'
-    colorscheme material
-    let g:lightline = { 'colorscheme': 'material_vim' }
-else
-    hi Normal ctermbg=NONE
-    hi LineNr ctermfg=BLACK
+" Use terminal colors for background
+hi Normal ctermbg=NONE
+
+if (has("termguicolors"))
+  set termguicolors
 endif
 
-" spell check on
-setlocal spell
+set background=dark
+colorscheme onedark
+
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 " Show list characters
 set list listchars=tab:»·,trail:·
@@ -221,7 +231,6 @@ set statusline+=%(\[%{&fenc}\,%)
 set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
-
 " Hide status - use airline
 set noshowmode
 
