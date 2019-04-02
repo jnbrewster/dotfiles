@@ -85,7 +85,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'joelbrewster/tomorrow'
 Plug 'dracula/vim'
-Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -199,40 +198,23 @@ set guifont=Operator\ Mono\ Lig:h13
 " Add TODO highlight across everything
 hi Todo guifg=yellow guibg=NONE ctermbg=yellow ctermbg=NONE
 
+set background=dark
+colorscheme tomorrow-night-eighties
+
 " Use terminal colors for background
 hi Normal ctermbg=NONE
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-set background=dark
-colorscheme onedark
-
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
 
 " Show list characters
 set list listchars=tab:»·,trail:·
 
 " Fall back statusline
 set statusline=[%n]\ %F
-set statusline+=\ %{ALEGetStatusLine()}
+" set statusline+=\ %{ALEGetStatusLine()}
 set statusline+=%=
 set statusline+=%(\[%{&fenc}\,%)
 set statusline+=%(\ %{&ft}]\%)
 set statusline+=\ [%l\:%c]
 set laststatus=2
-" Hide status - use airline
-set noshowmode
 
 " Remove elements for guivim.
 if exists("+guioptions")
@@ -315,4 +297,3 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
-
