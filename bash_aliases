@@ -16,10 +16,6 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false ; k
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true ; killall Finder"
 
 alias pg="postgres -D /usr/local/var/postgres"
-server(){
-  python -m SimpleHTTPServer ${1:-1337}
-}
-alias pserver=server
 alias server="php -S localhost:9000 -t ."
 alias server2="php -S localhost:9001 -t ."
 
@@ -59,11 +55,6 @@ alias poke="sh ~/Developer/dotfiles/Scripts/poke"
 alias ia="cd ~/Developer/ia/build/ && ./ia"
 alias df="cd /Applications/Dwarf\ Fortress.app/Contents/MacOS/ && ./dfhack"
 
-alias commit='git commit -am '
-alias push='git push'
-alias status='git status'
-alias add='git add'
-alias clone="git clone"
 alias js="/System/Library/Frameworks/JavaScriptCore.framework/Resources/jsc"
 alias tm="tmux"
 alias ta="tmux attach"
@@ -100,4 +91,3 @@ function play {
 
 # What is love?
 alias whatislove?="play haddaway what is love"
-
