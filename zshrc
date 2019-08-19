@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+ #!/usr/bin/env zsh
 
 setopt always_to_end
 setopt append_history
@@ -34,3 +34,10 @@ git_prompt() {
 PS1='
 $(git_prompt)
 %F{244}%# %F{reset}'
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+export PATH="$PATH:$HOME/.composer/vendor/bin"
