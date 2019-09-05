@@ -1,4 +1,4 @@
- #!/usr/bin/env zsh
+#!/usr/bin/env zsh
 
 setopt always_to_end
 setopt append_history
@@ -20,15 +20,15 @@ bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
 git_prompt() {
-  BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
+    BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
 
-  if [ ! -z $BRANCH ]; then
-    echo -n "%F{yellow}$BRANCH"
+    if [ ! -z $BRANCH ]; then
+        echo -n "%F{yellow}$BRANCH"
 
-    if [ ! -z "$(git status --short)" ]; then
-      echo " %F{red}✗"
+        if [ ! -z "$(git status --short)" ]; then
+            echo " %F{red}✗"
+        fi
     fi
-  fi
 }
 
 PS1='
@@ -41,3 +41,4 @@ SAVEHIST=10000
 setopt appendhistory
 
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH=/Applications/Firefox.app/Contents/MacOS:$HOME/bin:/usr/local/bin:$PATH
